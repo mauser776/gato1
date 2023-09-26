@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Andrés Honorato</a>
+      <a class="navbar-brand" href="#" id="brand1" style="opacity: 0;">AH</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -26,3 +26,50 @@
       </div>
     </div>
   </nav>
+<br>
+<br>
+
+{% block scripts %}
+<script>
+
+// Get a reference to the text element
+const textElement = document.getElementById('brand1');
+
+// Initialize variables
+let targetOpacity = 0; // The target opacity to reach
+let currentOpacity = 0; // The current opacity
+const easing = 0.1; // Adjust this value for the desired smoothness
+
+// Add a scroll event listener to the window
+window.addEventListener('scroll', () => {
+    // Calculate the scroll position
+    const scrollY = window.scrollY;
+
+    // Calculate the target opacity based on scroll position
+    targetOpacity = scrollY === 0 ? 0 : 1;
+
+    // Call the update function to animate opacity
+    updateOpacity();
+});
+
+// Update function using requestAnimationFrame for smoother animation
+function updateOpacity() {
+    // Calculate the difference between the target and current opacity
+    const opacityDiff = targetOpacity - currentOpacity;
+
+    // Calculate the new opacity with easing
+    currentOpacity += opacityDiff * easing;
+
+    // Apply the opacity to the text element
+    textElement.style.opacity = currentOpacity.toFixed(2); // Limit the opacity to two decimal places
+
+    // Continue animating until the opacity is close to the target
+    if (Math.abs(opacityDiff) > 0.001) {
+        requestAnimationFrame(updateOpacity);
+    }
+}
+
+
+</script>
+
+{% endblock scripts %}
