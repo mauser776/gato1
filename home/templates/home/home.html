@@ -15,73 +15,173 @@ Inicio
 </nav>
 
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="2000">
-        <img src="{% static 'ejemplos/e2.jpg' %}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="{% static 'ejemplos/e3.jpg' %}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="{% static 'ejemplos/e9.jpg' %}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="{% static 'ejemplos/e15.jpg' %}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="{% static 'ejemplos/e5.jpg' %}" class="d-block w-100" alt="...">
-      </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="2000">
+      <img src="{% static 'ejemplos/e3.jpg' %}" class="d-block w-100" alt="...">
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-  <nav class="navbar navbar-expand-lg bg-body">
-    <div class="container-fluid">
-      <a class="navbar-brand mx-auto">Art for lovers</a>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="{% static 'ejemplos/e2.jpg' %}" class="d-block w-100" alt="...">
     </div>
-  </nav>
-
-<div class="container text-center">
-  <div class="row">
-    <div class="col">
-      <h1 class="text-start">
-        ÚLTIMAS<br>OBRAS</h1>
-      <p class="text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam suscipit magni doloremque est rerum cumque, iste minima eius possimus quidem corporis debitis atque iusto, commodi a nisi. Perspiciatis, harum rerum.</p>
-      <img src="{% static 'ig/7.png' %}" class="img-fluid mx-auto pb-4" alt="...">
-      <img src="{% static 'ejemplos/e24.jpg' %}" class="img-fluid mx-auto pb-4" alt="...">
-      <img src="{% static 'ig/2.png' %}" class="img-fluid mx-auto pb-4" alt="...">
-    </div>
-    <div class="col">
-      <img src="{% static 'ejemplos/e21.jpg' %}" class="img-fluid mx-auto pb-4" alt="...">
-      <img src="{% static 'ig/6.png' %}" class="img-fluid mx-auto pb-4" alt="...">
-      <img src="{% static 'ejemplos/e10.jpg' %}" class="img-fluid mx-auto pb-4" alt="...">
-      <img src="{% static 'ejemplos/e11.jpg' %}" class="img-fluid mx-auto pb-4" alt="...">
-      <img src="{% static 'ejemplos/e23.jpg' %}" class="img-fluid mx-auto pb-4" alt="...">
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="{% static 'ejemplos/e9.jpg' %}" class="d-block w-100" alt="...">
     </div>
   </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-{% endblock content %}
+<nav class="navbar navbar-expand-lg bg-body">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">Art for lovers</a>
+  </div>
+</nav>
+
+<div class="slider-containerSW swiper carru">
+  <div class="slider-content">
+    <div class="cardSW-wrapper swiper-wrapper">
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <img src="{% static 'ig/7.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h2 class="nameSW">Mary</h2>
+          <p class="descriptionSW">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quas. Modi suscipit animi quas praesentium dolore excepturi,
+            magnam ullam facilis!
+          </p>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <img src="{% static 'ig/6.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h2 class="nameSW">David</h2>
+          <p class="descriptionSW">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quas. Modi suscipit animi quas praesentium dolore excepturi,
+            magnam ullam facilis!
+          </p>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <img src="{% static 'ig/5.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h2 class="nameSW">Christy</h2>
+          <p class="descriptionSW">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quas. Modi suscipit animi quas praesentium dolore excepturi,
+            magnam ullam facilis!
+          </p>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <img src="{% static 'ig/2.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h2 class="nameSW">Joseph</h2>
+          <p class="descriptionSW">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quas. Modi suscipit animi quas praesentium dolore excepturi,
+            magnam ullam facilis!
+          </p>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <img src="{% static 'ig/4.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h2 class="nameSW">Nancy</h2>
+          <p class="descriptionSW">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quas. Modi suscipit animi quas praesentium dolore excepturi,
+            magnam ullam facilis!
+          </p>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <img src="{% static 'ig/7.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h2 class="nameSW">Meera</h2>
+          <p class="descriptionSW">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quas. Modi suscipit animi quas praesentium dolore excepturi,
+            magnam ullam facilis!
+          </p>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <img src="{% static 'ig/6.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h2 class="nameSW">Thomas</h2>
+          <p class="descriptionSW">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quas. Modi suscipit animi quas praesentium dolore excepturi,
+            magnam ullam facilis!
+          </p>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next swiper-navBtn"></div>
+  <div class="swiper-button-prev swiper-navBtn"></div>
+</div>
+
+    {% endblock content %}
     
 
 
-{% block scripts %}
-
-
-{% endblock scripts %}
-
-
+    {% block scripts %}
+       
+    {% endblock scripts %}

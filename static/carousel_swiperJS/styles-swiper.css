@@ -1,0 +1,147 @@
+/* Created by Tivotal */
+
+/* Google Fonts(Poppins) */
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"); */
+
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+} */
+
+.carru {
+  min-height: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #efefef;
+}
+
+.slider-containerSW {
+  max-width: 1120px;
+  width: 100%;
+  padding: 40px 0;
+}
+
+.slider-content {
+  margin: 0 40px;
+  overflow: hidden;
+  /* border-radius: 25px; */
+}
+
+.cardSW {
+  /* border-radius: 25px; */
+  background-color: #fff;
+}
+
+.image-content,
+.cardSW-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 14px;
+}
+
+.image-content {
+  position: relative;
+  row-gap: 5px;
+  padding: 25px 0;
+}
+
+/* .overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #4070f4;
+  border-radius: 25px;
+  top: 0;
+  left: 0;
+} */
+
+.cardSW-image {
+  position: relative;
+  height: 150px;
+  width: 150px;
+  background-color: #fff;
+  /* border-radius: 50%; */
+  padding: 3px;
+}
+
+.cardSW-image img {
+  height: 100%;
+  width: 100%;
+  /* border-radius: 50%; */
+  object-fit: cover;
+  /* border: 4px solid #4070f4; */
+}
+
+.nameSW {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.descriptionSW {
+  font-size: 14px;
+  font-weight: 400;
+  color: #707070;
+  text-align: center;
+}
+
+.button {
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  padding: 8px 16px;
+  background-color: #252629;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 14px;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0d0d0e;
+}
+
+.swiper-navBtn {
+  color: #252629;
+  transition: all 0.3s ease;
+}
+
+.swiper-navBtn:hover {
+  color: #0d0d0e;
+}
+
+.swiper-navBtn::before,
+.swiper-navBtn::after {
+  font-size: 35px;
+}
+
+.swiper-button-next {
+  right: 0;
+}
+
+.swiper-button-prev {
+  left: 0;
+}
+
+.swiper-pagination-bullet {
+  background-color: #252629;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #202122;
+}
+
+@media (max-width: 768px) {
+  .slider-content {
+    margin: 0 10px;
+  }
+
+  .swiper-navBtn {
+    display: none;
+  }
+}

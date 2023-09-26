@@ -1,0 +1,106 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!--Custom css ADD HERE-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <!-- semantic UI -->
+    <link rel="stylesheet" type='text/css'
+        href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+    {% comment %}
+    <!-- semantic UI -->
+    <!-- probar si es necesario con 2.2.1 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    {% endcomment %}
+    <!-- Fomantic -->
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}">
+    <title>{% block title %}{% endblock title %}</title>
+
+</head>
+
+<body>
+    {% include 'main/navbar.html' %}
+    <div class="ui container ">
+
+        {% block content %}
+        {% endblock content %}
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="ui  vertical footer secundary segment">
+        <div class="ui center aligned container">
+            <div class="ui stackable grid">
+                <div class="three wide column">
+                    <h5 class="ui header">ACERCA DE CALETA</h5>
+                    <div class="ui link list">
+                        <a class="item" href="">¿Quiénes Somos?</a>
+                        <a class="item" href="">-----</a>
+                        <a class="item" href="">-----</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h5 class="ui header">SERVICIO AL CLIENTE</h5>
+                    <div class="ui link list">
+                        <a class="item" href="">Preguntas Frecuentes</a>
+                        <a class="item" href="">Devolución y cambio</a>
+                        <a class="item" href="">Contáctanos</a>
+                    </div>
+                </div>
+                <!-- <div class="three wide column">
+                    <h4 class="ui header">OOOO</h4>
+                    <div class="ui link list">
+                        <a class="item" href="">XXXX</a>
+                        <a class="item" href="">XXXX</a>
+                        <a class="item" href="">XXXX</a>
+                    </div>
+                </div> -->
+                <div class="seven wide right floated column">
+                    <h4 class="ui header">Únete a nostros </h4>
+                    <p> Ayuda a crecer nuestro proyecto.</p>
+
+                    <!-- <form action="" method="POST" target="_top">
+                        <input type="hidden" name="" value="">
+                    </form> -->
+                    <a href="#top">
+                        <button class="ui large blue button">Unirme</button>
+                    </a>
+                </div>
+            </div>
+            <div class="ui section divider"></div>
+            <i class="facebook f large icon"></i>
+            <i class="twitter large icon"></i>
+            <i class="whatsapp large icon"></i>
+            <i class="youtube large icon"></i>
+            <img src="{% static 'images/django_pony.png' %}" class="ui centered tiny image">
+            <br>
+
+            <img src="{% static 'images/toge1.png' %}" class="ui centered mini image">
+            <div class="ui horizontal small divided link list">
+                <a class="item" href="">Copyright &copy; Caleta Inc.,
+                    2022 - Todos
+                    los derechos reservados.</a>
+            </div>
+        </div>
+    </div>
+
+    {% block scripts %}
+    {% endblock scripts %}
+
+    <!--Custom js ADD HERE-->
+    <script type="module" src="{% static 'main.js' %}"></script>
+
+</body>
+
+</html>

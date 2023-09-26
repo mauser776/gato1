@@ -13,3 +13,6 @@ def contacto_view(request):
 
 def sobre_mi_view(request):
     return render(request, 'home/sobre_mi.html')
+
+def galeria_view(request):
+    return render(request, 'home/galeria.html')
