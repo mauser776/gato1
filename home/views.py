@@ -12,4 +12,4 @@ def contacto_view(request):
     return render(request, 'home/contacto.html')
 
 def sobre_mi_view(request):
-    return render(request, 'home/sobremi.html')
+    return render(request, 'home/sobre_mi.html')

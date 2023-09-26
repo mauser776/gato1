@@ -1,26 +1,29 @@
 <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#" id="brand1" style="opacity: 0;">AH</a>
+      <a class="navbar-brand" href="{% url 'home:home-view' %}" id="brand1" style="opacity: 0;">AH</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home:home-view' %}">INICIO</a>
+          </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="{% url 'home:proyectos-view' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   PROYECTOS
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">XX</a></li>
-                  <li><a class="dropdown-item" href="#">XXX</a></li>
-                  <li><a class="dropdown-item" href="#">XXXX</a></li>
+                  <li><a class="dropdown-item" href="{% url 'home:proyectos-view' %}">XX</a></li>
+                  <li><a class="dropdown-item" href="{% url 'home:proyectos-view' %}">XXX</a></li>
+                  <li><a class="dropdown-item" href="{% url 'home:proyectos-view' %}">XXXX</a></li>
                 </ul>
               </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">SOBRE MÍ</a>
+            <a class="nav-link" href="{% url 'home:sobre_mi-view' %}">SOBRE MÍ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">CONTACTO</a>
+            <a class="nav-link" href="{% url 'home:contacto-view' %}">CONTACTO</a>
           </li>
         </ul>
       </div>

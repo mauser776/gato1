@@ -16,11 +16,12 @@
     <!-- custom CSS -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
-    <title>Honorato | {% block title %}{% endblock title %}</title>
+    <title>AH | {% block title %}{% endblock title %}</title>
   </head>
   <body>
     {% include 'navbar.html' %}
-    <div class="container-fluid bg-dark text-emphasis-dark px-0">
+    <!-- <div class="container-fluid text-light px-0" style="background-color: rgba(0,0,0,1.00)"> -->
+      <div class="container-fluid text-dark bg-light px-0">
         {% block content %}
             
         {% endblock content %}
@@ -29,10 +30,10 @@
     <div class="container">
       <footer class="py-3 my-1">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">INICIO</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">PROYECTOS</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">SOBRE MÍ</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">CONTACTO</a></li>
+          <li class="nav-item"><a href="{% url 'home:home-view' %}" class="nav-link px-2 text-muted">INICIO</a></li>
+          <li class="nav-item"><a href="{% url 'home:proyectos-view' %}" class="nav-link px-2 text-muted">PROYECTOS</a></li>
+          <li class="nav-item"><a href="{% url 'home:sobre_mi-view' %}" class="nav-link px-2 text-muted">SOBRE MÍ</a></li>
+          <li class="nav-item"><a href="{% url 'home:contacto-view' %}" class="nav-link px-2 text-muted">CONTACTO</a></li>
         </ul>
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
           <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-twitter-x"></i></a></li>
