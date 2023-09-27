@@ -1,16 +1,17 @@
 <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'home:home-view' %}" id="brand1" style="opacity: 0;"><b>AH</b></a>
+      <a class="navbar-brand" href="{% url 'home:home-view' %}" id="brand1" style="opacity: 0;"><b>AH{% if request.resolver_match.url_name == 'proyectos-view' %} | PROYECTOS{% endif %}
+         {% if request.resolver_match.url_name == 'contacto-view' %}| CONTACTO {% endif %} {% if request.resolver_match.url_name == 'sobre_mi-view' %}| SOBRE MÍ {% endif %} </b></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'home:home-view' %}">INICIO</a>
+            <a class="nav-link {% if request.resolver_match.url_name == 'home-view' %} active {% endif %}" href="{% url 'home:home-view' %}">INICIO</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'home:proyectos-view' %}">PROYECTOS</a>
+            <a class="nav-link {% if request.resolver_match.url_name == 'proyectos-view' %} active {% endif %}" href="{% url 'home:proyectos-view' %}">PROYECTOS</a>
           </li>
             <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{% url 'home:proyectos-view' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -23,10 +24,10 @@
                 </ul>
               </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'home:sobre_mi-view' %}">SOBRE MÍ</a>
+            <a class="nav-link {% if request.resolver_match.url_name == 'sobre_mi-view' %} active {% endif %}" href="{% url 'home:sobre_mi-view' %}">SOBRE MÍ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'home:contacto-view' %}">CONTACTO</a>
+            <a class="nav-link {% if request.resolver_match.url_name == 'contacto-view' %} active {% endif %}" href="{% url 'home:contacto-view' %}">CONTACTO</a>
           </li>
         </ul>
       </div>
