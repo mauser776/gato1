@@ -49,7 +49,9 @@ Inicio
         <div class="image-content">
           <span class="overlay"></span>
           <div class="cardSW-image">
-            <img src="{% static 'ig/7.png' %}" alt="" />
+            <a href="{% url 'home:cuadro-detail-view' id=1 %}">
+              <img src="{% static 'ig/7.png' %}" alt="" hre />
+            </a>
           </div>
         </div>
         <div class="cardSW-content">
@@ -178,10 +180,10 @@ Inicio
   <div class="swiper-button-prev swiper-navBtn"></div>
 </div>
 
-    {% endblock content %}
-    
+{% endblock content %}
 
 
-    {% block scripts %}
-       
-    {% endblock scripts %}
+
+{% block scripts %}
+
+{% endblock scripts %}
