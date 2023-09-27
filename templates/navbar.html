@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'home:home-view' %}" id="brand1" style="opacity: 0;">AH</a>
+      <a class="navbar-brand" href="{% url 'home:home-view' %}" id="brand1" style="opacity: 0;"><b>AH</b></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,7 +9,10 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home:home-view' %}">INICIO</a>
           </li>
-            <li class="nav-item dropdown">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home:proyectos-view' %}">PROYECTOS</a>
+          </li>
+            <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{% url 'home:proyectos-view' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   PROYECTOS
                 </a>
@@ -18,7 +21,7 @@
                   <li><a class="dropdown-item" href="{% url 'home:proyectos-view' %}">Collage Digital</a></li>
                   <li><a class="dropdown-item" href="{% url 'home:proyectos-view' %}">Dibujos</a></li>
                 </ul>
-              </li>
+              </li> -->
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home:sobre_mi-view' %}">SOBRE MÍ</a>
           </li>
