@@ -180,6 +180,160 @@ Inicio
   <div class="swiper-button-prev swiper-navBtn"></div>
 </div>
 
+
+<nav class="navbar navbar-expand-lg bg-body">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">Art for lovers</a>
+  </div>
+</nav>
+
+
+
+
+<div class="slider-containerSW swiper carru">
+  <div class="slider-content">
+    <div class="cardSW-wrapper swiper-wrapper">
+      <div class="cardSW swiper-slide">
+        {% for cuadro in cuadros %}
+
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <a href="{% url 'home:cuadro-detail-view' cuadro.id %}">
+              <img src="{{cuadro.imagen1.url}}" alt="" />
+            </a>
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h3 class="nameSW">{{cuadro.nombre}}</h3>
+          <p class="descriptionSW">
+            {{cuadro.tecnica}}
+          </p>
+          <p class="descriptionSW">
+            {{cuadro.descripcion}}
+          </p>
+          <a href="{% url 'home:cuadro-detail-view' cuadro.id %}" class="btn btn-dark">Ver</a>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <img src="{% static 'ig/6.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h2 class="nameSW">David</h2>
+          <p class="descriptionSW">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quas. Modi suscipit animi quas praesentium dolore excepturi,
+            magnam ullam facilis!
+          </p>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <img src="{% static 'ig/5.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h2 class="nameSW">Christy</h2>
+          <p class="descriptionSW">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quas. Modi suscipit animi quas praesentium dolore excepturi,
+            magnam ullam facilis!
+          </p>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <img src="{% static 'ig/2.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h2 class="nameSW">Joseph</h2>
+          <p class="descriptionSW">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quas. Modi suscipit animi quas praesentium dolore excepturi,
+            magnam ullam facilis!
+          </p>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <img src="{% static 'ig/4.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h2 class="nameSW">Nancy</h2>
+          <p class="descriptionSW">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quas. Modi suscipit animi quas praesentium dolore excepturi,
+            magnam ullam facilis!
+          </p>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <img src="{% static 'ig/7.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h2 class="nameSW">Meera</h2>
+          <p class="descriptionSW">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quas. Modi suscipit animi quas praesentium dolore excepturi,
+            magnam ullam facilis!
+          </p>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <img src="{% static 'ig/6.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="cardSW-content">
+          <h2 class="nameSW">Thomas</h2>
+          <p class="descriptionSW">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quas. Modi suscipit animi quas praesentium dolore excepturi,
+            magnam ullam facilis!
+          </p>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next swiper-navBtn"></div>
+  <div class="swiper-button-prev swiper-navBtn"></div>
+</div>
+
+
+
+
 {% endblock content %}
 
 
