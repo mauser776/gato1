@@ -1,4 +1,5 @@
-o/* Created by Tivotal */
+o
+/* Created by Tivotal */
 
 /* Google Fonts(Poppins) */
 /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"); */
@@ -73,7 +74,7 @@ o/* Created by Tivotal */
   width: 100%;
   /* border-radius: 50%; */
   /* cover si quiero todas del mismo porte */
-  object-fit: contain; 
+  object-fit: cover;
   /* border: 4px solid #4070f4; */
 }
 

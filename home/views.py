@@ -46,15 +46,18 @@ def cuadro_detail_view(request, id):
 
     cuadro = Cuadro.objects.get(id=id)
 
-    if cuadro.cantidad_inicial is not None:
-        cuadros_restantes = cuadro.cantidad_inicial - cuadro.cantidad_vendida
-        context = {
-            'cuadro': cuadro,
-            'cuadros_restantes': cuadros_restantes,
-        }
-    else:
-        context = {
-            'cuadro': cuadro,
-        }
+    cuadro_imagenes = []
+
+    lista_prueba = [cuadro.imagen1, cuadro.imagen2,
+                    cuadro.imagen3, cuadro.imagen4]
+
+    for imagen in lista_prueba:
+        if imagen:
+            cuadro_imagenes.append(imagen)
+
+    context = {
+        'cuadro': cuadro,
+        'cuadro_imagenes': cuadro_imagenes,
+    }
 
     return render(request, 'home/cuadro.html', context)
