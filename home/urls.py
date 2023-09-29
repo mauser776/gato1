@@ -8,7 +8,7 @@ urlpatterns = [
     path('proyectos/', proyectos_view, name='proyectos-view'),
     path('sobre-mi/', sobre_mi_view, name='sobre_mi-view'),
     path('contacto/', contacto_view, name='contacto-view'),
-    path('galeria/', galeria_view, name='galeria-view'),
-    path('cuadro/<id>', cuadro_detail_view, name='cuadro-detail-view'),
-  
+    path('galeria/<coleccion>/', galeria_view, name='galeria-view'),
+    path('cuadro/<id>/', cuadro_detail_view, name='cuadro-detail-view'),
+
 ]

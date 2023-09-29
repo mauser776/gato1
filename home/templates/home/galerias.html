@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Proyectos
+{% endblock title %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg bg-body">
+  <div class="container-fluid">
+    <a class="navbar-brand" id="brand2" style="opacity: 1">PROYECTOS | Andrés Honorato</a>
+  </div>
+</nav>
+
+<img src="{% static 'ejemplos/estudio.jpg' %}" class="foto1" alt="...">
+
+<nav class="navbar navbar-expand-lg bg-body">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">Art for lovers</a>
+  </div>
+</nav>
+
+<br>
+
+
+{% for x in cuadros_coleccion %}
+{{x}}
+{% endfor %}
+
+
+
+
+{% endblock content %}
+
+
+
+{% block scripts %}
+
+
+
+
+{% endblock scripts %}

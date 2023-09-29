@@ -15,24 +15,29 @@
     <div class="col-md-8 mb-3 d-flex justify-content-center align-items-center">
       <div id="myCarousel" class="carousel slide">
         <!-- Flechas del carrusel -->
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev" style="left: -9%;">
+          <span class="carousel-control" aria-hidden="true"><i class="bi bi-chevron-compact-left"
+              style="color: black; font-size: 24px;"></i></span>
+          <span class="visually-hidden">Prev</span>
         </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next" style="right: -9%;">
+          <span class="carousel-control" aria-hidden="true"><i class="bi bi-chevron-compact-right"
+              style="color: black; font-size: 24px;"></i></span>
           <span class="visually-hidden">Next</span>
         </a>
         <!-- Imágenes del carrusel -->
         <div class="carousel-inner">
-          {% for ima in cuadro_imagenes %}
+          {% for x in cuadro_imagenes %}
           <div class="carousel-item {% if forloop.first %}active{% endif %}">
-            <img src="{{ ima.url }}" class="d-block w-100" alt="...">
+            <div class="d-flex justify-content-center align-items-center">
+              <img src="{{ x.url }}" class="img-fluid mw-100 mh-100" alt="..." style="object-fit: contain;">
+            </div>
           </div>
           {% endfor %}
         </div>
       </div>
     </div>
+
     <div class="col-md-4 d-flex justify-content-center align-items-center">
       <div class="card h-100">
         <div class="card-body">
@@ -67,7 +72,7 @@
           {% if cuadro.cantidad_inicial%}
           <p class="card-text">Disponibilidad: {{cuadro.cuadros_disponibles}} de {{cuadro.cantidad_inicial}}</p>
           {% endif %}
-          <a href="javascript:history.back()" class="btn btn-primary">Volver</a>
+          <a href="javascript:history.back()" class="btn btn-light">Volver</a>
           <a href="{% url 'home:contacto-view' %}" class="btn btn-dark">Contacto</a>
         </div>
       </div>
