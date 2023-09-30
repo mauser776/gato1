@@ -3,9 +3,10 @@
 {% block title %}{{cuadro.nombre}}{% endblock title %}
 
 {% block content %}
-<nav class="navbar navbar-expand-lg bg-body">
+<nav class="navbar navbar-expand-lg bg-body mt-2">
   <div class="container-fluid">
-    <a class="navbar-brand" id="brand2" style="opacity: 1">{{cuadro.nombre}} | {{cuadro.coleccion}}</a>
+    <a class="navbar-brand" href="{% url 'home:home-view'%}"><i class="bi bi-chevron-compact-left"></i>
+      {{cuadro.nombre}} | {{cuadro.coleccion}}</a>
   </div>
 </nav>
 
