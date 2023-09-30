@@ -5,13 +5,13 @@
 {% block title %}
 Proyectos
 {% endblock title %}
-    
+
 {% block content %}
 
 <nav class="navbar navbar-expand-lg bg-body">
-    <div class="container-fluid">
-      <a class="navbar-brand" id="brand2" style="opacity: 1">PROYECTOS | Andrés Honorato</a>
-    </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" id="brand2" style="opacity: 1">PROYECTOS | Andrés Honorato</a>
+  </div>
 </nav>
 
 <img src="{% static 'ejemplos/estudio.jpg' %}" class="foto1" alt="...">
@@ -26,22 +26,25 @@ Proyectos
 
 <div class="container">
   <div class="row">
-      <div class="col-md-3">
-          <h3>Arte</h3>
-          <h3>Vectorial</h3>
-          <br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id nunc id purus commodo vehicula ut eget velit.</p>
-          <button class="button">Ver Colección</button>
-        </div>
-      <div class="col-md-3 mb-3 centro-y">
-          <img src="{% static 'ejemplos/e3.jpg' %}" alt="Imagen 1" class="img-fluid">
-      </div>
-      <div class="col-md-3 mb-3 centro-y">
-          <img src="{% static 'ejemplos/e3.jpg' %}" alt="Imagen 2" class="img-fluid">
-      </div>
-      <div class="col-md-3 mb-3 centro-y">
-          <img src="{% static 'ejemplos/e3.jpg' %}" alt="Imagen 3" class="img-fluid">
-      </div>
+    <div class="col-md-3">
+      <h3>Arte</h3>
+      <h3>Vectorial</h3>
+      <br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id nunc id purus commodo vehicula ut eget
+        velit.</p>
+      <a href="{% url 'home:galerias-view' %}?galeria=Arte Vectorial">
+        <button class="button">Ver Colección</button>
+      </a>
+    </div>
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{% static 'ejemplos/e3.jpg' %}" alt="Imagen 1" class="img-fluid">
+    </div>
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{% static 'ejemplos/e3.jpg' %}" alt="Imagen 2" class="img-fluid">
+    </div>
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{% static 'ejemplos/e3.jpg' %}" alt="Imagen 3" class="img-fluid">
+    </div>
   </div>
 </div>
 
@@ -55,22 +58,22 @@ Proyectos
 
 <div class="container">
   <div class="row">
-      <div class="col-md-3">
-          <h3>Collage</h3>
-          <h3>Digital</h3>
-          <br>
-          <p>Lorem ipsum dolor sit amet,elit. Nullam id nunc id purus commodo vehicula ut eget velit.</p>
-          <button class="button">Ver Colección</button>
-        </div>
-      <div class="col-md-3 mb-3 centro-y">
-          <img src="{% static 'ejemplos/e21.jpg' %}" alt="Imagen 1" class="img-fluid">
-      </div>
-      <div class="col-md-3 mb-3 centro-y">
-          <img src="{% static 'ejemplos/e21.jpg' %}" alt="Imagen 2" class="img-fluid">
-      </div>
-      <div class="col-md-3 mb-3 centro-y">
-          <img src="{% static 'ejemplos/e21.jpg' %}" alt="Imagen 3" class="img-fluid">
-      </div>
+    <div class="col-md-3">
+      <h3>Collage</h3>
+      <h3>Digital</h3>
+      <br>
+      <p>Lorem ipsum dolor sit amet,elit. Nullam id nunc id purus commodo vehicula ut eget velit.</p>
+      <button class="button">Ver Colección</button>
+    </div>
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{% static 'ejemplos/e21.jpg' %}" alt="Imagen 1" class="img-fluid">
+    </div>
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{% static 'ejemplos/e21.jpg' %}" alt="Imagen 2" class="img-fluid">
+    </div>
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{% static 'ejemplos/e21.jpg' %}" alt="Imagen 3" class="img-fluid">
+    </div>
   </div>
 </div>
 
@@ -84,28 +87,35 @@ Proyectos
 
 <div class="container">
   <div class="row">
-      <div class="col-md-3">
-          <h3>Dibujos</h3>
-          <br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. N eget velit.</p>
-          <button class="button">Ver Colección</button>
-        </div>
-      <div class="col-md-3 mb-3 centro-y">
-          <img src="{% static 'ejemplos/e8.jpg' %}" alt="Imagen 1" class="img-fluid">
-      </div>
-      <div class="col-md-3 mb-3 centro-y">
-          <img src="{% static 'ejemplos/e8.jpg' %}" alt="Imagen 2" class="img-fluid">
-      </div>
-      <div class="col-md-3 mb-3 centro-y">
-          <img src="{% static 'ejemplos/e8.jpg' %}" alt="Imagen 3" class="img-fluid">
-      </div>
+    <div class="col-md-3">
+      <h3>Dibujos</h3>
+      <br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. N eget velit.</p>
+      <button class="button">Ver Colección</button>
+    </div>
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{% static 'ejemplos/e8.jpg' %}" alt="Imagen 1" class="img-fluid">
+    </div>
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{% static 'ejemplos/e8.jpg' %}" alt="Imagen 2" class="img-fluid">
+    </div>
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{% static 'ejemplos/e8.jpg' %}" alt="Imagen 3" class="img-fluid">
+    </div>
   </div>
 </div>
+
+
+<a href="{% url 'home:galerias-view' %}?galeria=Un-verso">coleccion</a>
+<a href="{% url 'home:galerias-view' %}?galeria=Collage Digital">tecnica</a>
 
 
 
 {% endblock content %}
 
+<script>
+
+</script>
 
 
 {% block scripts %}
@@ -114,4 +124,3 @@ Proyectos
 
 
 {% endblock scripts %}
-  

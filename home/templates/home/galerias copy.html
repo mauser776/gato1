@@ -10,16 +10,20 @@ Proyectos
 
 <nav class="navbar navbar-expand-lg bg-body">
   <div class="container-fluid">
-    <a class="navbar-brand">PROYECTOS | {{galeria}} | Andrés Honorato</a>
+    <a class="navbar-brand" id="brand2" style="opacity: 1">PROYECTOS | Andrés Honorato</a>
   </div>
 </nav>
 
+
+<br>
+
+{{galeria}}
 <br>
 
 {% for cuadro in cuadros_filtrados %}
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-8 mb-3 d-flex justify-content-center align-items-center">
+    <div class="col-md-8 mb-3">
       <div id="carousel-{{ cuadro.id }}" class="carousel slide">
         <div class="carousel-inner">
           {% if cuadro.imagen1 %}
@@ -43,7 +47,6 @@ Proyectos
           </div>
           {% endif %}
         </div>
-        {% if cuadro.imagen2 or cuadro.imagen3 or cuadro.imagen4 %}
         <a class="carousel-control-prev" href="#carousel-{{ cuadro.id }}" role="button" data-bs-slide="prev"
           style="left: -9%;">
           <span class="carousel-control" aria-hidden="true"><i class="bi bi-chevron-compact-left"
@@ -56,7 +59,6 @@ Proyectos
               style="color: black; font-size: 24px;"></i></span>
           <span class="visually-hidden">Next</span>
         </a>
-        {% endif %}
       </div>
     </div>
 
@@ -94,20 +96,15 @@ Proyectos
             Disponibilidad: {{ cuadro.cantidad_vendida }} de {{ cuadro.cantidad_inicial }}
           </p>
           {% endif %}
+
+          <a href="javascript:history.back()" class="btn btn-light">Volver</a>
+          <a href="{% url 'home:contacto-view' %}" class="btn btn-dark">Contacto</a>
         </div>
       </div>
     </div>
   </div>
 </div>
 {% endfor %}
-
-
-
-
-
-
-
-
 
 
 

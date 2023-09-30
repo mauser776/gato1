@@ -49,7 +49,7 @@ Inicio
         <div class="image-content">
           <span class="overlay"></span>
           <div class="cardSW-image">
-            <a href="{% url 'home:cuadro-detail-view' id=1 %}">
+            <a href="{% url 'home:cuadro-view' id=1 %}">
               <img src="{% static 'ig/7.png' %}" alt="" hre />
             </a>
           </div>
@@ -176,7 +176,7 @@ Inicio
         <div class="image-content">
           <span class="overlay"></span>
           <div class="cardSW-image">
-            <a href="{% url 'home:cuadro-detail-view' cuadro.id %}">
+            <a href="{% url 'home:cuadro-view' cuadro.id %}">
               <img src="{{cuadro.imagen1.url}}" alt="" />
             </a>
           </div>
@@ -199,7 +199,7 @@ Inicio
             &nbsp;
           </p>
           {% endif %}
-          <a href="{% url 'home:cuadro-detail-view' cuadro.id %}" class="btn btn-dark">Ver</a>
+          <a href="{% url 'home:cuadro-view' cuadro.id %}" class="btn btn-dark">Ver</a>
         </div>
       </div>
       {% endfor %}

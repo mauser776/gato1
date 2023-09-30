@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from .models import Cuadro
+from django.db.models import Q
 
 
 # Create your views here.
 
 
 def home_view(request):
-
     cuadros = Cuadro.objects.all()
     lista_cuadros = []
     for x in cuadros:
@@ -33,19 +33,20 @@ def sobre_mi_view(request):
     return render(request, 'home/sobre_mi.html')
 
 
-def galeria_view(request, coleccion):
+def galerias_view(request):
+    galeria = request.GET.get('galeria')
 
-    coleccion_cuadros = Cuadro.objects.get(coleccion=coleccion)
+    cuadros_filtrados = Cuadro.objects.filter(
+        Q(coleccion=galeria) | Q(tecnica=galeria))
 
-    context = {
-        'coleccion_cuadros': coleccion_cuadros,
-    }
+    context = {'galeria': galeria,
+               'cuadros_filtrados': cuadros_filtrados,
+               }
 
-    return render(request, 'home/galeria.html', context)
+    return render(request, 'home/galerias.html', context)
 
 
 def cuadro_detail_view(request, id):
-
     cuadro = Cuadro.objects.get(id=id)
 
     cuadro_imagenes = []
