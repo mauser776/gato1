@@ -79,13 +79,21 @@ o
 }
 
 .nameSW {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
   color: #333;
+  white-space: nowrap;
+  /* Evita el salto de línea */
+  overflow: hidden;
+  /* Oculta el exceso de texto */
+  text-overflow: ellipsis;
+  /* Muestra tres puntos suspensivos */
+  max-width: 100%;
+  /* Evita que el texto salga del contenedor */
 }
 
 .descriptionSW {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   color: #707070;
   text-align: center;

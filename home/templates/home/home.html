@@ -181,12 +181,12 @@ Inicio
           </div>
         </div>
         <div class="cardSW-content">
-          {% if cuadro.nombre|length > 33 %}
-          <h3 class="nameSW">{{cuadro.nombre|slice:":33"}}...</h3>
-          {% else %}
-          <h3 class="nameSW">{{cuadro.nombre}}</h3>
-          {% endif %}
-          <p class="descriptionSW mb-2">
+
+          <h3 class="nameSW text-lg">{{cuadro.nombre}}</h3>
+          <p class="descriptionSW mb-1">
+            {{cuadro.coleccion}}
+          </p>
+          <p class="descriptionSW mb-1">
             {{cuadro.tecnica}}
           </p>
           {% if cuadro.cuadros_disponibles %}

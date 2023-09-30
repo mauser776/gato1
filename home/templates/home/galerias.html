@@ -17,9 +17,9 @@ Obras
 
 
 {% for cuadro in cuadros_filtrados %}
-<div class="container mt-5">
+<div class="container mt-3">
   <div class="row">
-    <div class="col-md-8 mb-3 d-flex justify-content-center align-items-center">
+    <div class="col-md-8 mb-1 d-flex justify-content-center align-items-center">
       <div id="carousel-{{ cuadro.id }}" class="carousel slide">
         <div class="carousel-inner">
           {% if cuadro.imagen1 %}
@@ -60,40 +60,48 @@ Obras
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4 d-flex justify-content-center align-items-center" style="font-size: 13px;">
       <div class="card h-100">
         <div class="card-body">
-          <h5 class="card-title">{{ cuadro.nombre }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{ cuadro.coleccion }}</h6>
-          <h6 class="card-subtitle mb-2 text-muted">{{ cuadro.tecnica }}</h6>
+          <h6 class="card-title mb-2" style="font-size: 15px;">{{ cuadro.nombre }}</h6>
+          <a class="card-subtitle text-muted mb-2" href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}"
+            style="text-decoration: none;">
+            <h6 class="card-subtitle text-muted mb-2" style="font-size: 13px;">{{ cuadro.coleccion }}</h6>
+          </a>
+          <a class="card-subtitle text-muted mb-2" href="{% url 'home:galerias-view' %}?galeria={{ cuadro.tecnica }}"
+            style="text-decoration: none;">
+            <h6 class="card-subtitle text-muted" style="font-size: 12px;">{{ cuadro.tecnica }}</h6>
+          </a>
+          <br>
           <p class="card-text">{{ cuadro.descripcion }}</p>
 
           {% if cuadro.dimension1 %}
-          <p class="card-text">
-            {% if cuadro.dimension2 or cuadro.dimension3 %}
-            Formatos:
-            {% else %}
-            Formato:
-            {% endif %}
-          </p>
-          <ul class="list-unstyled">
-            {% if cuadro.dimension1 %}
-            <li>{{ cuadro.dimension1 }}</li>
-            {% endif %}
-            {% if cuadro.dimension2 %}
-            <li>{{ cuadro.dimension2 }}</li>
-            {% endif %}
-            {% if cuadro.dimension3 %}
-            <li>{{ cuadro.dimension3 }}</li>
-            {% endif %}
-          </ul>
+          <div class="row">
+            <div class="col-4">
+              <p class="card-text">{% if cuadro.dimension2 or cuadro.dimension3 %} Formatos:
+                {% else %} Formato:{% endif %}</p>
+            </div>
+            <div class="col-8">
+              <ul class="list-unstyled">
+                {% if cuadro.dimension1 %}
+                <li>{{ cuadro.dimension1 }}</li>
+                {% endif %}
+                {% if cuadro.dimension2 %}
+                <li>{{ cuadro.dimension2 }}</li>
+                {% endif %}
+                {% if cuadro.dimension3 %}
+                <li>{{ cuadro.dimension3 }}</li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
           {% endif %}
 
-          {% if cuadro.cantidad_inicial %}
-          <p class="card-text">
-            Disponibilidad: {{ cuadro.cantidad_vendida }} de {{ cuadro.cantidad_inicial }}
-          </p>
+          {% if cuadro.cantidad_inicial%}
+          <p class="card-text">Disponibilidad: {{cuadro.cuadros_disponibles}} de {{cuadro.cantidad_inicial}}</p>
           {% endif %}
+
+          <a href="{% url 'home:contacto-view' %}" class="btn btn-dark">Contacto</a>
         </div>
       </div>
     </div>

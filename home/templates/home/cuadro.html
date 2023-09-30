@@ -3,51 +3,70 @@
 {% block title %}{{cuadro.nombre}}{% endblock title %}
 
 {% block content %}
+
 <nav class="navbar navbar-expand-lg bg-body mt-2">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home:home-view'%}"><i class="bi bi-chevron-compact-left"></i>
-      {{cuadro.nombre}} | {{cuadro.coleccion}}</a>
+    <a class="navbar-brand" href="{{ request.META.HTTP_REFERER }}"><i
+        class="bi bi-chevron-compact-left"></i>{{cuadro.coleccion}} | {{cuadro.nombre}}
+      | Andrés Honorato</a>
   </div>
 </nav>
 
-<br>
-<div class="container">
+<div class="container mt-3">
   <div class="row">
-    <div class="col-md-8 mb-3 d-flex justify-content-center align-items-center">
-      <div id="myCarousel" class="carousel slide">
-        <!-- Flechas del carrusel -->
-
+    <div class="col-md-8 mb-1 d-flex justify-content-center align-items-center">
+      <div id="carousel-{{ cuadro.id }}" class="carousel slide">
+        <div class="carousel-inner">
+          {% if cuadro.imagen1 %}
+          <div class="carousel-item active">
+            <img src="{{ cuadro.imagen1.url }}" class="d-block w-100" alt="{{ cuadro.nombre }}">
+          </div>
+          {% endif %}
+          {% if cuadro.imagen2 %}
+          <div class="carousel-item">
+            <img src="{{ cuadro.imagen2.url }}" class="d-block w-100" alt="{{ cuadro.nombre }}">
+          </div>
+          {% endif %}
+          {% if cuadro.imagen3 %}
+          <div class="carousel-item">
+            <img src="{{ cuadro.imagen3.url }}" class="d-block w-100" alt="{{ cuadro.nombre }}">
+          </div>
+          {% endif %}
+          {% if cuadro.imagen4 %}
+          <div class="carousel-item">
+            <img src="{{ cuadro.imagen4.url }}" class="d-block w-100" alt="{{ cuadro.nombre }}">
+          </div>
+          {% endif %}
+        </div>
         {% if cuadro.imagen2 or cuadro.imagen3 or cuadro.imagen4 %}
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev" style="left: -9%;">
+        <a class="carousel-control-prev" href="#carousel-{{ cuadro.id }}" role="button" data-bs-slide="prev"
+          style="left: -9%;">
           <span class="carousel-control" aria-hidden="true"><i class="bi bi-chevron-compact-left"
               style="color: black; font-size: 24px;"></i></span>
           <span class="visually-hidden">Prev</span>
         </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next" style="right: -9%;">
+        <a class="carousel-control-next" href="#carousel-{{ cuadro.id }}" role="button" data-bs-slide="next"
+          style="right: -9%;">
           <span class="carousel-control" aria-hidden="true"><i class="bi bi-chevron-compact-right"
               style="color: black; font-size: 24px;"></i></span>
           <span class="visually-hidden">Next</span>
         </a>
         {% endif %}
-        <!-- Imágenes del carrusel -->
-        <div class="carousel-inner">
-          {% for x in cuadro_imagenes %}
-          <div class="carousel-item {% if forloop.first %}active{% endif %}">
-            <div class="d-flex justify-content-center align-items-center">
-              <img src="{{ x.url }}" class="img-fluid mw-100 mh-100" alt="..." style="object-fit: contain;">
-            </div>
-          </div>
-          {% endfor %}
-        </div>
       </div>
     </div>
 
-    <div class="col-md-4 d-flex justify-content-center align-items-center">
+    <div class="col-md-4 d-flex justify-content-center align-items-center" style="font-size: 13px;">
       <div class="card h-100">
         <div class="card-body">
-          <h6 class="card-title mb-2">{{ cuadro.nombre }}</h6>
-          <h6 class="card-subtitle text-muted mb-2">{{ cuadro.coleccion }}</h6>
-          <h6 class="card-subtitle text-muted">{{ cuadro.tecnica }}</h6>
+          <h6 class="card-title mb-2" style="font-size: 15px;">{{ cuadro.nombre }}</h6>
+          <a class="card-subtitle text-muted mb-2" href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}"
+            style="text-decoration: none;">
+            <h6 class="card-subtitle text-muted mb-2" style="font-size: 13px;">{{ cuadro.coleccion }}</h6>
+          </a>
+          <a class="card-subtitle text-muted mb-2" href="{% url 'home:galerias-view' %}?galeria={{ cuadro.tecnica }}"
+            style="text-decoration: none;">
+            <h6 class="card-subtitle text-muted" style="font-size: 12px;">{{ cuadro.tecnica }}</h6>
+          </a>
           <br>
           <p class="card-text">{{ cuadro.descripcion }}</p>
 
@@ -55,7 +74,7 @@
           <div class="row">
             <div class="col-4">
               <p class="card-text">{% if cuadro.dimension2 or cuadro.dimension3 %} Formatos:
-                {% else %} Formato: {% endif %}</p>
+                {% else %} Formato:{% endif %}</p>
             </div>
             <div class="col-8">
               <ul class="list-unstyled">
@@ -76,7 +95,7 @@
           {% if cuadro.cantidad_inicial%}
           <p class="card-text">Disponibilidad: {{cuadro.cuadros_disponibles}} de {{cuadro.cantidad_inicial}}</p>
           {% endif %}
-          <a href="javascript:history.back()" class="btn btn-light">Volver</a>
+
           <a href="{% url 'home:contacto-view' %}" class="btn btn-dark">Contacto</a>
         </div>
       </div>
@@ -86,6 +105,11 @@
 
 
 <br>
+<nav class="navbar navbar-expand-lg bg-body">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">Art for lovers</a>
+  </div>
+</nav>
 {% endblock content %}
 
 

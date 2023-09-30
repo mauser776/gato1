@@ -49,7 +49,7 @@ def obras_view(request):
         'cuadros_por_coleccion': cuadros_por_coleccion,
         'cuadros_tec_col': cuadros_tec_col,
     }
-    print(cuadros_tec_col)
+
     return render(request, 'home/obras.html', context)
 
 
