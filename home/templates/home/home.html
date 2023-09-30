@@ -41,135 +41,14 @@ Inicio
   </div>
 </nav>
 
-<div class="slider-containerSW swiper carru">
+
+
+
+
+<div class="slider-containerSW swiper carru slider" id="slider01">
   <div class="slider-content">
     <div class="cardSW-wrapper swiper-wrapper">
-      <div class="cardSW swiper-slide">
-        <div class="image-content">
-          <span class="overlay"></span>
-          <div class="cardSW-image">
-            <a href="{% url 'home:cuadro-view' id=1 %}">
-              <img src="{% static 'ig/7.png' %}" alt="" hre />
-            </a>
-          </div>
-        </div>
-        <div class="cardSW-content">
-          <h2 class="nameSW">Mary</h2>
-          <p class="descriptionSW">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
-            quas. Modi suscipit animi quas praesentium dolore excepturi,
-            magnam ullam facilis!
-          </p>
-          <button class="button">Ver</button>
-        </div>
-      </div>
-
-      <div class="cardSW swiper-slide">
-        <div class="image-content">
-          <span class="overlay"></span>
-          <div class="cardSW-image">
-            <img src="{% static 'ig/6.png' %}" alt="" />
-          </div>
-        </div>
-        <div class="cardSW-content">
-          <h2 class="nameSW">David</h2>
-          <p class="descriptionSW">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
-            quas. Modi suscipit animi quas praesentium dolore excepturi,
-            magnam ullam facilis!
-          </p>
-          <button class="button">Ver</button>
-        </div>
-      </div>
-
-      <div class="cardSW swiper-slide">
-        <div class="image-content">
-          <span class="overlay"></span>
-          <div class="cardSW-image">
-            <img src="{% static 'ig/5.png' %}" alt="" />
-          </div>
-        </div>
-        <div class="cardSW-content">
-          <h2 class="nameSW">Christy</h2>
-          <p class="descriptionSW">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
-            quas. Modi suscipit animi quas praesentium dolore excepturi,
-            magnam ullam facilis!
-          </p>
-          <button class="button">Ver</button>
-        </div>
-      </div>
-
-      <div class="cardSW swiper-slide">
-        <div class="image-content">
-          <span class="overlay"></span>
-          <div class="cardSW-image">
-            <img src="{% static 'ig/2.png' %}" alt="" />
-          </div>
-        </div>
-        <div class="cardSW-content">
-          <h2 class="nameSW">Joseph</h2>
-          <p class="descriptionSW">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
-            quas. Modi suscipit animi quas praesentium dolore excepturi,
-            magnam ullam facilis!
-          </p>
-          <button class="button">Ver</button>
-        </div>
-      </div>
-
-      <div class="cardSW swiper-slide">
-        <div class="image-content">
-          <span class="overlay"></span>
-          <div class="cardSW-image">
-            <img src="{% static 'ig/4.png' %}" alt="" />
-          </div>
-        </div>
-        <div class="cardSW-content">
-          <h2 class="nameSW">Nancy</h2>
-          <p class="descriptionSW">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
-            quas. Modi suscipit animi quas praesentium dolore excepturi,
-            magnam ullam facilis!
-          </p>
-          <button class="button">Ver</button>
-        </div>
-      </div>
-
-
-
-      <div class="cardSW swiper-slide">
-        <div class="image-content">
-          <span class="overlay"></span>
-          <div class="cardSW-image">
-            <img src="{% static 'ig/6.png' %}" alt="" />
-          </div>
-        </div>
-        <div class="cardSW-content">
-          <h2 class="nameSW">Thomas</h2>
-          <p class="descriptionSW">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
-            quas. Modi suscipit animi quas praesentium dolore excepturi,
-            magnam ullam facilis!
-          </p>
-          <button class="button">Ver</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<nav class="navbar navbar-expand-lg bg-body py-0">
-  <div class="container-fluid">
-    <a class="navbar-brand mx-auto">Art for lovers</a>
-  </div>
-</nav>
-
-
-<div class="slider-containerSW swiper carru">
-  <div class="slider-content">
-    <div class="cardSW-wrapper swiper-wrapper">
+      <!-- Contenido del slider 1 -->
       {% for cuadro in lista_cuadros|slice:":9" %}
       <div class="cardSW swiper-slide">
         <div class="image-content">
@@ -204,6 +83,65 @@ Inicio
       {% endfor %}
     </div>
   </div>
+
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next swiper-navBtn" onclick="next(this)"></div>
+  <div class="swiper-button-prev swiper-navBtn"></div>
+</div>
+
+
+<nav class="navbar navbar-expand-lg bg-body py-0">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">Art for lovers</a>
+  </div>
+</nav>
+
+
+
+
+<!-- Segunda instancia del slider -->
+<div class="slider-containerSW swiper carru slider" id="slider02">
+  <div class="slider-content2">
+    <div class="cardSW-wrapper swiper-wrapper">
+      <!-- Contenido del slider 2 -->
+      {% for cuadro in lista_cuadros|slice:":9" %}
+      <div class="cardSW swiper-slide">
+        <div class="image-content">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <a href="{% url 'home:cuadro-view' cuadro.id %}">
+              <img src="{{cuadro.imagen1.url}}" alt="" />
+            </a>
+          </div>
+        </div>
+        <div class="cardSW-content">
+
+          <h3 class="nameSW text-lg">{{cuadro.nombre}}</h3>
+          <p class="descriptionSW mb-1">
+            {{cuadro.coleccion}}
+          </p>
+          <p class="descriptionSW mb-1">
+            {{cuadro.tecnica}}
+          </p>
+          {% if cuadro.cuadros_disponibles %}
+          <p class="descriptionSW mb-2">
+            Disponibilidad: {{cuadro.cuadros_disponibles}} de {{cuadro.cantidad_inicial}}
+          </p>
+          {% else %}
+          <p class="descriptionSW mb-2">
+            &nbsp;
+          </p>
+          {% endif %}
+          <a href="{% url 'home:cuadro-view' cuadro.id %}" class="btn btn-dark">Ver</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next swiper-navBtn"></div>
+  <div class="swiper-button-prev swiper-navBtn"></div>
 </div>
 
 

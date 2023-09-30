@@ -31,6 +31,12 @@ o
   /* border-radius: 25px; */
 }
 
+.slider-content2 {
+  margin: 0 40px;
+  overflow: hidden;
+  /* border-radius: 25px; */
+}
+
 .cardSW {
   /* border-radius: 25px; */
   background-color: #fff;
