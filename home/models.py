@@ -46,6 +46,13 @@ class Cuadro(models.Model):
             cuadros_disponibles = self.cantidad_inicial - self.cantidad_vendida
             return cuadros_disponibles
 
+    def delete(self, *args, **kwargs):
+        for field_name in ['imagen1', 'imagen2', 'imagen3', 'imagen4']:
+            image_field = getattr(self, field_name)
+            if image_field:
+                image_field.delete()
+        super().delete(*args, **kwargs)
+
     # def precio_en_miles(self):
     #     if self.precio_o is not None:
     #         coma = f"{self.precio_o:,}"
