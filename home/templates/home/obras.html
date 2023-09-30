@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Obras
+{% endblock title %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg bg-body mt-2">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home:home-view'%}"><i class="bi bi-chevron-compact-left"></i>OBRAS
+      | Andrés Honorato</a>
+  </div>
+</nav>
+
+<img src="{% static 'ejemplos/estudio.jpg' %}" class="foto1" alt="...">
+
+<nav class="navbar navbar-expand-lg bg-body">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">Art for lovers</a>
+  </div>
+</nav>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <span>Técnica</span>
+      <h3>Arte</h3>
+      <h3>Vectorial</h3>
+      <br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id nunc id purus commodo vehicula ut eget
+        velit.</p>
+      <a href="{% url 'home:galerias-view' %}?galeria=Arte Vectorial" class="btn btn-dark mb-4">Ver Colección</a>
+    </div>
+    {% for x, cuadros in cuadros_tec_col.items %}
+    {% if x == 'Arte Vectorial' %}
+    {% for cuadro in cuadros|slice:":3" %}
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{{ cuadro.imagen1.url }}" alt="Imagen 1" class="img-fluid">
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg bg-body">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">Art for lovers</a>
+  </div>
+</nav>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <span>Técnica</span>
+      <h3>Collage</h3>
+      <h3>Digital</h3>
+      <br>
+      <p>Lorem ipsum dolor sit amet,elit. Nullam id nunc id purus commodo vehicula ut eget velit.</p>
+      <a href="{% url 'home:galerias-view' %}?galeria=Collage Digital" class="btn btn-dark mb-4">Ver Colección</a>
+    </div>
+    {% for x, cuadros in cuadros_tec_col.items %}
+    {% if x == 'Collage Digital' %}
+    {% for cuadro in cuadros|slice:":3" %}
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{{ cuadro.imagen1.url }}" alt="Imagen 1" class="img-fluid">
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+
+<nav class="navbar navbar-expand-lg bg-body">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">Art for lovers</a>
+  </div>
+</nav>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <span>Colección</span>
+      <h3>Un-verso</h3>
+      <br>
+      <p>Lorem ipsum dolor sit amet,elit. Nullam id nunc id purus commodo vehicula ut eget velit.</p>
+      <a href="{% url 'home:galerias-view' %}?galeria=Un-verso" class="btn btn-dark mb-4">Ver Colección</a>
+    </div>
+    {% for x, cuadros in cuadros_tec_col.items %}
+    {% if x == 'Un-verso' %}
+    {% for cuadro in cuadros|slice:":3" %}
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{{ cuadro.imagen1.url }}" alt="Imagen 1" class="img-fluid">
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg bg-body">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">Art for lovers</a>
+  </div>
+</nav>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <span>Colección</span>
+      <h3>Pensamientos Azules</h3>
+      <br>
+      <p>Lorem ipsum dolor sit amet,elit. Nullam id nunc id purus commodo vehicula ut eget velit.</p>
+      <a href="{% url 'home:galerias-view' %}?galeria=Pensamientos Azules" class="btn btn-dark mb-4">Ver Colección</a>
+    </div>
+    {% for x, cuadros in cuadros_tec_col.items %}
+    {% if x == 'Pensamientos Azules' %}
+    {% for cuadro in cuadros|slice:":3" %}
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{{ cuadro.imagen1.url }}" alt="Imagen 1" class="img-fluid">
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+
+
+{% endblock content %}
+
+{% block scripts %}
+
+
+
+
+{% endblock scripts %}

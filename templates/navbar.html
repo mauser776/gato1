@@ -8,8 +8,8 @@
     <a class="navbar-brand" id="brand1" style="opacity: 0; pointer-events: none; cursor: default;"
       href="javascript:void(0);">
       <b>
-        {% if request.resolver_match.url_name == 'proyectos-view' %}<i class="bi bi-chevron-compact-left"
-          style="font-size: 24px;"></i>AH | PROYECTOS{% endif %}
+        {% if request.resolver_match.url_name == 'obras-view' %}<i class="bi bi-chevron-compact-left"
+          style="font-size: 24px;"></i>AH | OBRAS{% endif %}
         {% if request.resolver_match.url_name == 'contacto-view' %}<i class="bi bi-chevron-compact-left"
           style="font-size: 24px;"></i>AH | CONTACTO {% endif %}
         {% if request.resolver_match.url_name == 'sobre_mi-view' %}<i class="bi bi-chevron-compact-left"
@@ -32,17 +32,17 @@
             href="{% url 'home:home-view' %}">INICIO</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.url_name == 'proyectos-view' %} active {% endif %}"
-            href="{% url 'home:proyectos-view' %}">PROYECTOS</a>
+          <a class="nav-link {% if request.resolver_match.url_name == 'obras-view' %} active {% endif %}"
+            href="{% url 'home:obras-view' %}">OBRAS</a>
         </li>
         <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{% url 'home:proyectos-view' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  PROYECTOS
+                <a class="nav-link dropdown-toggle" href="{% url 'home:obras-view' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  OBRAS
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'home:proyectos-view' %}">Arte Vectorial</a></li>
-                  <li><a class="dropdown-item" href="{% url 'home:proyectos-view' %}">Collage Digital</a></li>
-                  <li><a class="dropdown-item" href="{% url 'home:proyectos-view' %}">Dibujos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'home:obras-view' %}">Arte Vectorial</a></li>
+                  <li><a class="dropdown-item" href="{% url 'home:obras-view' %}">Collage Digital</a></li>
+                  <li><a class="dropdown-item" href="{% url 'home:obras-view' %}">Dibujos</a></li>
                 </ul>
               </li> -->
         <li class="nav-item">

@@ -21,8 +21,36 @@ def home_view(request):
     return render(request, 'home/home.html', context)
 
 
-def proyectos_view(request):
-    return render(request, 'home/proyectos.html')
+def obras_view(request):
+    cuadros = Cuadro.objects.all()
+
+    # Crear un diccionario para organizar los cuadros por técnica
+    cuadros_por_tecnica = {}
+    for cuadro in cuadros:
+        tecnica = cuadro.tecnica
+        if tecnica in cuadros_por_tecnica:
+            cuadros_por_tecnica[tecnica].append(cuadro)
+        else:
+            cuadros_por_tecnica[tecnica] = [cuadro]
+
+    # Crear un diccionario para organizar los cuadros por colección
+    cuadros_por_coleccion = {}
+    for cuadro in cuadros:
+        coleccion = cuadro.coleccion
+        if coleccion in cuadros_por_coleccion:
+            cuadros_por_coleccion[coleccion].append(cuadro)
+        else:
+            cuadros_por_coleccion[coleccion] = [cuadro]
+
+    cuadros_tec_col = {**cuadros_por_coleccion, **cuadros_por_tecnica}
+
+    context = {
+        'cuadros_por_tecnica': cuadros_por_tecnica,
+        'cuadros_por_coleccion': cuadros_por_coleccion,
+        'cuadros_tec_col': cuadros_tec_col,
+    }
+    print(cuadros_tec_col)
+    return render(request, 'home/obras.html', context)
 
 
 def contacto_view(request):
