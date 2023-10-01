@@ -14,7 +14,7 @@
 
 <div class="container mt-3">
   <div class="row">
-    <div class="col-md-8 mb-1 d-flex justify-content-center align-items-center">
+    <div class="col-md-8 mb-1 d-flex justify-content-center align-items-center img-container">
       <div id="carousel-{{ cuadro.id }}" class="carousel slide">
         <div class="carousel-inner">
           {% if cuadro.imagen1 %}
@@ -55,8 +55,8 @@
       </div>
     </div>
 
-    <div class="col-md-4 d-flex justify-content-center align-items-center" style="font-size: 13px;">
-      <div class="card h-100">
+    <div class="col-md-4 d-flex justify-content-center align-items-center" style="font-size: 13px;border-radius: 0;">
+      <div class="card h-100" style="border-radius: 0;">
         <div class="card-body">
           <h6 class="card-title mb-2" style="font-size: 15px;">{{ cuadro.nombre }}</h6>
           <a class="card-subtitle text-muted mb-2" href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}"
@@ -96,12 +96,13 @@
           <p class="card-text">Disponibilidad: {{cuadro.cuadros_disponibles}} de {{cuadro.cantidad_inicial}}</p>
           {% endif %}
 
-          <a href="{% url 'home:contacto-view' %}" class="btn btn-dark">Contacto</a>
         </div>
+        <a href="{% url 'home:contacto-view' %}" class="btn btn-dark" style="border-radius: 0;">Contacto</a>
       </div>
     </div>
   </div>
 </div>
+
 
 
 <br>

@@ -9,15 +9,15 @@
       href="{% url 'home:home-view'%}">
       <b>
         {% if request.resolver_match.url_name == 'obras-view' %}<i class="bi bi-chevron-compact-left"
-          style="font-size: 24px;"></i>AH | OBRAS{% endif %}
+          style="font-size: 20px;"></i>AH | OBRAS{% endif %}
         {% if request.resolver_match.url_name == 'contacto-view' %}<i class="bi bi-chevron-compact-left"
-          style="font-size: 24px;"></i>AH | CONTACTO {% endif %}
+          style="font-size: 20px;"></i>AH | CONTACTO {% endif %}
         {% if request.resolver_match.url_name == 'sobre_mi-view' %}<i class="bi bi-chevron-compact-left"
-          style="font-size: 24px;"></i>AH | SOBRE MÍ {% endif %}
+          style="font-size: 20px;"></i>AH | SOBRE MÍ {% endif %}
         {% if request.resolver_match.url_name == 'galerias-view' %}<i class="bi bi-chevron-compact-left"
-          style="font-size: 24px;"></i>AH | {{galeria}} {% endif %}
+          style="font-size: 20px;"></i>AH | {{galeria}} {% endif %}
         {% if request.resolver_match.url_name == 'cuadro-view' %}<i class="bi bi-chevron-compact-left"
-          style="font-size: 24px;"></i>AH | {{cuadro.nombre}} {% endif %}
+          style="font-size: 20px;"></i>AH | {{cuadro.nombre}} {% endif %}
       </b>
     </a>
     {% endif %}

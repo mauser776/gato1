@@ -17,16 +17,31 @@ Obras
 
 <img src="{% static 'ejemplos/estudio1.png' %}" class="banner1" alt="...">
 
-<nav class="navbar navbar-expand-lg bg-body py-0">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand mx-auto">Art for lovers</a>
+    <ul class="nav justify-content-center pb-0 mb-0 pt-3 mt-2 mx-auto">
+      <li class="ms-3 text-center">
+        <a class="navbar-brand text-center" href="#coleccion">
+          <i class="bi bi-collection fs-5" id="edit-icon"></i>
+          <div>Colecciones</div>
+        </a>
+      </li>
+      <li class="ms-3 text-center">
+        <a class="navbar-brand text-center" href="#estilos">
+          <i class="bi bi-brush fs-5" id="edit-icon"></i>
+          <div>Estilos</div>
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>
+
 
 <br>
 
 
-<div class="container">
+<div class="container posicionar" id="coleccion">
   <div class="row">
     <div class="col-md-3">
       <span>Colección</span>
@@ -116,7 +131,7 @@ Obras
 <br>
 
 
-<div class="container">
+<div class="container posicionar" id="estilos">
   <div class="row">
     <div class="col-md-3">
       <span>Técnica</span>

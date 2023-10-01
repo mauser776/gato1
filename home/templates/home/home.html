@@ -54,7 +54,9 @@ Inicio
         <div class="image-content">
           <span class="overlay"></span>
           <div class="cardSW-image">
-            <a href="{% url 'home:cuadro-view' cuadro.id %}">
+            <a
+              href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}&cuadro_id={{ cuadro.id }}#{{ cuadro.id }}">
+
               <img src="{{cuadro.imagen1.url}}" alt="" />
             </a>
           </div>
@@ -85,7 +87,7 @@ Inicio
   </div>
 
   <div class="swiper-pagination"></div>
-  <div class="swiper-button-next swiper-navBtn" onclick="next(this)"></div>
+  <div class="swiper-button-next swiper-navBtn"></div>
   <div class="swiper-button-prev swiper-navBtn"></div>
 </div>
 
