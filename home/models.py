@@ -58,3 +58,9 @@ class Cuadro(models.Model):
     #         coma = f"{self.precio_o:,}"
     #         punto = coma.replace(',', '.')
     #         return punto
+
+
+class Coleccion(models.Model):
+    coleccion = models.CharField(max_length=200)
+    cuadro = models.ForeignKey(Cuadro, on_delete=models.CASCADE)
+    descripcion = models.TextField(blank=True)
