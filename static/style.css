@@ -50,15 +50,16 @@ html body {
     /* Cambiar el color al hacer hover (en este caso, color de Instagram) */
 }
 
-
-/* Estilo de las secciones */
 .posicionar {
     padding: 20px;
     /* Espaciado interior para mayor claridad */
+    scroll-margin-top: 50px;
+    /* Altura de la barra de navegación */
 }
 
-/* Aplicar scroll-margin-top a las secciones personalizadas */
-.posicionar {
+.posicionar2 {
+    padding: 20px;
+    /* Espaciado interior para mayor claridad */
     scroll-margin-top: 50px;
     /* Altura de la barra de navegación */
 }

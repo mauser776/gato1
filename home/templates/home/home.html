@@ -54,8 +54,7 @@ Inicio
         <div class="image-content">
           <span class="overlay"></span>
           <div class="cardSW-image">
-            <a
-              href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}&cuadro_id={{ cuadro.id }}#{{ cuadro.id }}">
+            <a href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}&c_id={{ cuadro.id }}#{{cuadro.id}}">
 
               <img src="{{cuadro.imagen1.url}}" alt="" />
             </a>
@@ -154,5 +153,4 @@ Inicio
 
 
 {% block scripts %}
-
 {% endblock scripts %}

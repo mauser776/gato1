@@ -7,24 +7,16 @@ Obras
 
 {% block content %}
 
-<nav class="navbar navbar-expand-lg bg-body mt-2">
+<nav class="navbar navbar-expand-lg bg-body py-0 pt-1">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ request.META.HTTP_REFERER }}"><i class="bi bi-chevron-compact-left"></i>{{galeria}}
       | Andrés Honorato</a>
   </div>
 </nav>
 
-
-
-
-
-
 {% for cuadro in cuadros_filtrados %}
 
-
-
-
-<div class="container mt-3 mb-3 posicionar" id="cuadro.id">
+<div class="container mt-3 mb-3 posicionar2" id="cuadro.id">
   <div class="row">
     <div class="col-md-8 mb-1 d-flex justify-content-center align-items-center img-container">
       <div id="carousel-{{ cuadro.id }}" class="carousel slide">
@@ -138,20 +130,33 @@ Obras
 
 
 
-
-
-
-
-
-
-
-
-
 {% endblock content %}
 
 
 
 {% block scripts %}
+<script>
+  // Esperar a que la página se cargue completamente
+  window.addEventListener('load', function () {
+    // Obtener el valor del parámetro 'cuadro_id' de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const cuadroId = urlParams.get('c_id');
+
+    if (cuadroId) {
+      // Encontrar el elemento con el mismo 'id' que el valor de 'cuadro_id'
+      const element = document.getElementById(cuadroId);
+
+      if (element) {
+        // Ajustar el scroll para que se encuentre 200px más arriba que el elemento
+        window.scrollTo({
+          top: element.offsetTop - 130,
+          // top: element.offsetTop - 90,
+          behavior: 'smooth' // Puedes cambiar a 'auto' para desplazamiento instantáneo
+        });
+      }
+    }
+  });
+</script>
 
 
 {% endblock scripts %}
