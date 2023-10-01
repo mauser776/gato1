@@ -8,10 +8,10 @@ Obras
 
 {% block content %}
 
-<nav class="navbar navbar-expand-lg bg-body mt-2">
+<nav class="navbar navbar-expand-lg bg-body pb-1 pt-2">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home:home-view'%}"><i class="bi bi-chevron-compact-left"></i>OBRAS
-      | Andrés Honorato</a>
+    <a class="navbar-brand" href="{{ request.META.HTTP_REFERER }}"><i class="bi bi-chevron-compact-left"></i>{{galeria}}
+      Andrés Honorato | Obras</a>
   </div>
 </nav>
 
@@ -37,11 +37,45 @@ Obras
   </div>
 </nav>
 
-
-<br>
+<nav class="navbar navbar-expand-lg bg-body py-0">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">Art for lovers</a>
+  </div>
+</nav>
 
 
 <div class="container posicionar" id="coleccion">
+  <div class="row">
+    <div class="col-md-3">
+      <span>Colección</span>
+      <h3>Cosmic Sunset</h3>
+      <h3>Vistas</h3>
+      <br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id nunc id purus commodo vehicula ut eget
+        velit.</p>
+      <a href="{% url 'home:galerias-view' %}?galeria=Cosmic Sunset Vistas" class="btn btn-dark mb-4">Ver Colección</a>
+    </div>
+    {% for x, cuadros in cuadros_tec_col.items %}
+    {% if x == 'Cosmic Sunset Vistas' %}
+    {% for cuadro in cuadros|slice:"-3:" %}
+    <div class="col-md-3 mb-3 centro-y">
+      <img src="{{ cuadro.imagen1.url }}" alt="Imagen 1" class="img-fluid">
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg bg-body py-0">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">Art for lovers</a>
+  </div>
+</nav>
+
+<br>
+
+<div class="container posicionar">
   <div class="row">
     <div class="col-md-3">
       <span>Colección</span>

@@ -7,10 +7,10 @@ Obras
 
 {% block content %}
 
-<nav class="navbar navbar-expand-lg bg-body py-0 pt-1">
+<nav class="navbar navbar-expand-lg bg-body pb-1 pt-2">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ request.META.HTTP_REFERER }}"><i class="bi bi-chevron-compact-left"></i>{{galeria}}
-      | Andrés Honorato</a>
+      Andrés Honorato | {{galeria}}</a>
   </div>
 </nav>
 
@@ -147,16 +147,21 @@ Obras
       const element = document.getElementById(cuadroId);
 
       if (element) {
-        // Ajustar el scroll para que se encuentre 200px más arriba que el elemento
+        let offsetValue = -130; // Valor por defecto para pantallas grandes
+
+        // Verificar el tamaño de la pantalla utilizando las clases de Bootstrap
+        if (window.innerWidth < 768) { // Pantallas más pequeñas (por ejemplo, dispositivos móviles)
+          offsetValue = -500; // Cambiar el valor para pantallas más pequeñas
+        }
+
+        // Ajustar el scroll según el tamaño de la pantalla
         window.scrollTo({
-          top: element.offsetTop - 130,
-          // top: element.offsetTop - 90,
+          top: element.offsetTop + offsetValue,
           behavior: 'smooth' // Puedes cambiar a 'auto' para desplazamiento instantáneo
         });
       }
     }
   });
 </script>
-
 
 {% endblock scripts %}

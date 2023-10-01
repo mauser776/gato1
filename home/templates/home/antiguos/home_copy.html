@@ -7,10 +7,9 @@ Inicio
 {% endblock title %}
 
 {% block content %}
-<nav class="navbar navbar-expand-lg bg-body pb-1 pt-2">
+<nav class="navbar navbar-expand-lg bg-body mt-2">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ request.META.HTTP_REFERER }}"><i class="bi bi-chevron-compact-left"></i>{{galeria}}
-      Andrés Honorato</a>
+    <a class="navbar-brand">Andrés Honorato</a>
   </div>
 </nav>
 
@@ -56,21 +55,28 @@ Inicio
           <span class="overlay"></span>
           <div class="cardSW-image">
             <a href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}&c_id={{ cuadro.id }}#{{cuadro.id}}">
-              <img src="{{ cuadro.imagen1.url }}" alt="" {% if cuadro.imagen2 %} data-imagen2="{{ cuadro.imagen2.url }}"
-                class="hover-image" {% endif %} />
+
+              <img src="{{cuadro.imagen1.url}}" alt="" />
             </a>
           </div>
         </div>
         <div class="cardSW-content">
-          <h3 class="nameSW text-lg">{{ cuadro.nombre }}</h3>
-          <p class="descriptionSW mb-1">{{ cuadro.coleccion }}</p>
-          <p class="descriptionSW mb-1">{{ cuadro.tecnica }}</p>
+
+          <h3 class="nameSW text-lg">{{cuadro.nombre}}</h3>
+          <p class="descriptionSW mb-1">
+            {{cuadro.coleccion}}
+          </p>
+          <p class="descriptionSW mb-1">
+            {{cuadro.tecnica}}
+          </p>
           {% if cuadro.cuadros_disponibles %}
           <p class="descriptionSW mb-2">
-            Disponibilidad: {{ cuadro.cuadros_disponibles }} de {{ cuadro.cantidad_inicial }}
+            Disponibilidad: {{cuadro.cuadros_disponibles}} de {{cuadro.cantidad_inicial}}
           </p>
           {% else %}
-          <p class="descriptionSW mb-2">&nbsp;</p>
+          <p class="descriptionSW mb-2">
+            &nbsp;
+          </p>
           {% endif %}
           <a href="{% url 'home:cuadro-view' cuadro.id %}" class="btn btn-dark">Ver</a>
         </div>
@@ -83,9 +89,6 @@ Inicio
   <div class="swiper-button-next swiper-navBtn"></div>
   <div class="swiper-button-prev swiper-navBtn"></div>
 </div>
-
-
-
 
 
 <nav class="navbar navbar-expand-lg bg-body py-0">
@@ -103,9 +106,6 @@ Inicio
     <div class="cardSW-wrapper swiper-wrapper">
       <!-- Contenido del slider 2 -->
       {% for cuadro in lista_cuadros|slice:":9" %}
-
-      {% if cuadro.coleccion == 'Dos Soles' %}
-
       <div class="cardSW swiper-slide">
         <div class="image-content">
           <span class="overlay"></span>
@@ -136,7 +136,6 @@ Inicio
           <a href="{% url 'home:cuadro-view' cuadro.id %}" class="btn btn-dark">Ver</a>
         </div>
       </div>
-      {% endif %}
       {% endfor %}
     </div>
   </div>
@@ -159,38 +158,29 @@ Inicio
 {% block scripts %}
 
 <script>
-  // Función para cambiar la imagen al pasar el mouse sobre ella
-  function mostrarImagen2(event) {
-    var imagen1 = event.currentTarget;
-    var imagen2Url = imagen1.getAttribute("data-imagen2");
-    var imagen1Url = imagen1.getAttribute("data-imagen1");
+  // Obtén la imagen y el elemento de tarjeta
+  const imagenTarjeta = document.getElementById('imagenTarjeta');
+  const card = imagenTarjeta.closest('.card');
 
-    // Guarda la fuente original de la imagen en data-imagen1 si no está guardada
-    if (!imagen1Url) {
-      imagen1Url = imagen1.src;
-      imagen1.setAttribute("data-imagen1", imagen1Url);
-    }
+  // Crea un elemento de popover
+  const popover = document.createElement('div');
+  popover.classList.add('popover', 'fade');
+  popover.setAttribute('data-bs-placement', 'top');
+  popover.setAttribute('data-bs-toggle', 'popover');
+  popover.innerHTML = `
+    <div class="popover-body">
+      Contenido del Popover
+    </div>
+  `;
 
-    // Cambia la fuente de la imagen a imagen2Url
-    imagen1.src = imagen2Url;
-  }
+  // Adjunta el popover a la tarjeta
+  card.appendChild(popover);
 
-  // Función para volver a la imagen original al quitar el mouse
-  function mostrarImagen1(event) {
-    var imagen1 = event.currentTarget;
-    var imagen1Url = imagen1.getAttribute("data-imagen1");
-
-    // Vuelve a la fuente de la imagen original
-    if (imagen1Url) {
-      imagen1.src = imagen1Url;
-    }
-  }
-
-  // Agrega los eventos de mouseover y mouseout a las imágenes
-  var imagenes = document.querySelectorAll(".hover-image");
-  imagenes.forEach(function (imagen) {
-    imagen.addEventListener("mouseover", mostrarImagen2);
-    imagen.addEventListener("mouseout", mostrarImagen1);
+  // Inicializa el popover con Bootstrap
+  const popoverInstance = new bootstrap.Popover(imagenTarjeta, {
+    container: card,
+    html: true,
+    content: popover,
   });
 </script>
 

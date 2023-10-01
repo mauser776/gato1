@@ -5,10 +5,10 @@ Contacto
 {% endblock title %}
 
 {% block content %}
-<nav class="navbar navbar-expand-lg bg-body mt-2">
+<nav class="navbar navbar-expand-lg bg-body pb-1 pt-2">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home:home-view'%}"><i class="bi bi-chevron-compact-left"></i>CONTACTO
-      | Andrés Honorato</a>
+    <a class="navbar-brand" href="{{ request.META.HTTP_REFERER }}"><i class="bi bi-chevron-compact-left"></i>{{galeria}}
+      Andrés Honorato | Contacto</a>
   </div>
 </nav>
 
