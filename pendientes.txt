@@ -1,2 +1,3 @@
 cambiar los links de la primera navbar blanca
 agregar descripcion de la colecion y tecnica en cuardo models
+ver si redirigir a galeria o cuadro

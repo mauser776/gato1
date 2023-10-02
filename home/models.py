@@ -4,11 +4,37 @@ from django.core.validators import FileExtensionValidator
 # Create your models here.
 
 
+class Coleccion(models.Model):
+    nombre = models.CharField(max_length=200)
+    descripcion = models.TextField(blank=True)
+    fecha = models.DateField()
+    creado = models.DateTimeField(auto_now_add=True)
+    actulizado = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.nombre}"
+
+
+class Tecnica(models.Model):
+    nombre = models.CharField(max_length=200)
+    descripcion = models.TextField(blank=True)
+    fecha = models.DateField()
+    creado = models.DateTimeField(auto_now_add=True)
+    actulizado = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.nombre}"
+
+
 class Cuadro(models.Model):
     nombre = models.CharField(max_length=200)
     autor = models.CharField(default="Andrés Honorato", max_length=200)
-    coleccion = models.CharField(max_length=200)
-    tecnica = models.CharField(max_length=200)
+    coleccion = models.ForeignKey(
+        Coleccion, on_delete=models.CASCADE, related_name='coleccionX', blank=True, null=True)
+    tecnica = models.ForeignKey(
+        Tecnica, on_delete=models.CASCADE, related_name='tecnicaX', blank=True, null=True)
+    coleccion4 = models.CharField(max_length=200)
+    tecnica4 = models.CharField(max_length=200)
     descripcion = models.TextField(blank=True)
     fecha = models.DateField()
     colores = models.CharField(max_length=200, blank=True)
@@ -53,14 +79,11 @@ class Cuadro(models.Model):
                 image_field.delete()
         super().delete(*args, **kwargs)
 
+    def get_coleccion(self):
+        return self.coleccion_set.all()
+
     # def precio_en_miles(self):
     #     if self.precio_o is not None:
     #         coma = f"{self.precio_o:,}"
     #         punto = coma.replace(',', '.')
     #         return punto
-
-
-class Coleccion(models.Model):
-    coleccion = models.CharField(max_length=200)
-    cuadro = models.ForeignKey(Cuadro, on_delete=models.CASCADE)
-    descripcion = models.TextField(blank=True)

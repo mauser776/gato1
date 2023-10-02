@@ -50,7 +50,7 @@ Inicio
   <div class="slider-content">
     <div class="cardSW-wrapper swiper-wrapper">
       <!-- Contenido del slider 1 -->
-      {% for cuadro in lista_cuadros|slice:":9" %}
+      {% for cuadro in lista_cuadros|slice:":12" %}
       <div class="cardSW swiper-slide">
         <div class="image-content">
           <span class="overlay"></span>
@@ -72,7 +72,8 @@ Inicio
           {% else %}
           <p class="descriptionSW mb-2">&nbsp;</p>
           {% endif %}
-          <a href="{% url 'home:cuadro-view' cuadro.id %}" class="btn btn-dark">Ver</a>
+          <a href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}&c_id={{ cuadro.id }}#{{cuadro.id}}"
+            class="btn btn-dark">Ver</a>
         </div>
       </div>
       {% endfor %}
@@ -104,14 +105,15 @@ Inicio
       <!-- Contenido del slider 2 -->
       {% for cuadro in lista_cuadros|slice:":9" %}
 
-      {% if cuadro.coleccion == 'Dos Soles' %}
+      {% if cuadro.coleccion.nombre == 'More Suns and More Sunsets' %}
 
       <div class="cardSW swiper-slide">
         <div class="image-content">
           <span class="overlay"></span>
           <div class="cardSW-image">
-            <a href="{% url 'home:cuadro-view' cuadro.id %}">
-              <img src="{{cuadro.imagen1.url}}" alt="" />
+            <a href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}&c_id={{ cuadro.id }}#{{cuadro.id}}">
+              <img src="{{ cuadro.imagen1.url }}" alt="" {% if cuadro.imagen2 %} data-imagen2="{{ cuadro.imagen2.url }}"
+                class="hover-image" {% endif %} />
             </a>
           </div>
         </div>

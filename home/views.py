@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Cuadro
+from .models import Coleccion, Cuadro, Tecnica
 from django.db.models import Q
 
 
@@ -22,64 +22,22 @@ def home_view(request):
 
 
 def obras_view(request):
-    cuadros = Cuadro.objects.all()
 
-    # Crear un diccionario para organizar los cuadros por técnica
-    cuadros_por_tecnica = {}
-    for cuadro in cuadros:
-        tecnica = cuadro.tecnica
-        if tecnica in cuadros_por_tecnica:
-            cuadros_por_tecnica[tecnica].append(cuadro)
-        else:
-            cuadros_por_tecnica[tecnica] = [cuadro]
-
-    # Crear un diccionario para organizar los cuadros por colección
-    cuadros_por_coleccion = {}
-    for cuadro in cuadros:
-        coleccion = cuadro.coleccion
-        if coleccion in cuadros_por_coleccion:
-            cuadros_por_coleccion[coleccion].append(cuadro)
-        else:
-            cuadros_por_coleccion[coleccion] = [cuadro]
+    colecciones = Coleccion.objects.prefetch_related('coleccionX').all()
+    tecnicas = Tecnica.objects.prefetch_related('tecnicaX').all()
 
     context = {
-        'cuadros_por_tecnica': cuadros_por_tecnica,
-        'cuadros_por_coleccion': cuadros_por_coleccion,
+        'colecciones': colecciones,
+        'tecnicas': tecnicas,
     }
 
     return render(request, 'home/obras.html', context)
 
-# def obras_view(request):
-#     cuadros = Cuadro.objects.all()
-
-#     # Crear un diccionario para organizar los cuadros por técnica
-#     cuadros_por_tecnica = {}
-#     for cuadro in cuadros:
-#         tecnica = cuadro.tecnica
-#         if tecnica in cuadros_por_tecnica:
-#             cuadros_por_tecnica[tecnica].append(cuadro)
-#         else:
-#             cuadros_por_tecnica[tecnica] = [cuadro]
-
-#     # Crear un diccionario para organizar los cuadros por colección
-#     cuadros_por_coleccion = {}
-#     for cuadro in cuadros:
-#         coleccion = cuadro.coleccion
-#         if coleccion in cuadros_por_coleccion:
-#             cuadros_por_coleccion[coleccion].append(cuadro)
-#         else:
-#             cuadros_por_coleccion[coleccion] = [cuadro]
-
-#     cuadros_tec_col = {**cuadros_por_coleccion, **cuadros_por_tecnica}
-
-#     context = {
-#         'cuadros_por_tecnica': cuadros_por_tecnica,
-#         'cuadros_por_coleccion': cuadros_por_coleccion,
-#         'cuadros_tec_col': cuadros_tec_col,
-#         'cuadros': cuadros,
-#     }
-
-#     return render(request, 'home/obras.html', context)
+    # context = {
+    #     'cuadros_por_tecnica': cuadros_por_tecnica,
+    #     'cuadros_por_coleccion': cuadros_por_coleccion,
+    # }
+#
 
 
 def contacto_view(request):
@@ -93,12 +51,23 @@ def sobre_mi_view(request):
 def galerias_view(request):
     galeria = request.GET.get('galeria')
 
-    cuadros_filtrados = Cuadro.objects.filter(
-        Q(coleccion=galeria) | Q(tecnica=galeria))
+    if galeria:
+        try:
+            coleccion = Coleccion.objects.get(nombre=galeria)
+            cuadros = Cuadro.objects.filter(coleccion=coleccion)
+        except Coleccion.DoesNotExist:
+            try:
+                tecnica = Tecnica.objects.get(nombre=galeria)
+                cuadros = Cuadro.objects.filter(tecnica=tecnica)
+            except Tecnica.DoesNotExist:
+                cuadros = Cuadro.objects.none()
+    else:
+        cuadros = Cuadro.objects.none()
 
-    context = {'galeria': galeria,
-               'cuadros_filtrados': cuadros_filtrados,
-               }
+    context = {
+        'cuadros': cuadros,
+        'galeria': galeria,
+    }
 
     return render(request, 'home/galerias.html', context)
 

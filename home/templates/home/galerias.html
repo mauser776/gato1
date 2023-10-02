@@ -7,15 +7,16 @@ Obras
 
 {% block content %}
 
+
+
 <nav class="navbar navbar-expand-lg bg-body pb-1 pt-2">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ request.META.HTTP_REFERER }}"><i class="bi bi-chevron-compact-left"></i>{{galeria}}
+    <a class="navbar-brand" href="{{ request.META.HTTP_REFERER }}"><i class="bi bi-chevron-compact-left"></i>
       Andrés Honorato | {{galeria}}</a>
   </div>
 </nav>
 
-{% for cuadro in cuadros_filtrados %}
-
+{% for cuadro in cuadros %}
 <div class="container mt-3 mb-3 posicionar2" id="cuadro.id">
   <div class="row">
     <div class="col-md-8 mb-1 d-flex justify-content-center align-items-center img-container">
@@ -111,7 +112,7 @@ Obras
   </div>
 </div>
 
-<nav class="navbar navbar-expand-lg bg-body py-0">
+<nav class="navbar navbar-expand-lg bg-body pb-1 pt-2">
   <div class="container-fluid">
     <a class="navbar-brand mx-auto">Art for lovers</a>
   </div>
@@ -119,11 +120,6 @@ Obras
 
 
 {% endfor %}
-
-
-
-
-
 
 
 
@@ -147,7 +143,7 @@ Obras
       const element = document.getElementById(cuadroId);
 
       if (element) {
-        let offsetValue = -130; // Valor por defecto para pantallas grandes
+        let offsetValue = -140; // Valor por defecto para pantallas grandes
 
         // Verificar el tamaño de la pantalla utilizando las clases de Bootstrap
         if (window.innerWidth < 768) { // Pantallas más pequeñas (por ejemplo, dispositivos móviles)
