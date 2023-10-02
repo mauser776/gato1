@@ -33,8 +33,6 @@ class Cuadro(models.Model):
         Coleccion, on_delete=models.CASCADE, related_name='coleccionX', blank=True, null=True)
     tecnica = models.ForeignKey(
         Tecnica, on_delete=models.CASCADE, related_name='tecnicaX', blank=True, null=True)
-    coleccion4 = models.CharField(max_length=200)
-    tecnica4 = models.CharField(max_length=200)
     descripcion = models.TextField(blank=True)
     fecha = models.DateField()
     colores = models.CharField(max_length=200, blank=True)
