@@ -21,11 +21,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 admin.site.site_header = 'Andrés Honorato administración'
+admin.site.index_title = ''
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls', namespace='home')),
-  
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

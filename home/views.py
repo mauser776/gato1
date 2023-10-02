@@ -72,7 +72,7 @@ def galerias_view(request):
     return render(request, 'home/galerias.html', context)
 
 
-def cuadro_detail_view(request, id):
+def cuadro_view(request, id):
     cuadro = Cuadro.objects.get(id=id)
 
     cuadro_imagenes = []

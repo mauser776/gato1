@@ -10,13 +10,13 @@ Sobre-mí
 {% block content %}
 <nav class="navbar navbar-expand-lg bg-body pb-1 pt-2">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ request.META.HTTP_REFERER }}"><i class="bi bi-chevron-compact-left"></i>{{galeria}}
+    <a class="navbar-brand" href="{% url 'home:home-view' %}"><i class="bi bi-chevron-compact-left"></i>{{galeria}}
       Andrés Honorato | Sobre mí</a>
   </div>
 </nav>
 
 
-<div class="row text-light px-5 mx-0 bg-body-tertiary" data-bs-theme="dark">
+<div class="row text-light px-5 mx-0 bg-body-tertiary py-4" data-bs-theme="dark">
   <div class="col-md-6">
     <h1>Andrés</h1>
     <h1>Honorato</h1>

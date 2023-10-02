@@ -7,7 +7,7 @@ Contacto
 {% block content %}
 <nav class="navbar navbar-expand-lg bg-body pb-1 pt-2">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ request.META.HTTP_REFERER }}"><i class="bi bi-chevron-compact-left"></i>{{galeria}}
+    <a class="navbar-brand" href="{% url 'home:home-view' %}"><i class="bi bi-chevron-compact-left"></i>{{galeria}}
       Andrés Honorato | Contacto</a>
   </div>
 </nav>
@@ -29,6 +29,8 @@ Contacto
     </h5>
     <h5 class="text-start"><a class="text-muted" href="#"><i class="bi bi-envelope" id="edit-icon"></i></a>
       andres@andreshonorato.cl</h5>
+    <h5 class="text-start"><a class="text-muted" href="https://www.instagram.com/andreshonoratoarte/"><i
+          class="bi bi-instagram" id="edit-icon"></i></a> @andreshonoratoarte</h5>
     <br>
     <br>
   </div>

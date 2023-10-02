@@ -10,7 +10,7 @@ Obras
 
 <nav class="navbar navbar-expand-lg bg-body pb-1 pt-2">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ request.META.HTTP_REFERER }}"><i class="bi bi-chevron-compact-left"></i>{{galeria}}
+    <a class="navbar-brand" href="{% url 'home:home-view' %}"><i class="bi bi-chevron-compact-left"></i>{{galeria}}
       Andrés Honorato | Obras</a>
   </div>
 </nav>
@@ -46,19 +46,21 @@ Obras
 
 
 {% for coleccion in colecciones %}
-<div class="container posicionar" id="coleccion">
+<div class="container posicionar px-0" id="coleccion">
   <div class="row">
     <div class="col-md-3">
       <span>Colección</span>
       <h3>{{ coleccion.nombre }}</h3>
 
-      <p>{{ coleccion.descripcion }}</p>
+      <p Style="font-size: 14px;">{{ coleccion.descripcion }}</p>
       <a href="{% url 'home:galerias-view' %}?galeria={{ coleccion.nombre }}" class="btn btn-dark mb-4">Ver
         Colección</a>
     </div>
     {% for cuadro in coleccion.coleccionX.all|slice:":3" %}
     <div class="col-md-3 mb-3 centro-y">
-      <img src="{{ cuadro.imagen1.url }}" alt="Imagen 1" class="img-fluid">
+      <a href="{% url 'home:galerias-view' %}?galeria={{ coleccion.nombre }}&c_id={{ cuadro.id }}#{{cuadro.id}}">
+        <img src="{{ cuadro.imagen1.url }}" alt="Imagen 1" class="img-fluid">
+      </a>
     </div>
     {% endfor %}
   </div>
@@ -75,16 +77,18 @@ Obras
 <div class="container posicionar" id="tecnica">
   <div class="row">
     <div class="col-md-3">
-      <span>Colección</span>
+      <span>Técnica</span>
       <h3>{{ tecnica.nombre }}</h3>
 
-      <p>{{ tecnica.descripcion }}</p>
+      <p Style="font-size: 14px;">{{ tecnica.descripcion }}</p>
       <a href="{% url 'home:galerias-view' %}?galeria={{ tecnica.nombre }}" class="btn btn-dark mb-4">Ver
-        Colección</a>
+        Cuadros</a>
     </div>
     {% for cuadro in tecnica.tecnicaX.all|slice:":3" %}
     <div class="col-md-3 mb-3 centro-y">
-      <img src="{{ cuadro.imagen1.url }}" alt="Imagen 1" class="img-fluid">
+      <a href="{% url 'home:galerias-view' %}?galeria={{ tecnica.nombre }}&c_id={{ cuadro.id }}#{{cuadro.id}}">
+        <img src="{{ cuadro.imagen1.url }}" alt="Imagen 1" class="img-fluid">
+      </a>
     </div>
     {% endfor %}
   </div>

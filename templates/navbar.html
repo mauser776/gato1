@@ -4,9 +4,14 @@
     <a class="navbar-brand" id="brand1" style="opacity: 0; pointer-events: none; cursor: default;" href="#top">
       <b>AH</b>
     </a>
+    {% elif request.resolver_match.url_name == 'galerias-view' %}
+    <a class="navbar-brand" id="brand1" style="opacity: 0; pointer-events: none; cursor: default;"
+      data-url="{% url 'home:obras-view' %}">
+      <i class=" bi bi-chevron-compact-left" style="font-size: 20px;"></i>AH |{{galeria}}
+    </a>
     {% else %}
     <a class="navbar-brand" id="brand1" style="opacity: 0; pointer-events: none; cursor: default;"
-      href="{% url 'home:home-view'%}">
+      data-url="{% url 'home:home-view' %}">
       <b>
         {% if request.resolver_match.url_name == 'obras-view' %}<i class="bi bi-chevron-compact-left"
           style="font-size: 20px;"></i>AH | OBRAS{% endif %}
@@ -14,8 +19,7 @@
           style="font-size: 20px;"></i>AH | CONTACTO {% endif %}
         {% if request.resolver_match.url_name == 'sobre_mi-view' %}<i class="bi bi-chevron-compact-left"
           style="font-size: 20px;"></i>AH | SOBRE MÍ {% endif %}
-        {% if request.resolver_match.url_name == 'galerias-view' %}<i class="bi bi-chevron-compact-left"
-          style="font-size: 20px;"></i>AH | {{galeria}} {% endif %}
+
         {% if request.resolver_match.url_name == 'cuadro-view' %}<i class="bi bi-chevron-compact-left"
           style="font-size: 20px;"></i>AH | {{cuadro.nombre}} {% endif %}
       </b>
@@ -169,7 +173,7 @@
     if (currentOpacity2 > 0) {
       textElement2.style.pointerEvents = 'auto'; // Activar eventos del mouse cuando la opacidad es mayor que cero
       textElement2.style.cursor = 'pointer'; // Cambiar el cursor cuando la opacidad es mayor que cero
-      textElement2.href = "{% url 'home:home-view'%}" // Redirigir a la página anterior cuando esté activo
+      textElement2.href = textElement2.getAttribute('data-url'); // Redirigir a la página anterior cuando esté activo
     } else {
       textElement2.style.pointerEvents = 'none'; // Desactivar eventos del mouse cuando la opacidad es cero
       textElement2.style.cursor = 'default'; // Restaurar el cursor predeterminado cuando la opacidad es cero
