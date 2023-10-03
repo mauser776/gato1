@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 Contacto
@@ -13,28 +14,42 @@ Contacto
 </nav>
 
 
-<div class="text-light px-5 bg-body-tertiary" data-bs-theme="dark">
-  <div class="col">
-    <br>
-    <br>
-    <h5 class="text-start">Andrés Honorato Olivares</h5>
-    <h5 class="text-start">Avenida Siempre Viva 1345</h5>
-    <h5 class="text-start">Providencia, Santiago, Chile</h5>
-    <br>
-    <br>
-    <br>
-    <br>
-    <h5 class="text-start"><a class="text-muted" href="#"><i class="bi bi-whatsapp" id="edit-icon"></i></a> (+56) 9 9033
-      4343
-    </h5>
-    <h5 class="text-start"><a class="text-muted" href="#"><i class="bi bi-envelope" id="edit-icon"></i></a>
-      andres@andreshonorato.cl</h5>
-    <h5 class="text-start"><a class="text-muted" href="https://www.instagram.com/andreshonoratoarte/"><i
-          class="bi bi-instagram" id="edit-icon"></i></a> @andreshonoratoarte</h5>
-    <br>
-    <br>
+<div class="text-light bg-body-tertiary px-2" data-bs-theme="dark">
+  <div class="row">
+    <!-- Primera Columna -->
+    <div class="col-md-4">
+      <div class="container ps-1 mt-5">
+        <h5>Andrés Honorato Olivares</h5>
+        <h5>Avenida Siempre Viva 1345</h5>
+        <h5>Providencia, Santiago, Chile</h5>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h5><a href="#"><i class="bi bi-whatsapp" id="edit-icon"></i></a> (+56) 9 9033 4343</h5>
+        <h5><a href="#"><i class="bi bi-envelope" id="edit-icon"></i></a> andres@andreshonorato.cl</h5>
+        <h5 class="text-start"><a class="text-muted" href="https://www.instagram.com/andreshonoratoarte/"><i
+              class="bi bi-instagram" id="edit-icon"></i></a> @andreshonoratoarte</h5>
+      </div>
+    </div>
+    <!-- Segunda Columna -->
+    <div class="col-md-2">
+      <!-- Contenido de la segunda columna, si es necesario -->
+    </div>
+    <!-- Tercera Columna -->
+    <div class="col-md-6">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <img src="{% static 'ejemplos/contacto1.jpg' %}" class="img-fluid float-end" alt="...">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
 
 
 

@@ -34,19 +34,16 @@ Inicio
 
 
 
-
-
-
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="2000">
       <img src="{% static 'ejemplos/e3.jpg' %}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src="{% static 'ejemplos/e2.jpg' %}" class="d-block w-100" alt="...">
+      <img src="{% static 'ejemplos/estudio1.jpg' %}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src="{% static 'ejemplos/e9.jpg' %}" class="d-block w-100" alt="...">
+      <img src="{% static 'ejemplos/e11.jpg' %}" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -126,9 +123,9 @@ Inicio
   <div class="slider-content2">
     <div class="cardSW-wrapper swiper-wrapper">
       <!-- Contenido del slider 2 -->
-      {% for cuadro in lista_cuadros|slice:":9" %}
+      {% for cuadro in lista_cuadros|slice:":12" %}
 
-      {% if cuadro.coleccion.nombre == 'More Suns and More Sunsets' %}
+      {% if cuadro.coleccion.nombre == 'More Suns More Sunsets' %}
 
       <div class="cardSW swiper-slide">
         <div class="image-content">
