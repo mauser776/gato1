@@ -36,13 +36,13 @@ Inicio
 
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="2000">
+    <div class="carousel-item active" data-bs-interval="4000">
       <img src="{% static 'ejemplos/e3.jpg' %}" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item" data-bs-interval="2000">
+    <div class="carousel-item" data-bs-interval="4000">
       <img src="{% static 'ejemplos/estudio1.jpg' %}" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item" data-bs-interval="2000">
+    <div class="carousel-item" data-bs-interval="4000">
       <img src="{% static 'ejemplos/e11.jpg' %}" class="d-block w-100" alt="...">
     </div>
   </div>
@@ -123,15 +123,15 @@ Inicio
   <div class="slider-content2">
     <div class="cardSW-wrapper swiper-wrapper">
       <!-- Contenido del slider 2 -->
-      {% for cuadro in lista_cuadros|slice:":12" %}
+      {% for cuadro in lista_cuadros %}
 
-      {% if cuadro.coleccion.nombre == 'More Suns More Sunsets' %}
+      {% if cuadro.tecnica.nombre == 'Collage Digital' %}
 
       <div class="cardSW swiper-slide">
         <div class="image-content">
           <span class="overlay"></span>
           <div class="cardSW-image">
-            <a href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}&c_id={{ cuadro.id }}#{{cuadro.id}}">
+            <a href="{% url 'home:galerias-view' %}?galeria={{ cuadro.tecnica }}&c_id={{ cuadro.id }}#{{cuadro.id}}">
               <img src="{{ cuadro.imagen1.url }}" alt="" {% if cuadro.imagen2 %} data-imagen2="{{ cuadro.imagen2.url }}"
                 class="hover-image" {% endif %} />
             </a>

@@ -1,7 +1,7 @@
 /* Created by Tivotal */
 
 var swiper = new Swiper(".slider-content", {
-  slidesPerView: 4,
+  slidesPerView: 5,
   spaceBetween: 25,
   loop: true,
   centerSlide: true,
@@ -29,11 +29,14 @@ var swiper = new Swiper(".slider-content", {
     1100: {
       slidesPerView: 4,
     },
+    1100: {
+      slidesPerView: 5,
+    },
   },
 });
 
 var swiper = new Swiper(".slider-content2", {
-  slidesPerView: 3,
+  slidesPerView: 4,
   spaceBetween: 25,
   loop: true,
   centerSlide: true,
@@ -57,6 +60,9 @@ var swiper = new Swiper(".slider-content2", {
     },
     950: {
       slidesPerView: 3,
+    },
+    1100: {
+      slidesPerView: 4,
     },
   },
 });
