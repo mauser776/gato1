@@ -1,1 +1,1 @@
-web: gunicorn MyAPI.wsgi
+web: gunicorn gato1.wsgi --log-file -
