@@ -19,7 +19,7 @@
 
 
 {% for cuadro in cuadros %}
-<div class="container mt-3 mb-3 posicionar2" id="cuadro.id">
+<div class="container mt-3 mb-5 posicionar2" id="cuadro.id">
   <div class="row">
     <div class="col-md-8 mb-1 d-flex justify-content-center align-items-center img-container">
       <div id="carousel-{{ cuadro.id }}" class="carousel slide">
@@ -50,13 +50,13 @@
         <a class="carousel-control-prev" href="#carousel-{{ cuadro.id }}" role="button" data-bs-slide="prev"
           style="left: -9%;">
           <span class="carousel-control" aria-hidden="true"><i class="bi bi-chevron-compact-left"
-              style="color: black; font-size: 24px;"></i></span>
+              style="color: black; font-size: 55px;"></i></span>
           <span class="visually-hidden">Prev</span>
         </a>
         <a class="carousel-control-next" href="#carousel-{{ cuadro.id }}" role="button" data-bs-slide="next"
           style="right: -9%;">
           <span class="carousel-control" aria-hidden="true"><i class="bi bi-chevron-compact-right"
-              style="color: black; font-size: 24px;"></i></span>
+              style="color: black; font-size: 55px;"></i></span>
           <span class="visually-hidden">Next</span>
         </a>
         {% endif %}
@@ -68,26 +68,23 @@
     <div class="col-md-4 d-flex justify-content-center align-items-center" style="font-size: 13px;border-radius: 0;">
       <div class="card h-100" style="border-radius: 0;" id="{{cuadro.id}}">
         <div class="card-body">
-          <h6 class="card-title mb-2" style="font-size: 15px;">{{ cuadro.nombre }}</h6>
+          <h6 class="card-title mb-2" style="font-size: 24px;">{{ cuadro.nombre }}</h6>
           <a class="card-subtitle text-muted mb-2" href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}"
             style="text-decoration: none;">
             <h6 class="card-subtitle text-muted mb-2" style="font-size: 13px;">{{ cuadro.coleccion }}
             </h6>
           </a>
-          <a class="card-subtitle text-muted mb-2" href="{% url 'home:galerias-view' %}?galeria={{ cuadro.tecnica }}"
-            style="text-decoration: none;">
-            <h6 class="card-subtitle text-muted" style="font-size: 12px;">{{ cuadro.tecnica }}</h6>
-          </a>
-          <br>
+          <p class="card-text"> ${{ cuadro.precio1 }} CLP</p>
           <p class="card-text">{{ cuadro.descripcion }}</p>
+          <p class="card-text">Técnica: {{ cuadro.tecnica }}</p>
 
           {% if cuadro.dimension1 %}
           <div class="row">
-            <div class="col-4">
-              <p class="card-text">{% if cuadro.dimension2 or cuadro.dimension3 %} Formatos:
-                {% else %} Formato:{% endif %}</p>
+            <div class="col-3">
+              <p class="card-text">{% if cuadro.dimension2 or cuadro.dimension3 %} Medidas:
+                {% else %} Medidas:{% endif %}</p>
             </div>
-            <div class="col-8">
+            <div class="col-9">
               <ul class="list-unstyled">
                 {% if cuadro.dimension1 %}
                 <li>{{ cuadro.dimension1 }}</li>
@@ -102,6 +99,8 @@
             </div>
           </div>
           {% endif %}
+
+          <p class="card-text">Fecha de realización: {{ cuadro.fecha }}</p>
 
           {% if cuadro.cantidad_inicial%}
           <p class="card-text">Disponibilidad: {{cuadro.cuadros_disponibles}} de {{cuadro.cantidad_inicial}}</p>
