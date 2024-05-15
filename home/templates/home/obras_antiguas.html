@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Obras
+{% endblock title %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg bg-body pb-0 pt-1">
+  <div class="container-fluid">
+    <a class="navbar-brand" href=""></i>
+      Andrés Honorato | Obras</a>
+  </div>
+</nav>
+
+<img src="{% static 'ejemplos/estudio1.jpg' %}" class="banner1" alt="...">
+
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <ul class="nav justify-content-center pb-0 mb-0 pt-3 mt-2 mx-auto">
+      <li class="ms-3 text-center">
+        <a class="navbar-brand text-center" href="#coleccion">
+          <i class="bi bi-easel fs-5" id="edit-icon"></i>
+          <div>Colecciones</div>
+        </a>
+      </li>
+      <li class="ms-3 text-center">
+        <a class="navbar-brand text-center" href="#tecnica">
+          <i class="bi bi-brush fs-5" id="edit-icon"></i>
+          <div>Técnicas</div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg bg-body py-0">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">&nbsp</a>
+  </div>
+</nav>
+
+
+
+
+{% for coleccion in colecciones %}
+<div class="container posicionar" id="coleccion">
+  <div class="row">
+    <div class="col-md-3">
+      <span>Colección</span>
+      <h3>{{ coleccion.nombre }}</h3>
+
+      <p Style="font-size: 14px;">{{ coleccion.descripcion }}</p>
+      <a href="{% url 'home:galerias-view' %}?galeria={{ coleccion.nombre }}" class="btn btn-dark mb-4">Ver
+        Colección</a>
+    </div>
+    {% for cuadro in coleccion.coleccionX.all|slice:":3" %}
+    <div class="col-md-3 mb-3 centro-y">
+      <a href="{% url 'home:galerias-view' %}?galeria={{ coleccion.nombre }}&c_id={{ cuadro.id }}#{{cuadro.id}}">
+        <img src="{{ cuadro.imagen1.url }}" alt="Imagen 1" class="img-fluid">
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg bg-body py-0">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">&nbsp</a>
+  </div>
+</nav>
+{% endfor %}
+
+
+<!-- {% for tecnica in tecnicas %}
+<div class="container posicionar" id="tecnica">
+  <div class="row">
+    <div class="col-md-3">
+      <span>Técnica</span>
+      <h3>{{ tecnica.nombre }}</h3>
+
+      <p Style="font-size: 14px;">{{ tecnica.descripcion }}</p>
+      <a href="{% url 'home:galerias-view' %}?galeria={{ tecnica.nombre }}" class="btn btn-dark mb-4">Ver
+        Cuadros</a>
+    </div>
+    {% for cuadro in tecnica.tecnicaX.all|slice:":3" %}
+    <div class="col-md-3 mb-3 centro-y">
+      <a href="{% url 'home:galerias-view' %}?galeria={{ tecnica.nombre }}&c_id={{ cuadro.id }}#{{cuadro.id}}">
+        <img src="{{ cuadro.imagen1.url }}" alt="Imagen 1" class="img-fluid">
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg bg-body py-0">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto">&nbsp</a>
+  </div>
+</nav>
+{% endfor %} -->
+
+
+
+
+
+
+
+{% endblock content %}
+
+
+
+{% block scripts %}
+
+{% endblock scripts %}

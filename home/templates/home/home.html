@@ -58,7 +58,7 @@ Inicio
 
 <nav class="navbar navbar-expand-lg bg-body py-0">
   <div class="container-fluid">
-    <a class="navbar-brand mx-auto">Art for lovers</a>
+    <a class="navbar-brand mx-auto">&nbsp</a>
   </div>
 </nav>
 
@@ -75,7 +75,7 @@ Inicio
         <div class="image-content">
           <span class="overlay"></span>
           <div class="cardSW-image">
-            <a href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}&c_id={{ cuadro.id }}#{{cuadro.id}}">
+            <a href="{% url 'home:cuadro-view' cuadro.id %}">
               <img src="{{ cuadro.imagen1.url }}" alt="" {% if cuadro.imagen2 %} data-imagen2="{{ cuadro.imagen2.url }}"
                 class="hover-image" {% endif %} />
             </a>
@@ -111,7 +111,7 @@ Inicio
 
 <nav class="navbar navbar-expand-lg bg-body py-0">
   <div class="container-fluid">
-    <a class="navbar-brand mx-auto">Art for lovers</a>
+    <a class="navbar-brand mx-auto">&nbsp</a>
   </div>
 </nav>
 

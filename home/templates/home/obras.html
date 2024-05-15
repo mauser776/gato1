@@ -7,108 +7,114 @@ Obras
 
 {% block content %}
 
-<nav class="navbar navbar-expand-lg bg-body pb-0 pt-1">
+<nav class="navbar navbar-expand-lg bg-body py-0">
   <div class="container-fluid">
-    <a class="navbar-brand" href=""></i>
-      Andrés Honorato | Obras</a>
+    <a class="navbar-brand mx-auto">&nbsp;</a>
   </div>
 </nav>
 
-<img src="{% static 'ejemplos/estudio1.jpg' %}" class="banner1" alt="...">
-
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark" data-bs-theme="dark">
-  <div class="container-fluid">
-    <ul class="nav justify-content-center pb-0 mb-0 pt-3 mt-2 mx-auto">
-      <li class="ms-3 text-center">
-        <a class="navbar-brand text-center" href="#coleccion">
-          <i class="bi bi-easel fs-5" id="edit-icon"></i>
-          <div>Colecciones</div>
-        </a>
-      </li>
-      <li class="ms-3 text-center">
-        <a class="navbar-brand text-center" href="#tecnica">
-          <i class="bi bi-brush fs-5" id="edit-icon"></i>
-          <div>Técnicas</div>
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav> -->
+<img src="{% static 'ejemplos/banner1.png' %}" class="banner1" alt="...">
 
 <nav class="navbar navbar-expand-lg bg-body py-0">
   <div class="container-fluid">
-    <a class="navbar-brand mx-auto">Art for lovers</a>
+    <a class="navbar-brand mx-auto">&nbsp;</a>
   </div>
 </nav>
-
-
-
 
 {% for coleccion in colecciones %}
 <div class="container posicionar" id="coleccion">
   <div class="row">
-    <div class="col-md-3">
-      <span>Colección</span>
-      <h3>{{ coleccion.nombre }}</h3>
+    <div class="col-md-3 d-flex flex-column justify-content-center">
+      <div>
+        <span>Colección</span>
+        <h3>{{ coleccion.nombre }}</h3>
+        <p style="font-size: 14px;">{{ coleccion.descripcion }}</p>
+        <a href="{% url 'home:galerias-view' %}?galeria={{ coleccion.nombre }}" class="btn btn-dark mb-4">Ver
+          Colección</a>
+      </div>
+    </div>
 
-      <p Style="font-size: 14px;">{{ coleccion.descripcion }}</p>
-      <a href="{% url 'home:galerias-view' %}?galeria={{ coleccion.nombre }}" class="btn btn-dark mb-4">Ver
-        Colección</a>
+    <div class="col-md-9 d-flex align-items-center">
+      <div class="position-relative">
+        <div id="carousel{{ forloop.counter }}" class="carousel slide" data-bs-ride="false">
+          <div class="carousel-inner">
+            {% for cuadro in coleccion.coleccionX.all %}
+            {% if forloop.counter0|divisibleby:3 %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+              <div class="row">
+                {% endif %}
+                <div class="col-md-4">
+                  <div class="cardSW-image">
+                    <a href="{% url 'home:cuadro-view' cuadro.id %}">
+                      <img src="{{ cuadro.imagen1.url }}" class="d-block w-100" alt="" {% if cuadro.imagen2 %}
+                        data-imagen2="{{ cuadro.imagen2.url }}" class="hover-image" {% endif %}>
+                    </a>
+                  </div>
+                </div>
+                {% if forloop.counter0|add:1|divisibleby:3 or forloop.last %}
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            <!-- Duplicar las primeras imágenes para hacer el carrusel infinito -->
+            {% for cuadro in coleccion.coleccionX.all|slice:":3" %}
+            {% if forloop.first %}
+            <div class="carousel-item">
+              <div class="row">
+                {% endif %}
+                <div class="col-md-4">
+                  <div class="cardSW-image">
+                    <a href="{% url 'home:cuadro-view' cuadro.id %}">
+                      <img src="{{ cuadro.imagen1.url }}" class="d-block w-100" alt="" {% if cuadro.imagen2 %}
+                        data-imagen2="{{ cuadro.imagen2.url }}" class="hover-image" {% endif %}>
+                    </a>
+                  </div>
+                </div>
+                {% if forloop.counter == coleccion.coleccionX.all|slice:":3"|length %}
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ forloop.counter }}"
+          data-bs-slide="prev" style="top: 50%; transform: translateY(-50%); left: -35px;">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ forloop.counter }}"
+          data-bs-slide="next" style="top: 50%; transform: translateY(-50%); right: -35px;">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
-    {% for cuadro in coleccion.coleccionX.all|slice:":3" %}
-    <div class="col-md-3 mb-3 centro-y">
-      <a href="{% url 'home:galerias-view' %}?galeria={{ coleccion.nombre }}&c_id={{ cuadro.id }}#{{cuadro.id}}">
-        <img src="{{ cuadro.imagen1.url }}" alt="Imagen 1" class="img-fluid">
-      </a>
-    </div>
-    {% endfor %}
   </div>
 </div>
+
 <nav class="navbar navbar-expand-lg bg-body py-0">
   <div class="container-fluid">
-    <a class="navbar-brand mx-auto">Art for lovers</a>
+    <a class="navbar-brand mx-auto">&nbsp;</a>
   </div>
 </nav>
 {% endfor %}
 
-
-<!-- {% for tecnica in tecnicas %}
-<div class="container posicionar" id="tecnica">
-  <div class="row">
-    <div class="col-md-3">
-      <span>Técnica</span>
-      <h3>{{ tecnica.nombre }}</h3>
-
-      <p Style="font-size: 14px;">{{ tecnica.descripcion }}</p>
-      <a href="{% url 'home:galerias-view' %}?galeria={{ tecnica.nombre }}" class="btn btn-dark mb-4">Ver
-        Cuadros</a>
-    </div>
-    {% for cuadro in tecnica.tecnicaX.all|slice:":3" %}
-    <div class="col-md-3 mb-3 centro-y">
-      <a href="{% url 'home:galerias-view' %}?galeria={{ tecnica.nombre }}&c_id={{ cuadro.id }}#{{cuadro.id}}">
-        <img src="{{ cuadro.imagen1.url }}" alt="Imagen 1" class="img-fluid">
-      </a>
-    </div>
-    {% endfor %}
-  </div>
-</div>
-<nav class="navbar navbar-expand-lg bg-body py-0">
-  <div class="container-fluid">
-    <a class="navbar-brand mx-auto">Art for lovers</a>
-  </div>
-</nav>
-{% endfor %} -->
-
-
-
-
-
-
-
 {% endblock content %}
 
-
-
 {% block scripts %}
-
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var carousels = document.querySelectorAll('.carousel');
+    carousels.forEach(function (carousel) {
+      var items = carousel.querySelectorAll('.carousel-item');
+      if (items.length > 0) {
+        // Clone first few items to enable infinite scrolling
+        for (var i = 0; i < 3; i++) {
+          var clone = items[i].cloneNode(true);
+          carousel.querySelector('.carousel-inner').appendChild(clone);
+        }
+      }
+    });
+  });
+</script>
 {% endblock scripts %}

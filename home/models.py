@@ -38,19 +38,14 @@ class Cuadro(models.Model):
     colores = models.CharField(max_length=200, blank=True)
     cantidad_inicial = models.PositiveIntegerField(blank=True, null=True)
     cantidad_vendida = models.PositiveIntegerField(blank=True, null=True)
-    dimension1 = models.CharField(max_length=100, blank=True)
-    dimension2 = models.CharField(max_length=100, blank=True)
-    dimension3 = models.CharField(max_length=100, blank=True)
-    marco1 = models.PositiveIntegerField(blank=True, null=True)
-    marco2 = models.PositiveIntegerField(blank=True, null=True)
-    marco3 = models.PositiveIntegerField(blank=True, null=True)
-    precio1 = models.PositiveIntegerField(blank=True, null=True)
-    precio2 = models.PositiveIntegerField(blank=True, null=True)
-    precio3 = models.PositiveIntegerField(blank=True, null=True)
+    marco_sin = models.CharField(max_length=100, blank=True)
+    marco_con = models.CharField(max_length=100, blank=True)
+    precio_sin = models.PositiveIntegerField(blank=True, null=True)
+    precio_con = models.PositiveIntegerField(blank=True, null=True)
     descuento = models.PositiveIntegerField(blank=True, null=True)
     envio1 = models.PositiveIntegerField(blank=True, null=True)
     envio2 = models.PositiveIntegerField(blank=True, null=True)
-    envio3 = models.PositiveIntegerField(blank=True, null=True)
+
     imagen1 = models.ImageField(upload_to='cuadros', validators=[
                                 FileExtensionValidator(['png', 'jpg', 'jpeg'])])
     imagen2 = models.ImageField(upload_to='cuadros', validators=[
@@ -79,9 +74,3 @@ class Cuadro(models.Model):
 
     def get_coleccion(self):
         return self.coleccion_set.all()
-
-    # def precio_en_miles(self):
-    #     if self.precio_o is not None:
-    #         coma = f"{self.precio_o:,}"
-    #         punto = coma.replace(',', '.')
-    #         return punto

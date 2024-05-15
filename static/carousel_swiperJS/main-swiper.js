@@ -36,7 +36,7 @@ var swiper = new Swiper(".slider-content", {
 });
 
 var swiper = new Swiper(".slider-content2", {
-  slidesPerView: 4,
+  slidesPerView: 3,
   spaceBetween: 25,
   loop: true,
   centerSlide: true,
@@ -61,8 +61,9 @@ var swiper = new Swiper(".slider-content2", {
     950: {
       slidesPerView: 3,
     },
-    1100: {
-      slidesPerView: 4,
-    },
+    // 1100: {
+    //   slidesPerView: 4,
+    // },
   },
 });
+

@@ -74,33 +74,42 @@
             <h6 class="card-subtitle text-muted mb-2" style="font-size: 13px;">{{ cuadro.coleccion }}
             </h6>
           </a>
-          <p class="card-text"> ${{ cuadro.precio1 }} CLP</p>
-          <p class="card-text">{{ cuadro.descripcion }}</p>
+          <p class="card-text"> ${{ cuadro.precio_sin }} CLP</p>
+          <p class="card-text">{{ cuadro.descripcion|linebreaks }}</p>
           <p class="card-text">Técnica: {{ cuadro.tecnica }}</p>
 
-          {% if cuadro.dimension1 %}
           <div class="row">
-            <div class="col-3">
-              <p class="card-text">{% if cuadro.dimension2 or cuadro.dimension3 %} Medidas:
-                {% else %} Medidas:{% endif %}</p>
-            </div>
-            <div class="col-9">
+            <div class="col-12">
               <ul class="list-unstyled">
-                {% if cuadro.dimension1 %}
-                <li>{{ cuadro.dimension1 }}</li>
+                {% if cuadro.marco_sin %}
+                <li>Dimensiones sin marco: {{ cuadro.marco_sin }}</li>
                 {% endif %}
-                {% if cuadro.dimension2 %}
-                <li>{{ cuadro.dimension2 }}</li>
-                {% endif %}
-                {% if cuadro.dimension3 %}
-                <li>{{ cuadro.dimension3 }}</li>
+                {% if cuadro.marco_con %}
+                <li>Dimensiones con marco: {{ cuadro.marco_con }}</li>
                 {% endif %}
               </ul>
             </div>
           </div>
-          {% endif %}
 
-          <p class="card-text">Fecha de realización: {{ cuadro.fecha }}</p>
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled">
+                {% if cuadro.precio_sin %}
+                <li>Precio sin marco: ${{ cuadro.precio_sin }} CLP</li>
+                {% endif %}
+                {% if cuadro.precio_con%}
+                <li>Precio con marco: ${{ cuadro.precio_con }} CLP</li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+
+
+
+
+
+
+          <p class="card-text">Fecha: {{ cuadro.fecha|date:"Y"}}</p>
 
           {% if cuadro.cantidad_inicial%}
           <p class="card-text">Disponibilidad: {{cuadro.cuadros_disponibles}} de {{cuadro.cantidad_inicial}}</p>
@@ -115,7 +124,7 @@
 
 <nav class="navbar navbar-expand-lg bg-body pb-0 pt-1">
   <div class="container-fluid">
-    <a class="navbar-brand mx-auto">Art for lovers</a>
+    <a class="navbar-brand mx-auto">&nbsp</a>
   </div>
 </nav>
 
