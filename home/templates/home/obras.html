@@ -9,112 +9,93 @@ Obras
 
 <nav class="navbar navbar-expand-lg bg-body py-0">
   <div class="container-fluid">
-    <a class="navbar-brand mx-auto">&nbsp;</a>
+    <a class="navbar-brand mx-auto spacer-new"></a>
   </div>
 </nav>
 
-<img src="{% static 'ejemplos/banner1.png' %}" class="banner1" alt="...">
+<img src="{% static 'ejemplos/banner2.png' %}" class="banner1-new" alt="...">
 
 <nav class="navbar navbar-expand-lg bg-body py-0">
   <div class="container-fluid">
-    <a class="navbar-brand mx-auto">&nbsp;</a>
+    <a class="navbar-brand mx-auto spacer-new"></a>
   </div>
 </nav>
 
-{% for coleccion in colecciones %}
-<div class="container posicionar" id="coleccion">
+<div class="container posicionar-new" id="coleccion-new">
+  {% for coleccion in colecciones %}
   <div class="row">
     <div class="col-md-3 d-flex flex-column justify-content-center">
       <div>
         <span>Colección</span>
         <h3>{{ coleccion.nombre }}</h3>
-        <p style="font-size: 14px;">{{ coleccion.descripcion }}</p>
+        <p style="font-size: 14px;">{{ coleccion.descripcion|linebreaks }}</p>
         <a href="{% url 'home:galerias-view' %}?galeria={{ coleccion.nombre }}" class="btn btn-dark mb-4">Ver
           Colección</a>
       </div>
     </div>
 
     <div class="col-md-9 d-flex align-items-center">
-      <div class="position-relative">
-        <div id="carousel{{ forloop.counter }}" class="carousel slide" data-bs-ride="false">
-          <div class="carousel-inner">
+      <div class="position-relative slider-container-new">
+        <div class="slider-content-new swiper carru slider" id="slider-new">
+          <div class="card-wrapper-new swiper-wrapper">
+            <!-- Contenido del slider 1 -->
             {% for cuadro in coleccion.coleccionX.all %}
-            {% if forloop.counter0|divisibleby:3 %}
-            <div class="carousel-item {% if forloop.first %}active{% endif %}">
-              <div class="row">
-                {% endif %}
-                <div class="col-md-4">
-                  <div class="cardSW-image">
-                    <a href="{% url 'home:cuadro-view' cuadro.id %}">
-                      <img src="{{ cuadro.imagen1.url }}" class="d-block w-100" alt="" {% if cuadro.imagen2 %}
-                        data-imagen2="{{ cuadro.imagen2.url }}" class="hover-image" {% endif %}>
-                    </a>
-                  </div>
+            <div class="card-new swiper-slide">
+              <div class="image-content-new">
+                <span class="overlay-new"></span>
+                <div class="card-image-new">
+                  <a href="{% url 'home:cuadro-view' cuadro.id %}">
+                    <img src="{{ cuadro.imagen1.url }}" alt="" {% if cuadro.imagen2 %}
+                      data-imagen2="{{ cuadro.imagen2.url }}" class="hover-image-new" {% endif %} />
+                  </a>
                 </div>
-                {% if forloop.counter0|add:1|divisibleby:3 or forloop.last %}
               </div>
             </div>
-            {% endif %}
-            {% endfor %}
-            <!-- Duplicar las primeras imágenes para hacer el carrusel infinito -->
-            {% for cuadro in coleccion.coleccionX.all|slice:":3" %}
-            {% if forloop.first %}
-            <div class="carousel-item">
-              <div class="row">
-                {% endif %}
-                <div class="col-md-4">
-                  <div class="cardSW-image">
-                    <a href="{% url 'home:cuadro-view' cuadro.id %}">
-                      <img src="{{ cuadro.imagen1.url }}" class="d-block w-100" alt="" {% if cuadro.imagen2 %}
-                        data-imagen2="{{ cuadro.imagen2.url }}" class="hover-image" {% endif %}>
-                    </a>
-                  </div>
-                </div>
-                {% if forloop.counter == coleccion.coleccionX.all|slice:":3"|length %}
-              </div>
-            </div>
-            {% endif %}
             {% endfor %}
           </div>
+
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next swiper-navBtn-new"></div>
+          <div class="swiper-button-prev swiper-navBtn-new"></div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ forloop.counter }}"
-          data-bs-slide="prev" style="top: 50%; transform: translateY(-50%); left: -35px;">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ forloop.counter }}"
-          data-bs-slide="next" style="top: 50%; transform: translateY(-50%); right: -35px;">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
     </div>
   </div>
+
+  <nav class="navbar navbar-expand-lg bg-body py-0">
+    <div class="container-fluid position-relative p-0">
+      <div class="spacer-new"></div>
+    </div>
+  </nav>
+  {% endfor %}
 </div>
-
-<nav class="navbar navbar-expand-lg bg-body py-0">
-  <div class="container-fluid">
-    <a class="navbar-brand mx-auto">&nbsp;</a>
-  </div>
-</nav>
-{% endfor %}
-
+<br>
 {% endblock content %}
 
 {% block scripts %}
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var carousels = document.querySelectorAll('.carousel');
-    carousels.forEach(function (carousel) {
-      var items = carousel.querySelectorAll('.carousel-item');
-      if (items.length > 0) {
-        // Clone first few items to enable infinite scrolling
-        for (var i = 0; i < 3; i++) {
-          var clone = items[i].cloneNode(true);
-          carousel.querySelector('.carousel-inner').appendChild(clone);
-        }
-      }
-    });
+  var swiper = new Swiper(".slider-content-new", {
+    slidesPerView: 3,
+    spaceBetween: 25,
+    loop: true,
+    centerSlide: true,
+    fade: true,
+    grabCursor: true,
+    navigation: {
+      nextEl: "#slider-new .swiper-button-next",
+      prevEl: "#slider-new .swiper-button-prev",
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      520: {
+        slidesPerView: 2,
+      },
+      950: {
+        slidesPerView: 3,
+      },
+    },
   });
 </script>
 {% endblock scripts %}

@@ -54,6 +54,16 @@ class Cuadro(models.Model):
                                 FileExtensionValidator(['png', 'jpg', 'jpeg'])], blank=True)
     imagen4 = models.ImageField(upload_to='cuadros', validators=[
                                 FileExtensionValidator(['png', 'jpg', 'jpeg'])], blank=True)
+    imagen5 = models.ImageField(upload_to='cuadros', validators=[
+                                FileExtensionValidator(['png', 'jpg', 'jpeg'])], blank=True)
+    imagen6 = models.ImageField(upload_to='cuadros', validators=[
+                                FileExtensionValidator(['png', 'jpg', 'jpeg'])], blank=True)
+    imagen7 = models.ImageField(upload_to='cuadros', validators=[
+                                FileExtensionValidator(['png', 'jpg', 'jpeg'])], blank=True)
+    imagen8 = models.ImageField(upload_to='cuadros', validators=[
+                                FileExtensionValidator(['png', 'jpg', 'jpeg'])], blank=True)
+    imagen9 = models.ImageField(upload_to='cuadros', validators=[
+                                FileExtensionValidator(['png', 'jpg', 'jpeg'])], blank=True)
     creado = models.DateTimeField(auto_now_add=True)
     actulizado = models.DateTimeField(auto_now=True)
 

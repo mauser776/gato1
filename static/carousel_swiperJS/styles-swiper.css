@@ -166,3 +166,60 @@ o
 /* .card-narrow {
     max-width: 200px;
 } */
+
+
+
+
+.banner1-new {
+  /* Agrega aquí los estilos para .banner1 si es necesario */
+}
+
+.posicionar-new {
+  /* Agrega aquí los estilos para .posicionar si es necesario */
+}
+
+.slider-container-new {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  /* Asegura que nada se salga del contenedor */
+}
+
+.slider-content-new {
+  width: 100%;
+}
+
+.card-wrapper-new {
+  display: flex;
+}
+
+.card-new {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.card-new img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-content-new {
+  /* Agrega aquí los estilos para .image-content si es necesario */
+}
+
+.overlay-new {
+  /* Agrega aquí los estilos para .overlay si es necesario */
+}
+
+.card-image-new {
+  /* Agrega aquí los estilos para .card-image si es necesario */
+}
+
+.hover-image-new {
+  /* Agrega aquí los estilos para .hover-image si es necesario */
+}
+
+.swiper-navBtn-new {
+  /* Agrega aquí los estilos para los botones de navegación de Swiper si es necesario */
+}

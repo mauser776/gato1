@@ -16,6 +16,14 @@ html body {
     /* Escala la imagen para que llene el espacio sin distorsión */
 }
 
+.banner1-new {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    /* Escala la imagen para que llene el espacio sin distorsión */
+}
+
+
 .centro-y {
     display: flex;
     align-items: center;
@@ -62,4 +70,14 @@ html body {
     /* Espaciado interior para mayor claridad */
     scroll-margin-top: 50px;
     /* Altura de la barra de navegación */
+}
+
+/* separador  */
+.spacer-new {
+    min-width: 100px;
+    /* Ajusta esto según el espacio que necesites */
+    min-height: 30px;
+    /* Ajusta esto según el espacio que necesites */
+    display: inline-block;
+    /* Asegura que el elemento se comporte como un elemento en línea */
 }
