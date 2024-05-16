@@ -28,9 +28,9 @@ Obras
       <div>
         <span>Colección</span>
         <h3>{{ coleccion.nombre }}</h3>
-        <p style="font-size: 14px;">{{ coleccion.descripcion|linebreaks }}</p>
+        <p style="font-size: 14px !important;">{{ coleccion.descripcion|linebreaksbr }}</p>
         <a href="{% url 'home:galerias-view' %}?galeria={{ coleccion.nombre }}" class="btn btn-dark mb-4">Ver
-          Colección</a>
+          colección</a>
       </div>
     </div>
 
@@ -45,8 +45,7 @@ Obras
                 <span class="overlay-new"></span>
                 <div class="card-image-new">
                   <a href="{% url 'home:cuadro-view' cuadro.id %}">
-                    <img src="{{ cuadro.imagen1.url }}" alt="" {% if cuadro.imagen2 %}
-                      data-imagen2="{{ cuadro.imagen2.url }}" class="hover-image-new" {% endif %} />
+                    <img src="{{ cuadro.imagen1.url }}" class="zoom-image" />
                   </a>
                 </div>
               </div>

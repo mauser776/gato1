@@ -1,24 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block title %}
-{{galeria}}
-{% endblock title %}
+{% block title %}{{cuadro.nombre}}{% endblock title %}
 
 {% block content %}
-
-
-
+<!-- "{{ request.META.HTTP_REFERER }}" -->
 <nav class="navbar navbar-expand-lg bg-body pb-0 pt-1">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home:obras-view' %}"></i>
-      Andrés Honorato | Obras | {{galeria}}</a>
+    <a class="navbar-brand" href="{% url 'home:obras-view' %}"><i class="bi bi-chevron-compact-left"></i>{{galeria}}
+      Andrés Honorato | {{cuadro.coleccion}} | {{cuadro.nombre}}</a>
   </div>
 </nav>
-
-
-
-{% for cuadro in cuadros %}
 <div class="container mt-3 mb-5 posicionar2" id="cuadro.id">
   <div class="row">
     <div class="col-md-8 mb-1 d-flex justify-content-center align-items-center img-container">
@@ -75,7 +66,7 @@
             </h6>
           </a>
           <p class="card-text"> ${{ cuadro.precio_sin }} CLP</p>
-          <p class="card-text">{{ cuadro.descripcion|linebreaksbr }}</p>
+          <p class="card-text">{{ cueadro.descripcion|linebreaksbr }}</p>
           <p class="card-text">Técnica: {{ cuadro.tecnica }}</p>
 
           <div class="row">
@@ -104,11 +95,6 @@
             </div>
           </div>
 
-
-
-
-
-
           <p class="card-text">Fecha: {{ cuadro.fecha|date:"Y"}}</p>
 
           {% if cuadro.cantidad_inicial%}
@@ -122,52 +108,79 @@
   </div>
 </div>
 
-<nav class="navbar navbar-expand-lg bg-body pb-0 pt-1">
+
+
+
+<nav class="navbar navbar-expand-lg bg-body py-0">
   <div class="container-fluid">
-    <a class="navbar-brand mx-auto">&nbsp</a>
+    <a class="navbar-brand mx-auto spacer-new"></a>
   </div>
 </nav>
 
+<div class="container">
+  <div class="slider-content-new swiper carru slider" id="slider-new">
+    <div class="card-wrapper-new swiper-wrapper">
+      <!-- Contenido del slider 1 -->
+      {% for cuadro in cuadro.coleccion.coleccionX.all %}
+      <div class="card-new swiper-slide">
+        <div class="image-content-new">
+          <span class="overlay-new"></span>
+          <div class="card-image-new">
+            <a href="{% url 'home:cuadro-view' cuadro.id %}">
+              <img src="{{ cuadro.imagen1.url }}" alt="" {% if cuadro.imagen2 %} data-imagen2="{{ cuadro.imagen2.url }}"
+                class="hover-image-new" {% endif %} />
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
 
-{% endfor %}
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next swiper-navBtn-new"></div>
+    <div class="swiper-button-prev swiper-navBtn-new"></div>
+  </div>
+</div>
 
 
 
 
 
-
+<br>
 {% endblock content %}
 
 
 
 {% block scripts %}
 <script>
-  // Esperar a que la página se cargue completamente
-  window.addEventListener('load', function () {
-    // Obtener el valor del parámetro 'cuadro_id' de la URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const cuadroId = urlParams.get('c_id');
-
-    if (cuadroId) {
-      // Encontrar el elemento con el mismo 'id' que el valor de 'cuadro_id'
-      const element = document.getElementById(cuadroId);
-
-      if (element) {
-        let offsetValue = -140; // Valor por defecto para pantallas grandes
-
-        // Verificar el tamaño de la pantalla utilizando las clases de Bootstrap
-        if (window.innerWidth < 768) { // Pantallas más pequeñas (por ejemplo, dispositivos móviles)
-          offsetValue = -500; // Cambiar el valor para pantallas más pequeñas
-        }
-
-        // Ajustar el scroll según el tamaño de la pantalla
-        window.scrollTo({
-          top: element.offsetTop + offsetValue,
-          behavior: 'smooth' // Puedes cambiar a 'auto' para desplazamiento instantáneo
-        });
-      }
-    }
+  var swiper = new Swiper(".slider-content-new", {
+    slidesPerView: 5,
+    spaceBetween: 25,
+    loop: true,
+    centerSlide: true,
+    fade: true,
+    grabCursor: true,
+    navigation: {
+      nextEl: "#slider-new .swiper-button-next",
+      prevEl: "#slider-new .swiper-button-prev",
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      520: {
+        slidesPerView: 2,
+      },
+      950: {
+        slidesPerView: 3,
+      },
+      1100: {
+        slidesPerView: 4,
+      },
+      1100: {
+        slidesPerView: 5,
+      },
+    },
   });
 </script>
-
 {% endblock scripts %}
