@@ -1,6 +1,3 @@
-o
-/* Created by Tivotal */
-
 /* Google Fonts(Poppins) */
 /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"); */
 
@@ -37,9 +34,16 @@ o
   /* border-radius: 25px; */
 }
 
+.slider-content3 {
+  margin: 0 40px;
+  overflow: hidden;
+  /* border-radius: 25px; */
+}
+
 .cardSW {
   /* border-radius: 25px; */
   background-color: #fff;
+  /* background-color: #efefef; */
 }
 
 .image-content,
@@ -189,14 +193,6 @@ o
   width: 100%;
 }
 
-.card-wrapper-new {
-  display: flex;
-}
-
-.card-new {
-  flex: 0 0 auto;
-  width: 100%;
-}
 
 .card-new img {
   max-width: 100%;
@@ -205,7 +201,9 @@ o
 }
 
 .image-content-new {
-  /* Agrega aquí los estilos para .image-content si es necesario */
+  position: relative;
+  row-gap: 5px;
+  padding: 10px;
 }
 
 .overlay-new {
@@ -221,7 +219,17 @@ o
 }
 
 .swiper-navBtn-new {
-  /* Agrega aquí los estilos para los botones de navegación de Swiper si es necesario */
+  color: #252629;
+  transition: all 0.3s ease;
+}
+
+.swiper-navBtn-new:hover {
+  color: #0f681c;
+}
+
+.swiper-navBtn-new::before,
+.swiper-navBtn-new::after {
+  font-size: 35px;
 }
 
 .image-container {
@@ -238,11 +246,11 @@ o
   /* Ajusta la imagen al ancho del contenedor */
   height: auto;
   /* Ajusta la altura automáticamente */
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.1s ease-in-out;
   /* Animación de transición */
 }
 
 .card-image-new :hover .zoom-image {
-  transform: scale(1.1);
+  transform: scale(1.05);
   /* Aplica el zoom */
 }

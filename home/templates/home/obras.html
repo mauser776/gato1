@@ -37,12 +37,12 @@ Obras
     <div class="col-md-9 d-flex align-items-center">
       <div class="position-relative slider-container-new">
         <div class="slider-content-new swiper carru slider" id="slider-new">
-          <div class="card-wrapper-new swiper-wrapper">
-            <!-- Contenido del slider 1 -->
+          <div class="card-wrapper swiper-wrapper">
+            <!-- Contenido del slider obras -->
             {% for cuadro in coleccion.coleccionX.all %}
-            <div class="card-new swiper-slide">
+            <div class="cardSW swiper-slide">
               <div class="image-content-new">
-                <span class="overlay-new"></span>
+                <span class="overlay"></span>
                 <div class="card-image-new">
                   <a href="{% url 'home:cuadro-view' cuadro.id %}">
                     <img src="{{ cuadro.imagen1.url }}" class="zoom-image" />
