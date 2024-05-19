@@ -49,14 +49,19 @@ html body {
 
 #edit-icon {
     color: white;
+    text-decoration: none;
     /* Color predeterminado de Instagram */
 }
 
 /* Cambiar el color de los iconos al hacer hover */
 #edit-icon:hover {
     color: #e66712;
+
     /* Cambiar el color al hacer hover (en este caso, color de Instagram) */
 }
+
+
+
 
 .posicionar {
     padding: 20px;
@@ -81,7 +86,6 @@ html body {
     display: inline-block;
     /* Asegura que el elemento se comporte como un elemento en línea */
 }
-
 
 .rounded-image {
     border-radius: 10px;

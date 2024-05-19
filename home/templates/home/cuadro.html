@@ -6,7 +6,7 @@
 <nav class="navbar navbar-expand-lg bg-body pb-0 pt-1">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'home:obras-view' %}"><i class="bi bi-chevron-compact-left"></i>{{ galeria }}
-      Andrés Honorato | {{ cuadro.coleccion }} | {{ cuadro.nombre }}</a>
+      {{ cuadro.nombre }}</a>
   </div>
 </nav>
 <div class="container mt-3 mb-5" id="{{ cuadro.id }}">
@@ -123,11 +123,10 @@
 
 <!-- Modal for full-size image -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-fullscreen d-flex justify-content-center align-items-center"
-    data-bs-dismiss="modal">
-    <div class="modal-content" style="background-color: transparent; border: none;">
-      <div class="modal-body d-flex justify-content-center align-items-center" style="height: 100%;">
-        <img id="modalImage" src="" class="d-block w-100 mx-auto" style="cursor: zoom-out;" data-bs-dismiss="modal">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img id="modalImage" src="" class="d-block w-100" alt="">
       </div>
     </div>
   </div>
