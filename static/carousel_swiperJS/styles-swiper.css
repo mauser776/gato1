@@ -42,8 +42,8 @@
 
 .cardSW {
   /* border-radius: 25px; */
-  background-color: #fff;
-  /* background-color: #efefef; */
+  /* background-color: #fff; */
+  background-color: #efefef;
 }
 
 .image-content,
@@ -204,19 +204,8 @@
 .image-content-new {
   position: relative;
   row-gap: 5px;
-  padding: 10px;
-}
-
-.overlay-new {
-  /* Agrega aquí los estilos para .overlay si es necesario */
-}
-
-.card-image-new {
-  /* Agrega aquí los estilos para .card-image si es necesario */
-}
-
-.hover-image-new {
-  /* Agrega aquí los estilos para .hover-image si es necesario */
+  border: none;
+  /* Elimina cualquier borde */
 }
 
 .swiper-navBtn-new {

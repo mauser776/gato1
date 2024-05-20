@@ -189,15 +189,15 @@
         </div>
         <div class="cardSW-content">
           <h3 class="nameSW text-lg">{{ cuadro.nombre }}</h3>
-          <p class="descriptionSW mb-1">{{ cuadro.coleccion }}</p>
-          <p class="descriptionSW mb-1">{{ cuadro.tecnica }}</p>
-          {% if cuadro.cuadros_disponibles %}
+          <p class="descriptionSW mb-3">{{ cuadro.coleccion }}</p>
+          <!-- <p class="descriptionSW mb-1">{{ cuadro.tecnica }}</p> -->
+          <!-- {% if cuadro.cuadros_disponibles %}
           <p class="descriptionSW mb-2">
             Disponibilidad: {{ cuadro.cuadros_disponibles }} de {{ cuadro.cantidad_inicial }}
           </p>
           {% else %}
           <p class="descriptionSW mb-2">&nbsp;</p>
-          {% endif %}
+          {% endif %} -->
           <a href="{% url 'home:cuadro-view' cuadro.id %}" class="btn btn-dark">Ver</a>
           <!-- <a href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}&c_id={{ cuadro.id }}#{{cuadro.id}}"
             class="btn btn-dark">Ver</a> -->

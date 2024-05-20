@@ -13,7 +13,7 @@ Obras
   </div>
 </nav>
 
-<img src="{% static 'ejemplos/banner2.png' %}" class="banner1-new" alt="...">
+<img src="{% static 'ejemplos/banner1.png' %}" class="banner1-new">
 
 <nav class="navbar navbar-expand-lg bg-body py-0">
   <div class="container-fluid">
@@ -23,11 +23,12 @@ Obras
 
 <div class="container posicionar-new" id="coleccion-new">
   {% for coleccion in colecciones %}
+  <br>
   <div class="row">
     <div class="col-md-3 d-flex flex-column justify-content-center">
       <div>
         <span>Colección</span>
-        <h3>{{ coleccion.nombre }}</h3>
+        <h4>{{ coleccion.nombre }}</h4>
         <p style="font-size: 14px !important;">{{ coleccion.descripcion|linebreaksbr }}</p>
         <a href="{% url 'home:galerias-view' %}?galeria={{ coleccion.nombre }}" class="btn btn-dark mb-4">Ver
           colección</a>

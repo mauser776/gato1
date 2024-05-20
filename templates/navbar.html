@@ -1,50 +1,33 @@
 <nav class="navbar fixed-top navbar-expand-lg bg-dark" data-bs-theme="dark">
-  <div class=" container-fluid">
-    {% if request.resolver_match.url_name == 'home-view' %}
-    <a class="navbar-brand" id="brand1" style="opacity: 0; pointer-events: none; cursor: default;" href="#top">
-      AH
-    </a>
-    {% elif request.resolver_match.url_name == 'galerias-view' %}
-
-    <a class="navbar-brand" id="brand1" style="opacity: 0; pointer-events: none; cursor: default;" data-url="">
-      AH | Obras | {{galeria}}
+  <div class="container-fluid">
+    <a class="navbar-brand" id="brand1" href="{% url 'home:home-view' %}"
+      data-url-name="{{ request.resolver_match.url_name }}"
+      data-galeria="{% if request.resolver_match.url_name == 'galerias-view' %}{{ galeria }}{% endif %}"
+      data-cuadro="{% if request.resolver_match.url_name == 'cuadro-view' %}{{ cuadro.nombre }}{% endif %}">
+      Andrés Honorato
     </a>
 
-    {% else %}
-    <a class="navbar-brand" id="brand1" href="{% url 'home:home-view'%}"
-      style="opacity: 0; pointer-events: none; cursor: default;" data-url="">
 
-      {% if request.resolver_match.url_name == 'obras-view' %}AH | OBRAS{% endif %}
-      {% if request.resolver_match.url_name == 'contacto-view' %}AH | CONTACTO {% endif %}
-      {% if request.resolver_match.url_name == 'sobre_mi-view' %}AH | SOBRE MÍ {% endif %}
-      {% if request.resolver_match.url_name == 'cuadro-view' %}AH | {{cuadro.nombre}} {% endif %}
+    <!-- {% if request.resolver_match.url_name == 'home-view' %}Andrés Honorato {% endif %}
+    {% if request.resolver_match.url_name == 'galerias-view' %}AH | {{galeria}} {% endif %}
+    {% if request.resolver_match.url_name == 'obras-view' %}AH | Obras {% endif %}
+    {% if request.resolver_match.url_name == 'contacto-view' %}AH | CONTACTO {% endif %}
+    {% if request.resolver_match.url_name == 'sobre_mi-view' %}AH | SOBRE MÍ {% endif %}
+    {% if request.resolver_match.url_name == 'cuadro-view' %}AH | {{cuadro.nombre}} {% endif %} -->
 
-    </a>
-    {% endif %}
+
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ms-auto">
-        <!-- <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.url_name == 'home-view' %} active {% endif %}"
-            href="{% url 'home:home-view' %}">INICIO</a>
-        </li> -->
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'obras-view' %} active {% endif %}"
             href="{% url 'home:obras-view' %}">OBRAS</a>
         </li>
-        <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{% url 'home:obras-view' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  OBRAS
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'home:obras-view' %}">Arte Vectorial</a></li>
-                  <li><a class="dropdown-item" href="{% url 'home:obras-view' %}">Collage Digital</a></li>
-                  <li><a class="dropdown-item" href="{% url 'home:obras-view' %}">Dibujos</a></li>
-                </ul>
-              </li> -->
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'sobre_mi-view' %} active {% endif %}"
             href="{% url 'home:sobre_mi-view' %}">SOBRE MÍ</a>
@@ -60,138 +43,42 @@
 <br>
 <br>
 
-
-
-
-
-
-
-
-
-
 {% block scripts %}
-{% if request.resolver_match.url_name == 'home-view' %}
 <script>
-  // Get a reference to the text element
-  const textElement = document.getElementById('brand1');
+  document.addEventListener('DOMContentLoaded', function () {
+    const brandElement = document.getElementById('brand1');
+    const urlName = brandElement.getAttribute('data-url-name');
+    const galeria = brandElement.getAttribute('data-galeria');
+    const cuadro = brandElement.getAttribute('data-cuadro');
 
-  // Initialize variables
-  let targetOpacity = 0; // The target opacity to reach
-  let currentOpacity = 0; // The current opacity
-  const easing = 0.1; // Adjust this value for the desired smoothness
+    const getTitle = () => {
+      switch (urlName) {
+        case 'home-view':
+          return 'AH | Obras';
+        case 'galerias-view':
+          return `AH | ${galeria}`;
+        case 'obras-view':
+          return 'AH | Obras';
+        case 'contacto-view':
+          return 'AH | Contacto';
+        case 'sobre_mi-view':
+          return 'AH | Sobre mí';
+        case 'cuadro-view':
+          return `AH | ${cuadro}`;
+        default:
+          return 'Andrés Honorato';
+      }
+    };
 
-  // Add a scroll event listener to the window
-  window.addEventListener('scroll', () => {
-    // Calculate the scroll position
-    const scrollY = window.scrollY;
+    const newText = getTitle();
 
-    // Calculate the target opacity based on scroll position
-    targetOpacity = scrollY === 0 ? 0 : 1;
-
-    // Call the update function to animate opacity and update the link
-    updateOpacityAndLink();
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 25) {
+        brandElement.innerHTML = newText;
+      } else {
+        brandElement.innerHTML = 'Andrés Honorato';
+      }
+    });
   });
-
-  // Update function using requestAnimationFrame for smoother animation
-  function updateOpacityAndLink() {
-    // Calculate the difference between the target and current opacity
-    const opacityDiff = targetOpacity - currentOpacity;
-
-    // Calculate the new opacity with easing
-    currentOpacity += opacityDiff * easing;
-
-    // Apply the opacity to the text element
-    textElement.style.opacity = currentOpacity.toFixed(2); // Limit the opacity to two decimal places
-
-    // Set the pointer-events and cursor properties based on the current opacity
-    if (currentOpacity > 0) {
-      textElement.style.pointerEvents = 'auto'; // Activar eventos del mouse cuando la opacidad es mayor que cero
-      textElement.style.cursor = 'pointer'; // Cambiar el cursor cuando la opacidad es mayor que cero
-      textElement.href = "#top"; // Redirigir a la página anterior cuando esté activo
-    } else {
-      textElement.style.pointerEvents = 'none'; // Desactivar eventos del mouse cuando la opacidad es cero
-      textElement.style.cursor = 'default'; // Restaurar el cursor predeterminado cuando la opacidad es cero
-      textElement.href = "#top";
-    }
-
-    // Ocultar el enlace cuando se llega al principio de la página
-    if (scrollY === 0) {
-      textElement.style.display = 'none';
-    } else {
-      textElement.style.display = 'block';
-    }
-
-    // Continue animating until the opacity is close to the target
-    if (Math.abs(opacityDiff) > 0.001) {
-      requestAnimationFrame(updateOpacityAndLink);
-    }
-  }
-
-  // Initial call to start the animation
-  updateOpacityAndLink();
 </script>
-
-{% else %}
-
-<script>
-  // Get a reference to the text element
-  const textElement2 = document.getElementById('brand1');
-
-  // Initialize variables
-  let targetOpacity2 = 0; // The target opacity to reach
-  let currentOpacity2 = 0; // The current opacity
-  const easing2 = 0.1; // Adjust this value for the desired smoothness
-
-  // Add a scroll event listener to the window
-  window.addEventListener('scroll', () => {
-    // Calculate the scroll position
-    const scrollY = window.scrollY;
-
-    // Calculate the target opacity based on scroll position
-    targetOpacity2 = scrollY === 0 ? 0 : 1;
-
-    // Call the update function to animate opacity and update the link
-    updateOpacityAndLink();
-  });
-
-  // Update function using requestAnimationFrame for smoother animation
-  function updateOpacityAndLink() {
-    // Calculate the difference between the target and current opacity
-    const opacityDiff2 = targetOpacity2 - currentOpacity2;
-
-    // Calculate the new opacity with easing
-    currentOpacity2 += opacityDiff2 * easing2;
-
-    // Apply the opacity to the text element
-    textElement2.style.opacity = currentOpacity2.toFixed(2); // Limit the opacity to two decimal places
-
-    // Set the pointer-events and cursor properties based on the current opacity
-    // if (currentOpacity2 > 0) {
-    //   textElement2.style.pointerEvents = 'auto'; // Activar eventos del mouse cuando la opacidad es mayor que cero
-    //   textElement2.style.cursor = 'pointer'; // Cambiar el cursor cuando la opacidad es mayor que cero
-    //   textElement2.href = textElement2.getAttribute('data-url'); // Redirigir a la página anterior cuando esté activo
-    // } else {
-    //   textElement2.style.pointerEvents = 'none'; // Desactivar eventos del mouse cuando la opacidad es cero
-    //   textElement2.style.cursor = 'default'; // Restaurar el cursor predeterminado cuando la opacidad es cero
-    //   textElement2.href = "{% url 'home:home-view'%}";
-    // }
-
-    // Ocultar el enlace cuando se llega al principio de la página
-    if (scrollY === 0) {
-      textElement2.style.display = 'none';
-    } else {
-      textElement2.style.display = 'block';
-    }
-
-    // Continue animating until the opacity is close to the target
-    if (Math.abs(opacityDiff2) > 0.001) {
-      requestAnimationFrame(updateOpacityAndLink);
-    }
-  }
-
-  // Initial call to start the animation
-  updateOpacityAndLink();
-</script>
-
-{% endif %}
 {% endblock scripts %}

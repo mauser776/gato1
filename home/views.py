@@ -40,20 +40,6 @@ def obras_view(request):
 
     return render(request, 'home/obras.html', context)
 
-    # context = {
-    #     'cuadros_por_tecnica': cuadros_por_tecnica,
-    #     'cuadros_por_coleccion': cuadros_por_coleccion,
-    # }
-#
-
-
-def contacto_view(request):
-    return render(request, 'home/contacto.html')
-
-
-def sobre_mi_view(request):
-    return render(request, 'home/sobre_mi.html')
-
 
 def galerias_view(request):
     galeria = request.GET.get('galeria')
@@ -104,3 +90,11 @@ def cuadro_view(request, id):
     }
 
     return render(request, 'home/cuadro.html', context)
+
+
+def contacto_view(request):
+    return render(request, 'home/contacto.html')
+
+
+def sobre_mi_view(request):
+    return render(request, 'home/sobre_mi.html')
