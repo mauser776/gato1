@@ -126,7 +126,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-body">
-        <img id="modalImage" src="" class="d-block w-100" alt="">
+        <img id="modalImage" src="" class="d-block w-100" data-bs-dismiss="modal" style="cursor: zoom-out;">
       </div>
     </div>
   </div>
@@ -183,8 +183,7 @@
           <span class="overlay"></span>
           <div class="cardSW-image">
             <a href="{% url 'home:cuadro-view' cuadro.id %}">
-              <img src="{{ cuadro.imagen1.url }}" alt="" {% if cuadro.imagen2 %} data-imagen2="{{ cuadro.imagen2.url }}"
-                class="hover-image" {% endif %} />
+              <img src="{{ cuadro.imagen1.url }}" />
             </a>
           </div>
         </div>
