@@ -3,12 +3,18 @@
 {% block title %}{{ cuadro.nombre }}{% endblock title %}
 
 {% block content %}
+
+<div id="loader-overlay" class="loader-overlay">
+  <div class="loader"></div>
+</div>
+
 <nav class="navbar navbar-expand-lg bg-body pb-0 pt-1">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'home:obras-view' %}"><i class="bi bi-chevron-compact-left"></i>{{ galeria }}
       {{ cuadro.nombre }}</a>
   </div>
 </nav>
+
 <div class="container mt-3 mb-5" id="{{ cuadro.id }}">
   <div class="row">
     <div class="col-md-8">
@@ -219,6 +225,23 @@
 
 {% block scripts %}
 <script>
+
+  // Mostrar loader al cargar la página
+  document.addEventListener("DOMContentLoaded", function () {
+    var loaderOverlay = document.getElementById('loader-overlay');
+    var body = document.body;
+    body.style.overflow = 'hidden'; // Desactivar el desplazamiento
+
+    setTimeout(function () {
+      loaderOverlay.style.display = 'none';
+      body.style.overflow = ''; // Reactivar el desplazamiento
+      var sliderContainer = document.getElementById('coleccion-new');
+      sliderContainer.style.visibility = 'visible'; // Cambiar la visibilidad del contenedor principal del slider a 'visible'
+    }, 2000); // Ocultar después de 4 segundos (4000 milisegundos)
+  });
+
+
+
   var swiper = new Swiper(".slider-content3", {
     slidesPerView: 5,
     spaceBetween: 25,

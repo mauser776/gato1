@@ -7,6 +7,10 @@ Obras
 
 {% block content %}
 
+<div id="loader-overlay" class="loader-overlay">
+  <div class="loader"></div>
+</div>
+
 <nav class="navbar navbar-expand-lg bg-body py-0">
   <div class="container-fluid">
     <a class="navbar-brand mx-auto spacer-new"></a>
@@ -21,7 +25,8 @@ Obras
   </div>
 </nav>
 
-<div class="container posicionar-new" id="coleccion-new">
+<div class="container posicionar-new" id="coleccion-new" style="visibility:hidden;">
+  <!-- Oculta el contenedor principal del slider -->
   {% for coleccion in colecciones %}
   <br>
   <div class="row">
@@ -47,6 +52,7 @@ Obras
                 <div class="card-image-new">
                   <a href="{% url 'home:cuadro-view' cuadro.id %}">
                     <img src="{{ cuadro.imagen1.url }}" class="zoom-image" />
+                    <!-- Elimina la clase 'hidden' y la propiedad 'visibility:hidden;' -->
                   </a>
                 </div>
               </div>
@@ -61,6 +67,7 @@ Obras
       </div>
     </div>
   </div>
+  <br>
 
   <nav class="navbar navbar-expand-lg bg-body py-0">
     <div class="container-fluid position-relative p-0">
@@ -69,12 +76,25 @@ Obras
   </nav>
   {% endfor %}
 </div>
-<br>
+
+<img src="{% static 'ejemplos/banner2.png' %}" class="banner1-new">
 
 {% endblock content %}
 
 {% block scripts %}
 <script>
+  // Mostrar loader al cargar la página
+  document.addEventListener("DOMContentLoaded", function () {
+    var loaderOverlay = document.getElementById('loader-overlay');
+    var sliderContainer = document.getElementById('coleccion-new');
+    disableScroll(); // Deshabilitar el scroll de la página
+    setTimeout(function () {
+      loaderOverlay.style.display = 'none';
+      sliderContainer.style.visibility = 'visible'; // Cambiar la visibilidad del contenedor principal del slider a 'visible'
+      enableScroll(); // Volver a habilitar el scroll de la página
+    }, 3000); // Ocultar después de 3 segundos (3000 milisegundos)
+  });
+
   var swiper = new Swiper(".slider-content-new", {
     slidesPerView: 3,
     spaceBetween: 25,
@@ -96,7 +116,19 @@ Obras
       950: {
         slidesPerView: 3,
       },
-    },
+    }
   });
+
+  // Función para deshabilitar el scroll de la página
+  function disableScroll() {
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  // Función para volver a habilitar el scroll de la página
+  function enableScroll() {
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+  }
 </script>
 {% endblock scripts %}
