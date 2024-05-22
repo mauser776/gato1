@@ -24,7 +24,7 @@ def home_view(request):
         'lista_cuadros': lista_cuadros,
     }
 
-    return render(request, 'home/home.html', context)
+    return render(request, 'home/obras.html', context)
 
     # return render(request, 'home/home.html', context)
 
