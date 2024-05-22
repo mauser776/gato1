@@ -47,9 +47,9 @@ Obras
             <!-- Contenido del slider obras -->
             {% for cuadro in coleccion.coleccionX.all %}
             <div class="cardSW swiper-slide">
-              <div class="image-content-new">
+              <div class="image-content">
                 <span class="overlay"></span>
-                <div class="card-image-new">
+                <div class="cardSW-image-obras">
                   <a href="{% url 'home:cuadro-view' cuadro.id %}">
                     <img src="{{ cuadro.imagen1.url }}" class="zoom-image" />
                     <!-- Elimina la clase 'hidden' y la propiedad 'visibility:hidden;' -->
@@ -116,7 +116,13 @@ Obras
       950: {
         slidesPerView: 3,
       },
-    }
+      // 1100: {
+      //   slidesPerView: 4,
+      // },
+      // 1100: {
+      //   slidesPerView: 5,
+      // },
+    },
   });
 
   // Función para deshabilitar el scroll de la página

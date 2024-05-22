@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Coleccion, Cuadro, Tecnica
 from django.db.models import Q
+import random
 
 
 # Create your views here.
@@ -23,7 +24,7 @@ def home_view(request):
         'lista_cuadros': lista_cuadros,
     }
 
-    return render(request, 'home/obras.html', context)
+    return render(request, 'home/home.html', context)
 
     # return render(request, 'home/home.html', context)
 
@@ -67,21 +68,25 @@ def galerias_view(request):
 
 def cuadro_view(request, id):
     cuadro = Cuadro.objects.get(id=id)
-
     cuadros = Cuadro.objects.all()
-    lista_cuadros = []
-    for x in cuadros:
-        lista_cuadros.append(x)
 
-    lista_cuadros.reverse()
+# Random
+    lista_cuadros = list(cuadros)  # Convertir el queryset a una lista
+    random.shuffle(lista_cuadros)  # Aleatorizar la lista
 
-    # cuadro_imagenes = []
-    # lista_prueba = [cuadro.imagen1, cuadro.imagen2,
-    #                 cuadro.imagen3, cuadro.imagen4]
+# Mas nuevo
+    # lista_cuadros = []
+    # for x in cuadros:
+    #     lista_cuadros.append(x)
+    # lista_cuadros.reverse()
 
-    # for imagen in lista_prueba:
-    #     if imagen:
-    #         cuadro_imagenes.append(imagen)
+# cuadro_imagenes = []
+# lista_prueba = [cuadro.imagen1, cuadro.imagen2,
+#                 cuadro.imagen3, cuadro.imagen4]
+
+# for imagen in lista_prueba:
+#     if imagen:
+#         cuadro_imagenes.append(imagen)
 
     context = {
         'cuadro': cuadro,

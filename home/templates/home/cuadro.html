@@ -153,11 +153,11 @@
       <!-- Contenido del slider coleccion -->
       {% for cuadro in cuadro.coleccion.coleccionX.all %}
       <div class="cardSW swiper-slide">
-        <div class="image-content-new">
+        <div class="image-content">
           <span class="overlay"></span>
-          <div class="card-image-new">
+          <div class="cardSW-image-cuadros">
             <a href="{% url 'home:cuadro-view' cuadro.id %}">
-              <img src="{{ cuadro.imagen1.url }}" class="zoom-image" />
+              <img src="{{ cuadro.imagen1.url }}" />
             </a>
           </div>
         </div>

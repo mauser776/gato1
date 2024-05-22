@@ -2,6 +2,10 @@ html body {
     background-color: #efefef;
 }
 
+/* body {
+    font-family: 'Poetsen One', serif;
+} */
+
 .carousel-item img {
     height: 200px;
     width: 100%;
@@ -23,7 +27,6 @@ html body {
     /* Escala la imagen para que llene el espacio sin distorsión */
 }
 
-
 .centro-y {
     display: flex;
     align-items: center;
@@ -38,13 +41,6 @@ html body {
     margin: 0 auto;
 
 }
-
-/* .navbar-brand i {
-    color: white;}
-
-
-.navbar-brand:hover i {
-    color: #ffcc00;} */
 
 
 #edit-icon {
@@ -93,7 +89,6 @@ html body {
 .hidden {
     display: none;
 }
-
 
 
 .loader-overlay {
