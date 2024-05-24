@@ -84,3 +84,21 @@ class Cuadro(models.Model):
 
     def get_coleccion(self):
         return self.coleccion_set.all()
+
+    @property
+    def precio_punto_sin(self):
+        if self.precio_sin is not None:
+            coma = f"{self.precio_sin:,}"
+            punto = coma.replace(',', '.')
+            return punto
+        else:
+            return "Pendiente"
+
+    @property
+    def precio_punto_con(self):
+        if self.precio_con is not None:
+            coma = f"{self.precio_con:,}"
+            punto = coma.replace(',', '.')
+            return punto
+        else:
+            return "Pendiente"

@@ -1,6 +1,7 @@
 /* Google Fonts(Poppins) */
 /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"); */
 
+/* Estilos generales */
 /* * {
   margin: 0;
   padding: 0;
@@ -8,6 +9,7 @@
   font-family: "Poppins", sans-serif;
 } */
 
+/* Estilos del slider */
 .carru {
   min-height: 25vh;
   display: flex;
@@ -16,34 +18,19 @@
   background-color: #efefef;
 }
 
-.slider-containerSW {
+.slider-containerSW,
+.slider-content,
+.slider-content2,
+.slider-content3 {
   max-width: 1500px;
   width: 100%;
   padding: 20px 0;
-}
-
-.slider-content {
-  margin: 0 40px;
-  overflow: hidden;
-  /* border-radius: 25px; */
-}
-
-.slider-content2 {
-  margin: 0 40px;
-  overflow: hidden;
-  /* border-radius: 25px; */
-}
-
-.slider-content3 {
-  margin: 0 40px;
-  overflow: hidden;
-  /* border-radius: 25px; */
+  border-radius: 25px;
 }
 
 .cardSW {
+  background-color: #ffffff00;
   /* border-radius: 25px; */
-  /* background-color: #fff; */
-  background-color: #efefef;
 }
 
 .image-content,
@@ -70,7 +57,6 @@
   left: 0;
 } */
 
-
 .cardSW-image {
   position: relative;
   height: 200px;
@@ -78,12 +64,10 @@
   background-color: #ffffff00;
   padding: 3px;
   transition: transform 0.3s ease;
-  /* Agrega una transición suave */
 }
 
 .cardSW-image:hover {
   transform: scale(1.05);
-  /* Aplica el zoom al hacer hover */
 }
 
 .cardSW-image img {
@@ -93,26 +77,8 @@
   transform: translate(-50%, -50%);
   max-width: 100%;
   max-height: 100%;
+  /* border-radius: 10px; */
 }
-
-/* .cardSW-image {
-  position: relative;
-  height: 200px;
-  width: 200px;
-  background-color: #fff;
-   border-radius: 50%;
-padding: 3px;
-} */
-
-
-/* .cardSW-image img {
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-  cover si quiero todas del mismo porte 
-  object-fit: cover;
-  border: 4px solid #4070f4;
-} */
 
 .nameSW {
   font-size: 15px;
@@ -192,13 +158,7 @@ padding: 3px;
   }
 }
 
-
-
-
-
-/* Nuevo slider 3  */
-
-
+/* Nuevo slider */
 .slider-container-new {
   width: 100%;
   max-width: 100%;
@@ -210,17 +170,19 @@ padding: 3px;
   width: 100%;
 }
 
-
 .card-new img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-
 .image-content-new {
   position: relative;
   row-gap: 5px;
+  border-radius: 10px;
+  /* Asegurarse de que las esquinas sean redondeadas */
+  overflow: hidden;
+  /* Agregar borde redondeado de 10px */
   border: none;
   /* Elimina cualquier borde */
 }
@@ -253,11 +215,11 @@ padding: 3px;
   /* Ajusta la imagen al ancho del contenedor */
   height: auto;
   /* Ajusta la altura automáticamente */
-  transition: transform 0.1s ease-in-out;
+  transition: transform 0.3s ease;
   /* Animación de transición */
 }
 
 .card-image-new :hover .zoom-image {
   transform: scale(1.05);
-  /* Aplica el zoom */
+
 }

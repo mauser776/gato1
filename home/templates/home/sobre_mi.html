@@ -5,92 +5,65 @@
 Sobre-mí
 {% endblock title %}
 
-
-
 {% block content %}
 <nav class="navbar navbar-expand-lg bg-body pb-0 pt-1">
   <div class="container-fluid">
-    <a class="navbar-brand" href="">
-      Sobre mí</a>
+    <a class="navbar-brand" href="">Sobre mí</a>
   </div>
 </nav>
-
-
 
 <div class="container-fluid text-light bg-dark">
   <div class="row">
     <!-- Primera columna -->
-    <div class="col-md-6">
-      <!-- Primera fila -->
-      <!-- <div class="row">
-        <div class="col-md-12 ps-3 mt-3">
-          <h3>Andrés</h3>
-          <h3>Honorato</h3>
+    <div class="col-md-6 d-flex align-items-center">
+      <!-- Carrusel -->
+      <div id="sobremiCarrusel" class="carousel slide w-100" data-bs-ride="carousel">
+        <!-- Indicadores del carrusel -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#sobremiCarrusel" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#sobremiCarrusel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#sobremiCarrusel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-      </div> -->
-
-      <br>
-      <!-- Segunda fila -->
-      <div class="row">
-        <div class="col-md-12 px-0">
-          <!-- Carrusel -->
-          <div id="sobremiCarrusel" class="carousel slide" data-bs-ride="carousel">
-            <!-- Indicadores del carrusel -->
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#sobremiCarrusel" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#sobremiCarrusel" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#sobremiCarrusel" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-            </div>
-            <!-- Imágenes del carrusel -->
-            <div class="carousel-inner">
-              <div class="carousel-item active" data-bs-interval="4000">
-                <img src="{% static 'ejemplos/sobremi1.jpg' %}" class="d-block w-100" alt="">
-              </div>
-              <div class="carousel-item" data-bs-interval="4000">
-                <img src="{% static 'ejemplos/sobremi2.jpg' %}" class="d-block w-100" alt="">
-              </div>
-              <div class="carousel-item" data-bs-interval="4000">
-                <img src="{% static 'ejemplos/contacto1.jpg' %}" class="d-block w-100" alt="">
-              </div>
-            </div>
-            <!-- Controles del carrusel -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#sobremiCarrusel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#sobremiCarrusel" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+        <!-- Imágenes del carrusel -->
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="4000">
+            <img src="{% static 'ejemplos/sobremi1.jpg' %}" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item" data-bs-interval="4000">
+            <img src="{% static 'ejemplos/sobremi2.jpg' %}" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item" data-bs-interval="4000">
+            <img src="{% static 'ejemplos/contacto1.jpg' %}" class="d-block w-100" alt="">
           </div>
         </div>
+        <!-- Controles del carrusel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#sobremiCarrusel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#sobremiCarrusel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
     <!-- Segunda columna -->
-    <div class="col-md-6 mt-3 px-4 d-flex align-items-center">
-      <div>
-        <p>Soy Andrés Honorato, un artista cuyo trabajo se distingue por su versatilidad y su constante exploración en
-          diferentes estilos y técnicas. Nacido con una pasión innata por el arte, he cultivado mi creatividad a lo
-          largo de los años, desarrollando un enfoque único y cambiante en cada una de mis obras. No me limito a un solo
-          estilo, sino que encuentro inspiración en la diversidad del mundo que nos rodea.
-        </p>
-        <p> A través de este arte cambiante, te invito a explorar diferentes emociones, perspectivas y experiencias.
-          Cadas obra es un viaje en sí misma, una expresión de la evolución constante del artista y su búsqueda
-          incesante de
-          nuevas formas de comunicar y conectar con el mundo.</p>
-
-        </p>
+    <div class="col-md-6 mt-3 px-4 d-flex justify-content-center align-items-center">
+      <div class="d-flex flex-column align-items-start">
+        <div>
+          <p>Soy Andrés Honorato, un artista cuyo trabajo se distingue por su versatilidad y su constante exploración en
+            diferentes estilos y técnicas. Nacido con una pasión innata por el arte, he cultivado mi creatividad a lo
+            largo de los años, desarrollando un enfoque único y cambiante en cada una de mis obras. No me limito a un
+            solo estilo, sino que encuentro inspiración en la diversidad del mundo que nos rodea.</p>
+          <p> A través de este arte cambiante, te invito a explorar diferentes emociones, perspectivas y experiencias.
+            Cada obra es un viaje en sí misma, una expresión de la evolución constante del artista y su búsqueda
+            incesante de nuevas formas de comunicar y conectar con el mundo.</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
 
 
 {% endblock content %}

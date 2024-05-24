@@ -6,20 +6,9 @@ html body {
     font-family: 'Poetsen One', serif;
 } */
 
-.carousel-item img {
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
-    /* Escala la imagen para que llene el espacio sin distorsión */
-}
-
-.banner1 {
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
-    /* Escala la imagen para que llene el espacio sin distorsión */
-}
-
+/* .carousel-item, .banner1, .banner1-new tienen el mismo estilo, se pueden combinar */
+.carousel-item img,
+.banner1,
 .banner1-new {
     height: 200px;
     width: 100%;
@@ -39,9 +28,7 @@ html body {
     height: auto;
     display: block;
     margin: 0 auto;
-
 }
-
 
 #edit-icon {
     color: white;
@@ -52,17 +39,10 @@ html body {
 /* Cambiar el color de los iconos al hacer hover */
 #edit-icon:hover {
     color: #e66712;
-
     /* Cambiar el color al hacer hover (en este caso, color de Instagram) */
 }
 
-.posicionar {
-    padding: 20px;
-    /* Espaciado interior para mayor claridad */
-    scroll-margin-top: 50px;
-    /* Altura de la barra de navegación */
-}
-
+.posicionar,
 .posicionar2 {
     padding: 20px;
     /* Espaciado interior para mayor claridad */
@@ -70,7 +50,7 @@ html body {
     /* Altura de la barra de navegación */
 }
 
-/* separador  */
+/* separador */
 .spacer-new {
     min-width: 100px;
     /* Ajusta esto según el espacio que necesites */
@@ -85,11 +65,9 @@ html body {
     /* Ajusta el valor según el grado de redondez deseado */
 }
 
-
 .hidden {
     display: none;
 }
-
 
 .loader-overlay {
     position: fixed;
@@ -123,4 +101,30 @@ html body {
 
 .progress-bar {
     background-color: black;
+}
+
+
+/* Estilo para ajustar la altura de las imágenes del carrusel sobre mi */
+/* #sobremiCarrusel .carousel-item img {
+    height: 300px !important;
+    Ajusta esta altura según lo necesites
+    object-fit: cover;
+} */
+
+
+.cuadro-info {
+    position: sticky;
+    top: 65px;
+    /* Ajusta este valor según tu diseño */
+    height: fit-content;
+    /* Ajusta el alto según tu diseño */
+    overflow-y: auto;
+    /* Añade una barra de desplazamiento vertical si es necesario */
+}
+
+.boton-contacto {
+    border-top-left-radius: 0;
+    /* Elimina el radio de la esquina superior izquierda */
+    border-top-right-radius: 0;
+    /* Elimina el radio de la esquina superior derecha */
 }

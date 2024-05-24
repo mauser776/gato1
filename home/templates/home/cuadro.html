@@ -26,68 +26,69 @@
   </div>
 </nav>
 
-<div class="container mt-3 mb-5" id="{{ cuadro.id }}">
+<div class="container mb-1 p-4 cuadro-imagenes" id="{{ cuadro.id }}">
   <div class="row">
     <div class="col-md-8">
       <div class="row">
         {% if cuadro.imagen1 %}
-        <div class="col-12 mb-3 position-relative">
-          <img src="{{ cuadro.imagen1.url }}" class="d-block w-100 clickable-image rounded-image disable-save"
+        <div class="col-md-12 pb-2 px-22 position-relative">
+          <img src="{{ cuadro.imagen1.url }}" class="d-block w-100 clickable-image rounded-image"
             alt="{{ cuadro.nombre }}" style="cursor: zoom-in;">
         </div>
         {% endif %}
         {% if cuadro.imagen2 %}
-        <div class="col-md-6 mb-3 position-relative">
+        <div class="col-md-6 p-2 position-relative">
           <img src="{{ cuadro.imagen2.url }}" class="d-block w-100 clickable-image rounded-image"
             alt="{{ cuadro.nombre }}" style="cursor: zoom-in;">
         </div>
         {% endif %}
         {% if cuadro.imagen3 %}
-        <div class="col-md-6 mb-3 position-relative">
+        <div class="col-md-6 p-2 position-relative">
           <img src="{{ cuadro.imagen3.url }}" class="d-block w-100 clickable-image rounded-image"
             alt="{{ cuadro.nombre }}" style="cursor: zoom-in;">
         </div>
         {% endif %}
         {% if cuadro.imagen4 %}
-        <div class="col-md-6 mb-3 position-relative">
+        <div class="col-md-6 p-2 position-relative">
           <img src="{{ cuadro.imagen4.url }}" class="d-block w-100 clickable-image rounded-image"
             alt="{{ cuadro.nombre }}" style="cursor: zoom-in;">
         </div>
         {% endif %}
         {% if cuadro.imagen5 %}
-        <div class="col-md-6 mb-3 position-relative">
+        <div class="col-md-6 p-2 position-relative">
           <img src="{{ cuadro.imagen5.url }}" class="d-block w-100 clickable-image rounded-image"
             alt="{{ cuadro.nombre }}" style="cursor: zoom-in;">
         </div>
         {% endif %}
         {% if cuadro.imagen6 %}
-        <div class="col-md-6 mb-3 position-relative">
+        <div class="col-md-6 p-2 position-relative">
           <img src="{{ cuadro.imagen6.url }}" class="d-block w-100 clickable-image rounded-image"
             alt="{{ cuadro.nombre }}" style="cursor: zoom-in;">
         </div>
         {% endif %}
         {% if cuadro.imagen7 %}
-        <div class="col-md-6 mb-3 position-relative">
+        <div class="col-md-6 p-2 position-relative">
           <img src="{{ cuadro.imagen7.url }}" class="d-block w-100 clickable-image rounded-image"
             alt="{{ cuadro.nombre }}" style="cursor: zoom-in;">
         </div>
         {% endif %}
         {% if cuadro.imagen8 %}
-        <div class="col-md-6 mb-3 position-relative">
+        <div class="col-md-6 p-2 position-relative">
           <img src="{{ cuadro.imagen8.url }}" class="d-block w-100 clickable-image rounded-image"
             alt="{{ cuadro.nombre }}" style="cursor: zoom-in;">
         </div>
         {% endif %}
         {% if cuadro.imagen9 %}
-        <div class="col-md-6 mb-3 position-relative">
+        <div class="col-md-6 p-2 position-relative">
           <img src="{{ cuadro.imagen9.url }}" class="d-block w-100 clickable-image rounded-image"
             alt="{{ cuadro.nombre }}" style="cursor: zoom-in;">
         </div>
         {% endif %}
+
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card h-100" style="border-radius: 0;" id="{{ cuadro.id }}">
+    <div class="col-md-4 px-2 cuadro-info">
+      <div class="card h-100" style="border-radius: 10px;" id="{{ cuadro.id }}">
         <div class="card-body">
           <h6 class="card-title mb-2" style="font-size: 24px;">{{ cuadro.nombre }}</h6>
           <a class="card-subtitle text-muted mb-2" href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}"
@@ -95,7 +96,8 @@
             <h6 class="card-subtitle text-muted mb-2" style="font-size: 13px;">{{ cuadro.coleccion }}
             </h6>
           </a>
-          <p class="card-text"> ${{ cuadro.precio_sin }} CLP</p>
+          <p class="card-text"> $ {{ cuadro.precio_punto_sin }} CLP</p>
+          <a href="{% url 'home:contacto-view'%}" class="btn btn-outline-dark mb-3">Contacto</a>
           <p class="card-text">{{ cuadro.descripcion|linebreaksbr }}</p>
           <p class="card-text">Técnica: {{ cuadro.tecnica }}</p>
 
@@ -116,10 +118,10 @@
             <div class="col-12">
               <ul class="list-unstyled">
                 {% if cuadro.precio_sin %}
-                <li>Precio sin marco: ${{ cuadro.precio_sin }} CLP</li>
+                <li>Precio sin marco: $ {{ cuadro.precio_punto_sin}} CLP</li>
                 {% endif %}
                 {% if cuadro.precio_con %}
-                <li>Precio con marco: ${{ cuadro.precio_con }} CLP</li>
+                <li>Precio con marco: $ {{ cuadro.precio_punto_con }} CLP</li>
                 {% endif %}
               </ul>
             </div>
@@ -132,7 +134,7 @@
           {% endif %}
 
         </div>
-        <a href="{% url 'home:contacto-view' %}" class="btn btn-dark" style="border-radius: 0;">Contacto</a>
+        <a href="{% url 'home:contacto-view' %}" class="btn btn-dark boton-contacto">Contacto</a>
       </div>
     </div>
   </div>
@@ -158,8 +160,8 @@
 <br>
 
 
-<div class="slider-content-new swiper carru slider" id="slider-new">
-  <div class="slider-content3">
+<div class="slider-content-new swiper carru slider py-0" id="slider-new">
+  <div class="slider-content3 py-0">
     <div class="card-wrapper swiper-wrapper">
       <!-- Contenido del slider coleccion -->
       {% for cuadro in cuadro.coleccion.coleccionX.all %}
@@ -190,13 +192,13 @@
   </div>
 </nav>
 
-<div class="slider-containerSW swiper carru slider" id="slider01">
+<div class="slider-containerSW swiper carru slider py-0" id="slider01">
   <div class="slider-content">
     <div class="cardSW-wrapper swiper-wrapper">
       <!-- Contenido del slider 1 -->
       {% for cuadro in lista_cuadros|slice:":12" %}
       <div class="cardSW swiper-slide">
-        <div class="image-content">
+        <div class="image-content py-0"> <!-- Aplicar padding igual arriba y abajo a la imagen -->
           <span class="overlay"></span>
           <div class="cardSW-image">
             <a href="{% url 'home:cuadro-view' cuadro.id %}">
@@ -204,20 +206,10 @@
             </a>
           </div>
         </div>
-        <div class="cardSW-content">
-          <h3 class="nameSW text-lg">{{ cuadro.nombre }}</h3>
-          <p class="descriptionSW mb-3">{{ cuadro.coleccion }}</p>
-          <!-- <p class="descriptionSW mb-1">{{ cuadro.tecnica }}</p> -->
-          <!-- {% if cuadro.cuadros_disponibles %}
-          <p class="descriptionSW mb-2">
-            Disponibilidad: {{ cuadro.cuadros_disponibles }} de {{ cuadro.cantidad_inicial }}
-          </p>
-          {% else %}
-          <p class="descriptionSW mb-2">&nbsp;</p>
-          {% endif %} -->
+        <div class="cardSW-content py-0"> <!-- Aplicar padding igual arriba y abajo al contenido del botón -->
+          <h3 class="nameSW text-lg pt-3">{{ cuadro.nombre }}</h3>
+          <p class="descriptionSW">{{ cuadro.coleccion }}</p>
           <a href="{% url 'home:cuadro-view' cuadro.id %}" class="btn btn-dark">Ver</a>
-          <!-- <a href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}&c_id={{ cuadro.id }}#{{cuadro.id}}"
-            class="btn btn-dark">Ver</a> -->
         </div>
       </div>
       {% endfor %}
@@ -228,6 +220,8 @@
   <div class="swiper-button-next swiper-navBtn"></div>
   <div class="swiper-button-prev swiper-navBtn"></div>
 </div>
+
+
 
 
 
