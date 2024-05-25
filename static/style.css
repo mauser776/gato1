@@ -6,6 +6,13 @@ html body {
     font-family: 'Poetsen One', serif;
 } */
 
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1rem;
+        /* Tamaño de fuente más pequeño para pantallas más pequeñas */
+    }
+}
+
 /* .carousel-item, .banner1, .banner1-new tienen el mismo estilo, se pueden combinar */
 .carousel-item img,
 .banner1,
