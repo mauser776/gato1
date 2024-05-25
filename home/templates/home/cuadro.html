@@ -164,13 +164,17 @@
   <div class="slider-content3 py-0">
     <div class="card-wrapper swiper-wrapper">
       <!-- Contenido del slider coleccion -->
-      {% for cuadro in cuadro.coleccion.coleccionX.all %}
+      <!-- % for cuadro in cuadro.coleccion.coleccionX.all % -->
+      {% for cuadro in coleccion_ordenada %}
       <div class="cardSW swiper-slide">
         <div class="image-content-new">
           <span class="overlay"></span>
           <div class="card-image-new">
             <a href="{% url 'home:cuadro-view' cuadro.id %}">
               <img src="{{ cuadro.imagen1.url }}" class="zoom-image" />
+              {% if cuadro.vendido %}
+              <div class="sold-overlay"></div> <!-- Superpone la imagen de vendido si el cuadro está vendido -->
+              {% endif %}
             </a>
           </div>
         </div>
@@ -195,14 +199,17 @@
 <div class="slider-containerSW swiper carru slider py-0" id="slider01">
   <div class="slider-content">
     <div class="cardSW-wrapper swiper-wrapper">
-      <!-- Contenido del slider 1 -->
-      {% for cuadro in lista_cuadros|slice:":12" %}
+      <!-- Contenido del slider random -->
+      {% for cuadro in lista_cuadros|slice:":10" %}
       <div class="cardSW swiper-slide">
         <div class="image-content py-0"> <!-- Aplicar padding igual arriba y abajo a la imagen -->
           <span class="overlay"></span>
           <div class="cardSW-image">
             <a href="{% url 'home:cuadro-view' cuadro.id %}">
               <img src="{{ cuadro.imagen1.url }}" />
+              {% if cuadro.vendido %}
+              <div class="sold-overlay"></div> <!-- Superpone la imagen de vendido si el cuadro está vendido -->
+              {% endif %}
             </a>
           </div>
         </div>

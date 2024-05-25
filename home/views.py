@@ -8,15 +8,18 @@ import random
 
 
 def home_view(request):
+
+    # colecciones = Coleccion.objects.prefetch_related('coleccionX').all()
+    colecciones = Coleccion.objects.prefetch_related(
+        'coleccionX').order_by('orden').all()
+
+    tecnicas = Tecnica.objects.prefetch_related('tecnicaX').all()
+
     cuadros = Cuadro.objects.all()
     lista_cuadros = []
     for x in cuadros:
         lista_cuadros.append(x)
-
     lista_cuadros.reverse()
-
-    colecciones = Coleccion.objects.prefetch_related('coleccionX').all()
-    tecnicas = Tecnica.objects.prefetch_related('tecnicaX').all()
 
     context = {
         'colecciones': colecciones,
@@ -31,7 +34,10 @@ def home_view(request):
 
 def obras_view(request):
 
-    colecciones = Coleccion.objects.prefetch_related('coleccionX').all()
+    # colecciones = Coleccion.objects.prefetch_related('coleccionX').all()
+    colecciones = Coleccion.objects.prefetch_related(
+        'coleccionX').order_by('orden').all()
+
     tecnicas = Tecnica.objects.prefetch_related('tecnicaX').all()
 
     context = {
@@ -70,27 +76,16 @@ def cuadro_view(request, id):
     cuadro = Cuadro.objects.get(id=id)
     cuadros = Cuadro.objects.all()
 
+    coleccion_ordenada = cuadro.coleccion.coleccionX.all().order_by('orden')
+
 # Random
     lista_cuadros = list(cuadros)  # Convertir el queryset a una lista
     random.shuffle(lista_cuadros)  # Aleatorizar la lista
 
-# Mas nuevo
-    # lista_cuadros = []
-    # for x in cuadros:
-    #     lista_cuadros.append(x)
-    # lista_cuadros.reverse()
-
-# cuadro_imagenes = []
-# lista_prueba = [cuadro.imagen1, cuadro.imagen2,
-#                 cuadro.imagen3, cuadro.imagen4]
-
-# for imagen in lista_prueba:
-#     if imagen:
-#         cuadro_imagenes.append(imagen)
-
     context = {
         'cuadro': cuadro,
         'lista_cuadros': lista_cuadros,
+        'coleccion_ordenada': coleccion_ordenada,
         # 'cuadro_imagenes': cuadro_imagenes,
     }
 

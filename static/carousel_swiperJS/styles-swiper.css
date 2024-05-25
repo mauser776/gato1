@@ -77,7 +77,7 @@
   transform: translate(-50%, -50%);
   max-width: 100%;
   max-height: 100%;
-  /* border-radius: 10px; */
+  border-radius: 5px;
 }
 
 .nameSW {
@@ -179,7 +179,7 @@
 .image-content-new {
   position: relative;
   row-gap: 5px;
-  border-radius: 10px;
+  border-radius: 5px;
   /* Asegurarse de que las esquinas sean redondeadas */
   overflow: hidden;
   /* Agregar borde redondeado de 10px */

@@ -112,19 +112,39 @@ html body {
 } */
 
 
-.cuadro-info {
+/* .cuadro-info {
     position: sticky;
     top: 65px;
-    /* Ajusta este valor según tu diseño */
+    Ajusta este valor según tu diseño
     height: fit-content;
-    /* Ajusta el alto según tu diseño */
+    Ajusta el alto según tu diseño
     overflow-y: auto;
-    /* Añade una barra de desplazamiento vertical si es necesario */
-}
+    Añade una barra de desplazamiento vertical si es necesario
+} */
 
 .boton-contacto {
     border-top-left-radius: 0;
     /* Elimina el radio de la esquina superior izquierda */
     border-top-right-radius: 0;
     /* Elimina el radio de la esquina superior derecha */
+}
+
+
+.sold-overlay {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40%;
+    /* Ancho relativo al contenedor */
+    height: 40%;
+    /* Altura relativa al contenedor */
+    max-width: 200px;
+    /* Ancho máximo */
+    max-height: 200px;
+    /* Altura máxima */
+    background-image: url("/static/ejemplos/vendido.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    opacity: 1;
 }

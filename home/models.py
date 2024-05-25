@@ -10,9 +10,14 @@ class Coleccion(models.Model):
     fecha = models.DateField()
     creado = models.DateTimeField(auto_now_add=True)
     actulizado = models.DateTimeField(auto_now=True)
+    orden = models.PositiveIntegerField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.nombre}"
+
+    @property
+    def cantidad_cuadros(self):
+        return self.coleccionX.count()
 
 
 class Tecnica(models.Model):
@@ -45,9 +50,11 @@ class Cuadro(models.Model):
     descuento = models.PositiveIntegerField(blank=True, null=True)
     envio1 = models.PositiveIntegerField(blank=True, null=True)
     envio2 = models.PositiveIntegerField(blank=True, null=True)
+    orden = models.PositiveIntegerField(blank=True, null=True)
+    vendido = models.BooleanField(default=False)
 
-    imagen1 = models.ImageField(upload_to='cuadros', validators=[
-                                FileExtensionValidator(['png', 'jpg', 'jpeg'])])
+    imagen1 = models.ImageField(default='cuadros/en_preparacion.jpg', upload_to='cuadros', validators=[FileExtensionValidator(
+        ['png', 'jpg', 'jpeg'])])
     imagen2 = models.ImageField(upload_to='cuadros', validators=[
                                 FileExtensionValidator(['png', 'jpg', 'jpeg'])], blank=True)
     imagen3 = models.ImageField(upload_to='cuadros', validators=[
@@ -68,7 +75,7 @@ class Cuadro(models.Model):
     actulizado = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.nombre} - {self.coleccion}"
+        return f"{self.nombre}"
 
     def cuadros_disponibles(self):
         if self.cantidad_inicial:

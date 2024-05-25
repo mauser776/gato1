@@ -31,7 +31,7 @@ Obras
   </div>
 </nav>
 
-<div class="posicionar-new px-4" id="coleccion-new" style="visibility:hidden;">
+<div class="posicionar-new px-5" id="coleccion-new" style="visibility:hidden;">
   {% for coleccion in colecciones %}
   <br>
   <div class="row">
@@ -49,13 +49,16 @@ Obras
       <div class="position-relative slider-container-new">
         <div class="slider-content-new swiper carru slider" id="slider-new">
           <div class="card-wrapper swiper-wrapper">
-            {% for cuadro in coleccion.coleccionX.all %}
+            {% for cuadro in coleccion.coleccionX.all|dictsort:"orden" %}
             <div class="cardSW swiper-slide">
               <div class="image-content-new">
                 <span class="overlay"></span>
                 <div class="card-image-new">
                   <a href="{% url 'home:cuadro-view' cuadro.id %}">
                     <img src="{{ cuadro.imagen1.url }}" class="zoom-image" />
+                    {% if cuadro.vendido %}
+                    <div class="sold-overlay"></div> <!-- Superpone la imagen de vendido si el cuadro está vendido -->
+                    {% endif %}
                   </a>
                 </div>
               </div>
@@ -79,6 +82,8 @@ Obras
   </nav>
   {% endfor %}
 </div>
+<br>
+
 
 {% endblock content %}
 
