@@ -10,23 +10,24 @@
 } */
 
 /* Estilos del slider */
-.carru {
+/* .carru {
   min-height: 25vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #efefef;
-}
+} */
 
 .slider-containerSW,
 .slider-content,
-.slider-content2,
 .slider-content3 {
   max-width: 1500px;
   width: 100%;
-  padding: 20px 0;
-  border-radius: 25px;
+  /* padding: 20px 0; */
+  /*border-radius: 25px; */
 }
+
+
 
 .cardSW {
   background-color: #ffffff00;
@@ -66,9 +67,24 @@
   transition: transform 0.3s ease;
 }
 
+
+.cardSW-image-obras {
+  position: relative;
+  height: 250px;
+  width: 250px;
+  background-color: #ffffff00;
+  padding: 3px;
+  transition: transform 0.3s ease;
+}
+
 .cardSW-image:hover {
   transform: scale(1.05);
 }
+
+.cardSW-image-obras:hover {
+  transform: scale(1.05);
+}
+
 
 .cardSW-image img {
   position: absolute;
@@ -77,7 +93,21 @@
   transform: translate(-50%, -50%);
   max-width: 100%;
   max-height: 100%;
-  border-radius: 5px;
+  /* border-radius: 5px; */
+  border: 2px solid black;
+  /* Añade un borde negro de 2 píxeles de grosor */
+}
+
+.cardSW-image-obras img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  /* border-radius: 5px; */
+  border: 2px solid black;
+  /* Añade un borde negro de 2 píxeles de grosor */
 }
 
 .nameSW {
@@ -159,33 +189,6 @@
 }
 
 /* Nuevo slider */
-.slider-container-new {
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  /* Asegura que nada se salga del contenedor */
-}
-
-.slider-content-new {
-  width: 100%;
-}
-
-.card-new img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-.image-content-new {
-  position: relative;
-  row-gap: 5px;
-  border-radius: 5px;
-  /* Asegurarse de que las esquinas sean redondeadas */
-  overflow: hidden;
-  /* Agregar borde redondeado de 10px */
-  border: none;
-  /* Elimina cualquier borde */
-}
 
 .swiper-navBtn-new {
   color: #d6d9df;
@@ -201,25 +204,16 @@
   font-size: 35px;
 }
 
-.image-container {
-  width: 200px;
-  /* Ancho fijo del contenedor */
-  height: 200px;
-  /* Alto fijo del contenedor */
-  overflow: hidden;
-  /* Oculta el contenido que se desborde */
+
+
+.image-content {
+  position: relative;
+  row-gap: 5px;
+  padding: 25px 0;
 }
 
-.zoom-image {
-  width: 100%;
-  /* Ajusta la imagen al ancho del contenedor */
-  height: auto;
-  /* Ajusta la altura automáticamente */
-  transition: transform 0.3s ease;
-  /* Animación de transición */
-}
 
-.card-image-new :hover .zoom-image {
-  transform: scale(1.05);
-
+.slider-content-new .swiper-slide {
+  margin-right: 0px;
+  /* Reducir el margen entre las imágenes */
 }

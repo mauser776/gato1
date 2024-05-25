@@ -152,7 +152,7 @@
 </div>
 
 
-<nav class="navbar navbar-expand-lg bg-body py-0">
+<nav class="navbar navbar-expand-lg bg-body">
   <div class="container-fluid">
     <a class="navbar-brand text-break text-wrap">Colección completa: {{ cuadro.coleccion }}</a>
   </div>
@@ -160,24 +160,27 @@
 <br>
 
 
-<div class="slider-content-new swiper carru slider py-0" id="slider-new">
-  <div class="slider-content3 py-0">
-    <div class="card-wrapper swiper-wrapper">
-      <!-- Contenido del slider coleccion -->
-      <!-- % for cuadro in cuadro.coleccion.coleccionX.all % -->
+<div class="slider-containerSW swiper slider" id="slider-new">
+  <div class="slider-content-new">
+    <div class="cardSW-wrapper swiper-wrapper">
       {% for cuadro in coleccion_ordenada %}
       <div class="cardSW swiper-slide">
-        <div class="image-content-new">
+        <div class="image-content py-0">
           <span class="overlay"></span>
-          <div class="card-image-new">
+          <div class="cardSW-image">
             <a href="{% url 'home:cuadro-view' cuadro.id %}">
-              <img src="{{ cuadro.imagen1.url }}" class="zoom-image" />
+              <img src="{{ cuadro.imagen1.url }}" />
               {% if cuadro.vendido %}
-              <div class="sold-overlay"></div> <!-- Superpone la imagen de vendido si el cuadro está vendido -->
+              <div class="sold-overlay"></div>
               {% endif %}
             </a>
           </div>
         </div>
+
+        <div class="cardSW-content py-0"> <!-- Aplicar padding igual arriba y abajo al contenido del botón -->
+          <h3 class="nameSW text-lg pt-3">{{ cuadro.nombre }}</h3>
+        </div>
+
       </div>
       {% endfor %}
     </div>
@@ -189,14 +192,14 @@
 </div>
 
 <br>
-
-<nav class="navbar navbar-expand-lg bg-body py-0">
+<nav class="navbar navbar-expand-lg bg-body">
   <div class="container-fluid">
-    <a class="navbar-brand text-break text-wrap">Puede que también te gusten</a>
+    <a class="navbar-brand text-break text-wrap">Trabajos relacionados</a>
   </div>
 </nav>
+<br>
 
-<div class="slider-containerSW swiper carru slider py-0" id="slider01">
+<div class="slider-containerSW swiper slider" id="slider01">
   <div class="slider-content">
     <div class="cardSW-wrapper swiper-wrapper">
       <!-- Contenido del slider random -->
@@ -228,7 +231,7 @@
   <div class="swiper-button-prev swiper-navBtn"></div>
 </div>
 
-
+<br>
 
 
 
@@ -271,7 +274,7 @@
   }
 
 
-  var swiper = new Swiper(".slider-content3", {
+  var swiper = new Swiper(".slider-content-new", {
     slidesPerView: 5,
     spaceBetween: 25,
     loop: true,

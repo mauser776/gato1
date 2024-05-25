@@ -46,16 +46,16 @@ Obras
     </div>
 
     <div class="col-md-9 d-flex align-items-center">
-      <div class="position-relative slider-container-new">
-        <div class="slider-content-new swiper carru slider" id="slider-new">
-          <div class="card-wrapper swiper-wrapper">
+      <div class="position-relative slider-containerSW">
+        <div class="slider-content-new swiper slider" id="slider-new">
+          <div class="cardSW-wrapper swiper-wrapper">
             {% for cuadro in coleccion.coleccionX.all|dictsort:"orden" %}
             <div class="cardSW swiper-slide">
-              <div class="image-content-new">
+              <div class="image-content">
                 <span class="overlay"></span>
-                <div class="card-image-new">
+                <div class="cardSW-image-obras">
                   <a href="{% url 'home:cuadro-view' cuadro.id %}">
-                    <img src="{{ cuadro.imagen1.url }}" class="zoom-image" />
+                    <img src="{{ cuadro.imagen1.url }}" />
                     {% if cuadro.vendido %}
                     <div class="sold-overlay"></div> <!-- Superpone la imagen de vendido si el cuadro está vendido -->
                     {% endif %}
@@ -143,7 +143,10 @@ Obras
       },
       950: {
         slidesPerView: 3,
-      }
+      },
+      // 1100: {
+      //   slidesPerView: 4,
+      // },
     },
   });
 </script>

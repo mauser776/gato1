@@ -68,8 +68,10 @@ html body {
 }
 
 .rounded-image {
-    border-radius: 10px;
+    /* border-radius: 10px; */
     /* Ajusta el valor según el grado de redondez deseado */
+    border: 2px solid black;
+    /* Añade un borde negro de 2 píxeles de grosor */
 }
 
 .hidden {
@@ -141,9 +143,9 @@ html body {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    width: 40%;
+    width: 50%;
     /* Ancho relativo al contenedor */
-    height: 40%;
+    height: 50%;
     /* Altura relativa al contenedor */
     max-width: 200px;
     /* Ancho máximo */
