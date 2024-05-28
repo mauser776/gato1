@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, reverse
 from .models import Coleccion, Cuadro, Tecnica
 from django.db.models import Q
 import random
@@ -90,6 +90,12 @@ def cuadro_view(request, id):
     }
 
     return render(request, 'home/cuadro.html', context)
+
+
+def cuadro_detail(request, id):
+    cuadro = Cuadro.objects.get(id=id)
+    procesar_pago_url = reverse('mercadopago:procesar_pago')
+    return render(request, 'home/cuadro_detail.html', {'cuadro': cuadro, 'procesar_pago_url': procesar_pago_url})
 
 
 def contacto_view(request):

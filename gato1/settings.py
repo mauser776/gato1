@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'home',
+    'mercadopago',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 USE_THOUSAND_SEPARATOR = True
+
+
+MERCADOPAGO_ACCESS_TOKEN = 'TEST-3170616615661373-052720-181bdf62f5519da6202f1af81079a94b-499881571'
+MERCADOPAGO_PUBLIC_KEY = 'TEST-a98ab610-51d0-4c51-995e-68454c461b13'

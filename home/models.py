@@ -83,7 +83,7 @@ class Cuadro(models.Model):
             return cuadros_disponibles
 
     def delete(self, *args, **kwargs):
-        for field_name in ['imagen1', 'imagen2', 'imagen3', 'imagen4']:
+        for field_name in ['imagen1', 'imagen2', 'imagen3', 'imagen4', 'imagen5', 'imagen6', 'imagen7', 'imagen8', 'imagen9']:
             image_field = getattr(self, field_name)
             if image_field:
                 image_field.delete()

@@ -26,6 +26,8 @@ admin.site.index_title = ''
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls', namespace='home')),
+    path('mercadopago/', include('mercadopago.urls', namespace='mercadopago')),
+
     re_path(r'^media/(?P<path>.*)$', serve,
             {'document_root': settings.MEDIA_ROOT}),
 
