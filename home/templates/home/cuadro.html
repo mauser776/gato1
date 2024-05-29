@@ -32,7 +32,7 @@
     <div class="col-md-8">
       <div class="row">
         {% if cuadro.imagen1 %}
-        <div class="col-md-12 pb-2 px-22 position-relative">
+        <div class="col-md-12 pb-2 px-2 position-relative">
           <img src="{{ cuadro.imagen1.url }}" class="d-block w-100 clickable-image rounded-image"
             alt="{{ cuadro.nombre }}" style="cursor: zoom-in;">
         </div>
@@ -91,15 +91,32 @@
     <div class="col-md-4 px-2 cuadro-info">
       <div class="card h-100" style="border-radius: 10px;" id="{{ cuadro.id }}">
         <div class="card-body">
-          <h6 class="card-title mb-2" style="font-size: 24px;">{{ cuadro.nombre }}</h6>
-          <a class="card-subtitle text-muted mb-2" href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}"
+
+          <div class="row">
+            <div class="col-8">
+
+              <h6 class="card-title mb-2" style="font-size: 24px;">{{ cuadro.nombre }}</h6>
+
+            </div>
+            <div class="col-4">
+              {% if cuadro.vendido %}
+              <img src="{% static 'ejemplos/vendido.png' %}" class="img-fluid">
+              {% endif %}
+            </div>
+          </div>
+
+
+
+          <a class="card-subtitle text-muted" href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}"
             style="text-decoration: none;">
-            <h6 class="card-subtitle text-muted mb-2" style="font-size: 13px;">{{ cuadro.coleccion }}
+            <h6 class="card-subtitle text-muted mb-3" style="font-size: 14px;">{{ cuadro.coleccion }}
             </h6>
           </a>
           <p class="card-text"> $ {{ cuadro.precio_punto_sin }} CLP</p>
+
           <a href="{% url 'home:contacto-view'%}" class="btn btn-outline-dark mb-3">Contacto</a>
           <p class="card-text">{{ cuadro.descripcion|linebreaksbr }}</p>
+
           <p class="card-text">Técnica: {{ cuadro.tecnica }}</p>
 
           <div class="row">
