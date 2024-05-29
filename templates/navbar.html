@@ -2,14 +2,14 @@
   <div class="container-fluid">
     <a class="navbar-brand" id="brand1" href="{% url 'home:home-view' %}"
       data-url-name="{{ request.resolver_match.url_name }}"
-      data-galeria="{% if request.resolver_match.url_name == 'galerias-view' %}{{ galeria }}{% endif %}"
+      data-coleccion="{% if request.resolver_match.url_name == 'coleccion-view' %}{{ coleccion }}{% endif %}"
       data-cuadro="{% if request.resolver_match.url_name == 'cuadro-view' %}{{ cuadro.nombre }}{% endif %}">
       Andrés Honorato
     </a>
 
 
     <!-- {% if request.resolver_match.url_name == 'home-view' %}Andrés Honorato {% endif %}
-    {% if request.resolver_match.url_name == 'galerias-view' %}AH | {{galeria}} {% endif %}
+    {% if request.resolver_match.url_name == 'coleccion-view' %}AH | {{coleccion}} {% endif %}
     {% if request.resolver_match.url_name == 'obras-view' %}AH | Obras {% endif %}
     {% if request.resolver_match.url_name == 'contacto-view' %}AH | CONTACTO {% endif %}
     {% if request.resolver_match.url_name == 'sobre_mi-view' %}AH | SOBRE MÍ {% endif %}
@@ -48,15 +48,15 @@
   document.addEventListener('DOMContentLoaded', function () {
     const brandElement = document.getElementById('brand1');
     const urlName = brandElement.getAttribute('data-url-name');
-    const galeria = brandElement.getAttribute('data-galeria');
+    const coleccion = brandElement.getAttribute('data-coleccion');
     const cuadro = brandElement.getAttribute('data-cuadro');
 
     const getTitle = () => {
       switch (urlName) {
         case 'home-view':
           return 'AH | Obras';
-        case 'galerias-view':
-          return `AH | ${galeria}`;
+        case 'coleccion-view':
+          return `AH | ${coleccion}`;
         case 'obras-view':
           return 'AH | Obras';
         case 'contacto-view':

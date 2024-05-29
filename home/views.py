@@ -48,16 +48,16 @@ def obras_view(request):
     return render(request, 'home/obras.html', context)
 
 
-def galerias_view(request):
-    galeria = request.GET.get('galeria')
+def coleccion_view(request):
+    coleccion = request.GET.get('coleccion')
 
-    if galeria:
+    if coleccion:
         try:
-            coleccion = Coleccion.objects.get(nombre=galeria)
+            coleccion = Coleccion.objects.get(nombre=coleccion)
             cuadros = Cuadro.objects.filter(coleccion=coleccion)
         except Coleccion.DoesNotExist:
             try:
-                tecnica = Tecnica.objects.get(nombre=galeria)
+                tecnica = Tecnica.objects.get(nombre=coleccion)
                 cuadros = Cuadro.objects.filter(tecnica=tecnica)
             except Tecnica.DoesNotExist:
                 cuadros = Cuadro.objects.none()
@@ -66,10 +66,10 @@ def galerias_view(request):
 
     context = {
         'cuadros': cuadros,
-        'galeria': galeria,
+        'coleccion': coleccion,
     }
 
-    return render(request, 'home/galerias.html', context)
+    return render(request, 'home/coleccion.html', context)
 
 
 def cuadro_view(request, id):

@@ -27,7 +27,7 @@
   </div>
 </nav>
 
-<div class="container mb-1 p-4 cuadro-imagenes" id="{{ cuadro.id }}">
+<div class="container mb-1 p-4" id="{{ cuadro.id }}">
   <div class="row">
     <div class="col-md-8">
       <div class="row">
@@ -85,18 +85,17 @@
             alt="{{ cuadro.nombre }}" style="cursor: zoom-in;">
         </div>
         {% endif %}
-
       </div>
     </div>
+
+
     <div class="col-md-4 px-2 cuadro-info">
       <div class="card h-100" style="border-radius: 10px;" id="{{ cuadro.id }}">
         <div class="card-body">
 
           <div class="row">
             <div class="col-8">
-
               <h6 class="card-title mb-2" style="font-size: 24px;">{{ cuadro.nombre }}</h6>
-
             </div>
             <div class="col-4">
               {% if cuadro.vendido %}
@@ -107,7 +106,7 @@
 
 
 
-          <a class="card-subtitle text-muted" href="{% url 'home:galerias-view' %}?galeria={{ cuadro.coleccion }}"
+          <a class="card-subtitle text-muted" href="{% url 'home:coleccion-view' %}?coleccion={{ cuadro.coleccion }}"
             style="text-decoration: none;">
             <h6 class="card-subtitle text-muted mb-3" style="font-size: 14px;">{{ cuadro.coleccion }}
             </h6>

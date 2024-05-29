@@ -40,7 +40,7 @@ Obras
         <span>Colección</span>
         <h4>{{ coleccion.nombre }}</h4>
         <p style="font-size: 14px !important;">{{ coleccion.descripcion|linebreaksbr }}</p>
-        <a href="{% url 'home:galerias-view' %}?galeria={{ coleccion.nombre }}" class="btn btn-dark mb-4">Ver
+        <a href="{% url 'home:coleccion-view' %}?coleccion={{ coleccion.nombre }}" class="btn btn-dark mb-4">Ver
           colección</a>
       </div>
     </div>
