@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from .models import Coleccion, Cuadro, Tecnica
 from django.db.models import Q
 import random
-
+from django.core.mail import EmailMessage
+from .forms import FormularioContacto
 
 # Create your views here.
 
@@ -99,7 +100,28 @@ def cuadro_detail(request, id):
 
 
 def contacto_view(request):
-    return render(request, 'home/contacto.html')
+    if request.method == 'POST':
+        formulario = FormularioContacto(request.POST)
+        if formulario.is_valid():
+            nombre = formulario.cleaned_data['nombre']
+            correo = formulario.cleaned_data['correo']
+            mensaje = formulario.cleaned_data['mensaje']
+
+            # Crea el correo electrónico
+            email = EmailMessage(
+                subject=f'Mensaje de {nombre}',
+                body=mensaje,
+                from_email=correo,
+                to=['andreshonoratoarte@gmail.com'],
+                headers={'Reply-To': correo}
+            )
+            email.send(fail_silently=False)
+            # Redirige a una página de éxito
+            return render(request, 'home/sobre_mi.html')
+    else:
+        formulario = FormularioContacto()
+
+    return render(request, 'home/contacto.html', {'formulario': formulario})
 
 
 def sobre_mi_view(request):

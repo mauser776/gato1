@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-rz0^le9^39!slin0vxs%8_5v04v*8+%y=zrsy)gjvz^pzw@g(2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = ['mauser776.pythonanywhere.com']
 ALLOWED_HOSTS = [
@@ -145,3 +145,15 @@ USE_THOUSAND_SEPARATOR = True
 
 MERCADOPAGO_ACCESS_TOKEN = 'TEST-3170616615661373-052720-181bdf62f5519da6202f1af81079a94b-499881571'
 MERCADOPAGO_PUBLIC_KEY = 'TEST-a98ab610-51d0-4c51-995e-68454c461b13'
+
+
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# Reemplaza con tu correo de envío
+EMAIL_HOST_USER = 'andreshonoratoarte@gmail.com'
+EMAIL_HOST_PASSWORD = 'uhjc pqgy vszc frbf'  # Reemplaza con tu contraseña
+# EMAIL_HOST_PASSWORD = 'uhjc pqgy vszc frbf'  # Reemplaza con tu contraseña
