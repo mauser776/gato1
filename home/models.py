@@ -109,3 +109,13 @@ class Cuadro(models.Model):
             return punto
         else:
             return "Pendiente"
+
+    @property
+    def precio_con_descuento(self):
+        if self.descuento is not None:
+            precio_con_descuento = self.precio_sin * \
+                (1 - self.descuento * 0.01)
+            precio_con_descuento = int(precio_con_descuento)
+            coma = f"{precio_con_descuento:,}"
+            punto = coma.replace(',', '.')
+            return punto

@@ -121,7 +121,7 @@ def contacto_view(request):
     else:
         formulario = FormularioContacto()
 
-    return render(request, 'home/contacto.html', {'formulario': formulario})
+    return render(request, 'home/contacto_antiguo.html', {'formulario': formulario})
 
 
 def sobre_mi_view(request):

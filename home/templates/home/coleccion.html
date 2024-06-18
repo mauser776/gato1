@@ -67,7 +67,12 @@
             </h6>
           </a>
 
+          {% if cuadro.descuento %}
+          <p class="card-text mb-0" style="text-decoration: line-through;">$ {{ cuadro.precio_punto_sin }} CLP</p>
+          <p class="card-text text-danger"><strong>$ {{ cuadro.precio_con_descuento }} CLP</strong></p>
+          {% else %}
           <p class="card-text"> $ {{ cuadro.precio_punto_sin }} CLP</p>
+          {% endif %}
 
           <a href="{% url 'home:contacto-view'%}" class="btn btn-outline-dark mb-3">Contacto</a>
 
@@ -75,31 +80,30 @@
 
           <p class="card-text">Técnica: {{ cuadro.tecnica }}</p>
 
-          <div class="row">
-            <div class="col-12">
-              <ul class="list-unstyled">
-                {% if cuadro.marco_sin %}
+
+          <div class="col-12">
+            <ul class="list-unstyled">
+              <!-- {% if cuadro.marco_sin %}
                 <li>Dimensiones sin marco: {{ cuadro.marco_sin }}</li>
-                {% endif %}
-                {% if cuadro.marco_con %}
-                <li>Dimensiones con marco: {{ cuadro.marco_con }}</li>
-                {% endif %}
-              </ul>
-            </div>
+                {% endif %} -->
+              {% if cuadro.marco_con %}
+              <li>Dimensiones con marco: {{ cuadro.marco_con }}</li>
+              {% endif %}
+            </ul>
           </div>
 
-          <div class="row">
-            <div class="col-12">
-              <ul class="list-unstyled">
-                {% if cuadro.precio_sin %}
+
+          <div class="col-12">
+            <ul class="list-unstyled">
+              <!-- {% if cuadro.precio_sin %}
                 <li>Precio sin marco: $ {{ cuadro.precio_punto_sin}} CLP</li>
-                {% endif %}
-                {% if cuadro.precio_con %}
-                <li>Precio con marco: $ {{ cuadro.precio_punto_con }} CLP</li>
-                {% endif %}
-              </ul>
-            </div>
+                {% endif %} -->
+              {% if cuadro.precio_con %}
+              <li>Precio con marco: $ {{ cuadro.precio_punto_con }} CLP</li>
+              {% endif %}
+            </ul>
           </div>
+
 
           <p class="card-text">Fecha: {{ cuadro.fecha|date:"Y" }}</p>
 
