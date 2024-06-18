@@ -68,11 +68,13 @@
           </a>
 
           {% if cuadro.descuento %}
-          <p class="card-text mb-0" style="text-decoration: line-through;">$ {{ cuadro.precio_punto_sin }} CLP</p>
-          <p class="card-text text-danger"><strong>$ {{ cuadro.precio_con_descuento }} CLP</strong></p>
+          <p class="card-text text-danger mb-0" style="text-decoration: line-through;">$ {{ cuadro.precio_punto_sin }}
+            CLP</p>
+          <p class="card-text"><strong>$ {{ cuadro.precio_con_descuento }} CLP</strong> (Marco incluido)</p>
           {% else %}
-          <p class="card-text"> $ {{ cuadro.precio_punto_sin }} CLP</p>
+          <p class="card-text"><strong> $ {{ cuadro.precio_punto_sin }} CLP</strong> (Marco incluido)</p>
           {% endif %}
+
 
           <a href="{% url 'home:contacto-view'%}" class="btn btn-outline-dark mb-3">Contacto</a>
 
@@ -93,16 +95,16 @@
           </div>
 
 
-          <div class="col-12">
+          <!-- <div class="col-12">
             <ul class="list-unstyled">
-              <!-- {% if cuadro.precio_sin %}
+              {% if cuadro.precio_sin %}
                 <li>Precio sin marco: $ {{ cuadro.precio_punto_sin}} CLP</li>
-                {% endif %} -->
+                {% endif %}
               {% if cuadro.precio_con %}
               <li>Precio con marco: $ {{ cuadro.precio_punto_con }} CLP</li>
               {% endif %}
             </ul>
-          </div>
+          </div> -->
 
 
           <p class="card-text">Fecha: {{ cuadro.fecha|date:"Y" }}</p>
