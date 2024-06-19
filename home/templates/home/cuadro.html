@@ -114,11 +114,11 @@
 
 
           {% if cuadro.descuento %}
-          <p class="card-text text-danger mb-0" style="text-decoration: line-through;">$ {{ cuadro.precio_punto_sin }}
+          <p class="card-text text-danger mb-0" style="text-decoration: line-through;">$ {{ cuadro.precio_punto_con }}
             CLP</p>
           <p class="card-text"><strong>$ {{ cuadro.precio_con_descuento }} CLP</strong> (Marco incluido)</p>
           {% else %}
-          <p class="card-text"><strong> $ {{ cuadro.precio_punto_sin }} CLP</strong> (Marco incluido)</p>
+          <p class="card-text"><strong>$ {{ cuadro.precio_punto_con }} CLP</strong> (Marco incluido)</p>
           {% endif %}
 
           <a href="{% url 'home:contacto-view'%}" class="btn btn-outline-dark mb-3">Contacto</a>
