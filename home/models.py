@@ -113,7 +113,7 @@ class Cuadro(models.Model):
     @property
     def precio_con_descuento(self):
         if self.descuento is not None:
-            precio_con_descuento = self.precio_sin * \
+            precio_con_descuento = self.precio_con * \
                 (1 - self.descuento * 0.01)
             precio_con_descuento = int(precio_con_descuento)
             coma = f"{precio_con_descuento:,}"
