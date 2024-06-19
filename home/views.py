@@ -80,7 +80,8 @@ def cuadro_view(request, id):
     coleccion_ordenada = cuadro.coleccion.coleccionX.all().order_by('orden')
 
 # Random
-    lista_cuadros = list(cuadros)  # Convertir el queryset a una lista
+    # Convertir el queryset a una lista
+    lista_cuadros = list(cuadros.exclude(id=id))
     random.shuffle(lista_cuadros)  # Aleatorizar la lista
 
     context = {
