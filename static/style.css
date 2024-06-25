@@ -157,3 +157,8 @@ html body {
     background-position: right bottom;
     opacity: 1;
 }
+
+
+.ver-mas-imagenes:hover {
+    color: #646464 !important;
+}

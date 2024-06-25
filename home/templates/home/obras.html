@@ -51,7 +51,7 @@ Obras
           <div class="cardSW-wrapper swiper-wrapper">
             {% for cuadro in coleccion.coleccionX.all|dictsort:"orden" %}
             <div class="cardSW swiper-slide">
-              <div class="image-content">
+              <div class="image-content pb-2">
                 <span class="overlay"></span>
                 <div class="cardSW-image-obras">
                   <a href="{% url 'home:cuadro-view' cuadro.id %}">
@@ -62,6 +62,11 @@ Obras
                   </a>
                 </div>
               </div>
+              <div class="cardSW-content py-0"> <!-- Aplicar padding igual arriba y abajo al contenido del botón -->
+                <h3 class="nameSW text-lg">{{ cuadro.nombre }}</h3>
+              </div>
+
+
             </div>
             {% endfor %}
           </div>

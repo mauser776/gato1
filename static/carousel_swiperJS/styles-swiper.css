@@ -191,12 +191,12 @@
 /* Nuevo slider */
 
 .swiper-navBtn-new {
-  color: #d6d9df;
+  color: #414141;
   transition: all 0.3s ease;
 }
 
 .swiper-navBtn-new:hover {
-  color: #4e4e4e;
+  color: #767676;
 }
 
 .swiper-navBtn-new::before,
