@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}{{ cuadro.nombre }}{% endblock title %}
+
+{% block content %}
+<div id="loader-overlay" class="loader-overlay">
+  <div class="loader">
+    <img src="{% static 'ejemplos/loader_ah.png' %}" alt="Loader Image">
+    <div class="progress">
+      <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+        aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+</div>
+
+<div id="coleccion-new" style="visibility: hidden;"></div>
+
+<nav class="navbar navbar-expand-lg bg-body pb-0 pt-1">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home:obras-view' %}"><i class="bi bi-chevron-compact-left"></i> {{
+      cuadro.nombre }}</a>
+  </div>
+</nav>
+
+<div class="container mb-1 p-4" id="{{ cuadro.id }}">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        {% for i in 1|to:9 %}
+        {% with imagen=cuadro|getattr:'imagen'|add:i %}
+        {% if imagen %}
+        <div class="col-md-6 p-2 position-relative">
+          <img src="{{ imagen.url }}" class="d-block w-100 clickable-image rounded-image" alt="{{ cuadro.nombre }}"
+            style="cursor: zoom-in;">
+        </div>
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="col-md-4 px-2 cuadro-info">
+      <div class="card h-100" style="border-radius: 10px;" id="{{ cuadro.id }}">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-8">
+              <h6 class="card-title mb-2" style="font-size: 24px;">{{ cuadro.nombre }}</h6>
+            </div>
+            <div class="col-4">
+              {% if cuadro.vendido %}
+              <img src="{% static 'ejemplos/vendido.png' %}" class="img-fluid">
+              {% endif %}
+            </div>
+          </div>
+
+          <a class="card-subtitle text-muted" href="{% url 'home:coleccion-view' %}?coleccion={{ cuadro.coleccion }}"
+            style="text-decoration: none;">
+            <h6 class="card-subtitle text-muted mb-3" style="font-size: 14px;">{{ cuadro.coleccion }}</h6>
+          </a>
+
+          {% if cuadro.descuento %}
+          <p class="card-text text-danger mb-0" style="text-decoration: line-through;">$ {{ cuadro.precio_punto_con }}
+            CLP</p>
+          <p class="card-text"><strong>$ {{ cuadro.precio_con_descuento }} CLP</strong> (Marco incluido)</p>
+          {% else %}
+          <p class="card-text"><strong>$ {{ cuadro.precio_punto_con }} CLP</strong> (Marco incluido)</p>
+          {% endif %}
+
+          <button id="comprar_btn" class="btn btn-outline-dark mb-3">COMPRAR</button>
+          <p class="card-text">{{ cuadro.descripcion|linebreaksbr }}</p>
+          <p class="card-text">Técnica: {{ cuadro.tecnica }}</p>
+
+          <div class="col-12">
+            <ul class="list-unstyled">
+              {% if cuadro.marco_con %}
+              <li>Dimensiones con marco: {{ cuadro.marco_con }}</li>
+              {% endif %}
+            </ul>
+          </div>
+
+          <p class="card-text">Fecha: {{ cuadro.fecha|date:"Y" }}</p>
+
+          {% if cuadro.cantidad_inicial %}
+          <p class="card-text">Disponibilidad: <span id="cantidad_disponible">{{ cuadro.cuadros_disponibles }}</span> de
+            {{ cuadro.cantidad_inicial }}</p>
+          {% endif %}
+        </div>
+        <a href="{% url 'home:contacto-view' %}" class="btn btn-dark boton-contacto">Contacto</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for full-size image -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img id="modalImage" src="" class="d-block w-100" data-bs-dismiss="modal" style="cursor: zoom-out;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg bg-body">
+  <div class="container-fluid">
+    <a class="navbar-brand text-break text-wrap">Colección completa: {{ cuadro.coleccion }}</a>
+  </div>
+</nav>
+<br>
+
+<div class="slider-containerSW swiper slider" id="slider-new">
+  <div class="slider-content-new">
+    <div class="cardSW-wrapper swiper-wrapper">
+      {% for cuadro in coleccion_ordenada %}
+      <div class="cardSW swiper-slide">
+        <div class="image-content py-0">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <a href="{% url 'home:cuadro-view' cuadro.id %}">
+              <img src="{{ cuadro.imagen1.url }}" />
+              {% if cuadro.vendido %}
+              <div class="sold-overlay"></div>
+              {% endif %}
+            </a>
+          </div>
+        </div>
+        <div class="cardSW-content py-0">
+          <h3 class="nameSW text-lg pt-3">{{ cuadro.nombre }}</h3>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next swiper-navBtn-new"></div>
+  <div class="swiper-button-prev swiper-navBtn-new"></div>
+</div>
+<br>
+
+<nav class="navbar navbar-expand-lg bg-body">
+  <div class="container-fluid">
+    <a class="navbar-brand text-break text-wrap">Trabajos relacionados</a>
+  </div>
+</nav>
+<br>
+
+<div class="slider-containerSW swiper slider" id="slider01">
+  <div class="slider-content">
+    <div class="cardSW-wrapper swiper-wrapper">
+      {% for cuadro in lista_cuadros|slice:":10" %}
+      <div class="cardSW swiper-slide">
+        <div class="image-content py-0">
+          <span class="overlay"></span>
+          <div class="cardSW-image">
+            <a href="{% url 'home:cuadro-view' cuadro.id %}">
+              <img src="{{ cuadro.imagen1.url }}" />
+              {% if cuadro.vendido %}
+              <div class="sold-overlay"></div>
+              {% endif %}
+            </a>
+          </div>
