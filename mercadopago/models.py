@@ -46,6 +46,7 @@ class Mer_Cuadro(models.Model):
     cantidad_inicial = models.PositiveIntegerField(blank=True, null=True)
     cantidad_vendida = models.PositiveIntegerField(
         default=0, blank=True, null=True)
+    cantidad_disponible = models.PositiveIntegerField(blank=True, null=True)
     marco_sin = models.CharField(max_length=100, blank=True)
     marco_con = models.CharField(max_length=100, blank=True)
     precio_sin = models.PositiveIntegerField(blank=True, null=True)
@@ -79,11 +80,6 @@ class Mer_Cuadro(models.Model):
 
     def __str__(self):
         return f"{self.nombre}"
-
-    def cuadros_disponibles(self):
-        if self.cantidad_inicial:
-            cuadros_disponibles = self.cantidad_inicial - self.cantidad_vendida
-            return cuadros_disponibles
 
     def delete(self, *args, **kwargs):
         for field_name in ['imagen1', 'imagen2', 'imagen3', 'imagen4', 'imagen5', 'imagen6', 'imagen7', 'imagen8', 'imagen9']:
@@ -122,3 +118,18 @@ class Mer_Cuadro(models.Model):
             coma = f"{precio_con_descuento:,}"
             punto = coma.replace(',', '.')
             return punto
+
+    def save(self, *args, **kwargs):
+        # Calcular la cantidad disponible
+        if self.cantidad_inicial is not None:
+            self.cantidad_disponible = self.cantidad_inicial - self.cantidad_vendida
+        else:
+            self.cantidad_disponible = 0
+
+        # Activar el boolean vendido si la cantidad disponible es 0
+        if self.cantidad_disponible <= 0:
+            self.vendido = True
+        else:
+            self.vendido = False
+
+        super().save(*args, **kwargs)

@@ -1,10 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
 from .models import Mer_Cuadro
 import random
-
-
-from django.http import HttpResponse
 
 
 def mercadopago_view(request):
@@ -28,3 +25,15 @@ def cuadro_view_pago(request, id):
     }
 
     return render(request, 'mercadopago/mer_cuadro.html', context)
+
+
+def comprar_cuadro(request, id):
+    cuadro = get_object_or_404(Mer_Cuadro, id=id)
+    if request.method == 'POST':
+        if cuadro.cantidad_inicial and cuadro.cantidad_vendida < cuadro.cantidad_inicial:
+            cuadro.cantidad_vendida += 1
+            cuadro.save()
+            return redirect('mercadopago:cuadro-view', id=cuadro.id)
+        else:
+            return HttpResponse("No hay más cuadros disponibles")
+    return redirect('mercadopago:cuadro-view', id=cuadro.id)
