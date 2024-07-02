@@ -14,6 +14,12 @@ Sobre-mí
 
 <div class="container-fluid text-light bg-dark">
   <div class="row">
+
+    <div class="col-md-3 p-0 d-flex justify-content-start">
+      <img src="{% static 'ejemplos/sobre_mi.png' %}" class="img-fluid w-100">
+    </div>
+
+    {% if False %}
     <!-- Primera columna -->
     <div class="col-md-6 d-flex align-items-center">
       <!-- Carrusel -->
@@ -48,9 +54,11 @@ Sobre-mí
         </button>
       </div>
     </div>
+    {% endif %}
+
     <!-- Segunda columna -->
-    <div class="col-md-6 mt-3 px-4 d-flex justify-content-center align-items-center">
-      <div class="d-flex flex-column align-items-start">
+    <div class="col-md-9 mt-3 p-5 d-flex justify-content-center align-items-center">
+      <div class="d-flex flex-column align-items-start text-start">
         <div>
           <p>Soy Andrés Honorato, un artista cuyo trabajo se distingue por su versatilidad y su constante exploración en
             diferentes estilos y técnicas. Nacido con una pasión innata por el arte, he cultivado mi creatividad a lo

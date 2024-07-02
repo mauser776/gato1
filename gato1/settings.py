@@ -147,12 +147,9 @@ MERCADOPAGO_ACCESS_TOKEN = 'TEST-3170616615661373-052720-181bdf62f5519da6202f1af
 MERCADOPAGO_PUBLIC_KEY = 'TEST-a98ab610-51d0-4c51-995e-68454c461b13'
 
 
-# settings.py
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-# Reemplaza con tu correo de envío
-EMAIL_HOST_USER = 'andreshonoratoarte@gmail.com'
-EMAIL_HOST_PASSWORD = 'uhjc pqgy vszc frbf'  # Reemplaza con tu contraseña
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'andreshonoratoarte@gmail.com'
+# EMAIL_HOST_PASSWORD = 'uhjc pqgy vszc frbf'
