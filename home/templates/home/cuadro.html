@@ -203,7 +203,8 @@
         </div>
 
         <div class="cardSW-content py-0"> <!-- Aplicar padding igual arriba y abajo al contenido del botón -->
-          <h3 class="nameSW text-lg pt-3">{{ cuadro.nombre }}</h3>
+          <h3 class="nameSW text-lg pt-3 pb-2">{{ cuadro.nombre }}</h3>
+          <a href="{% url 'home:cuadro-view' cuadro.id %}" class="btn btn-dark">Ver</a>
         </div>
 
       </div>
