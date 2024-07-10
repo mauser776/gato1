@@ -5,6 +5,10 @@
 
 {% block content %}
 
+
+<div id="wallet_container"></div>
+
+
 <div id="loader-overlay" class="loader-overlay">
   <div class="loader">
 
@@ -122,7 +126,7 @@
           {% endif %}
 
           {% if not cuadro.vendido %}
-          <form method="post" action="{% url 'mercadopago:comprar-cuadro' cuadro.id %}">
+          <form method="post" action="{% url 'mercadopago:pagar_cuadro' cuadro.id %}">
             {% csrf_token %}
             <button type="submit" class="btn btn-outline-dark mb-3">COMPRAR</button>
           </form>
@@ -346,6 +350,29 @@
       imageModal.show();
     });
   });
+
+
+
+
+  // Configura tu clave pública de Mercado Pago
+  const publicKey = '{{ settings.MERCADOPAGO_PUBLIC_KEY }}';
+  const mp = new MercadoPago(publicKey);
+  const bricks = mp.bricks();
+
+  // Crea el botón de pago usando el ID de la preferencia
+  bricks.create("wallet", "wallet_container", {
+    initialization: {
+      preferenceId: "{{ preference_id }}",  // Se reemplaza con el ID generado en la vista
+    },
+    customization: {
+      texts: {
+        valueProp: 'smart_option',  // Ejemplo de personalización opcional
+      },
+    },
+  });
+
+
+
 
 
 

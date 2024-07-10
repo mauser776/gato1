@@ -1,7 +1,8 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.utils.text import slugify
-import uuid
+from django.conf import settings
+import mercadopago
 
 # Create your models here.
 
@@ -119,17 +120,34 @@ class Mer_Cuadro(models.Model):
             punto = coma.replace(',', '.')
             return punto
 
-    def save(self, *args, **kwargs):
-        # Calcular la cantidad disponible
-        if self.cantidad_inicial is not None:
-            self.cantidad_disponible = self.cantidad_inicial - self.cantidad_vendida
-        else:
-            self.cantidad_disponible = 0
+    def pagar_con_mercadopago(self):
+        sdk = mercadopago.SDK(settings.MERCADOPAGO_ACCESS_TOKEN)
 
-        # Activar el boolean vendido si la cantidad disponible es 0
-        if self.cantidad_disponible <= 0:
-            self.vendido = True
+        # Calcula el precio con descuento si hay descuento
+        if self.descuento is not None:
+            unit_price = int(self.precio_con * (1 - self.descuento * 0.01))
         else:
-            self.vendido = False
+            unit_price = self.precio_con if self.precio_con else 0
 
-        super().save(*args, **kwargs)
+        preference_data = {
+            "items": [
+                {
+                    "title": self.nombre,
+                    "quantity": 1,
+                    "currency_id": "CLP",  # Cambio a pesos chilenos
+                    "unit_price": unit_price,
+                }
+            ],
+            "back_urls": {
+                "success": "https://andreshonorato.com/mercadopago/pago-exitoso/",
+                "failure": "https://andreshonorato.com/mercadopago/pago-fallido/",
+                "pending": "https://andreshonorato.com/mercadopago/pago-pendiente/",
+            },
+            "auto_return": "approved",
+        }
+
+        preference_response = sdk.preference().create(preference_data)
+        preference = preference_response["response"]
+
+        # Usar sandbox_init_point para pruebas
+        return preference['response']['sandbox_init_point']
