@@ -162,3 +162,11 @@ html body {
 .ver-mas-imagenes:hover {
     color: #646464 !important;
 }
+
+/* Estilo personalizado para agrandar el modal */
+.marcos-modal {
+    max-width: 90%;
+    /* Ajusta el porcentaje del ancho */
+    max-height: 80vh;
+    /* Ajusta la altura máxima, 80% de la altura de la ventana */
+}
