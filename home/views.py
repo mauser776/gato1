@@ -91,8 +91,8 @@ def cuadro_view(request, id):
         # 'cuadro_imagenes': cuadro_imagenes,
     }
 
-    # return render(request, 'home/cuadro.html', context)
-    return render(request, 'home/cuadro_marcos.html', context)
+    return render(request, 'home/cuadro.html', context)
+    # return render(request, 'home/cuadro_marcos.html', context)
 
 
 def cuadro_detail(request, id):
