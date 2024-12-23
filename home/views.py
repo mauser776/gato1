@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from .models import Coleccion, Cuadro, Tecnica
-from django.db.models import Q
 import random
 from django.core.mail import EmailMessage
 from .forms import FormularioContacto
