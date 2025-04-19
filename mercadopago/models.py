@@ -2,7 +2,6 @@ from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.utils.text import slugify
 from django.conf import settings
-import mercadopago
 
 # Create your models here.
 

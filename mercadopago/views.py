@@ -1,8 +1,12 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
 from .models import Mer_Cuadro
 import random
-import mercadopago
+
+
+def saludo(request):
+    return HttpResponse("¡AAHola, esto es una vista sencilla de Django!")
 
 
 def cuadro_view_pago(request, id):
