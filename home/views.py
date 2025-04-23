@@ -20,11 +20,14 @@ def home_view(request):
     for x in cuadros:
         lista_cuadros.append(x)
     lista_cuadros.reverse()
+    expo = Cuadro.objects.filter(
+        id__in=[49, 48, 46, 27, 30, 28, 49, 51, 31, 47, 43, 44, 50, 45, 53, 41])
 
     context = {
         'colecciones': colecciones,
         'tecnicas': tecnicas,
         'lista_cuadros': lista_cuadros,
+        'expo': expo,
     }
 
     return render(request, 'home/obras.html', context)
@@ -40,9 +43,13 @@ def obras_view(request):
 
     tecnicas = Tecnica.objects.prefetch_related('tecnicaX').all()
 
+    expo = Cuadro.objects.filter(
+        id__in=[49, 48, 46, 27, 30, 28, 49, 51, 31, 47, 43, 44, 50, 45, 53, 41])
+
     context = {
         'colecciones': colecciones,
         'tecnicas': tecnicas,
+        'expo': expo,
     }
 
     return render(request, 'home/obras.html', context)
@@ -127,3 +134,15 @@ def contacto_view(request):
 
 def sobre_mi_view(request):
     return render(request, 'home/sobre_mi.html')
+
+
+def coleccion_view_expo(request):
+
+    cuadros = Cuadro.objects.filter(
+        id__in=[49, 48, 46, 27, 30, 28, 49, 51, 31, 47, 43, 44, 50, 45, 53, 41])
+
+    context = {
+        'cuadros': cuadros,
+    }
+
+    return render(request, 'home/coleccion_expo.html', context)

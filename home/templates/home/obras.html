@@ -66,12 +66,6 @@ Obras
                 <h3 class="nameSW text-lg pt-0 pb-1">{{ cuadro.nombre }}</h3>
                 <a href="{% url 'home:cuadro-view' cuadro.id %}" class="btn btn-dark">Ver</a>
               </div>
-
-
-
-
-
-
             </div>
             {% endfor %}
           </div>
@@ -91,6 +85,71 @@ Obras
     </div>
   </nav>
   {% endfor %}
+
+
+  <!-- EXPO -->
+
+  <br>
+  <div class="row">
+    <div class="col-md-3 d-flex flex-column justify-content-center">
+      <div>
+        <span>Exposición</span>
+        <h4>Ruta del Arte</h4>
+        <p style="font-size: 14px !important;">Formo parte de La Ruta del Arte, un proyecto que busca transformar
+          espacios cotidianos en experiencias visuales significativas. Esta iniciativa interviene los halls de entrada
+          de 10 edificios de Grupo Patio, convirtiéndolos en galerías vivas donde el arte dialoga con la arquitectura y
+          la vida diaria.</p>
+        <p style="font-size: 14px !important;">
+          Mi obra será parte de esta curatoría, pensada para enriquecer el entorno con propuestas visuales que invitan a
+          detenerse, observar y conectar con nuevas perspectivas en medio de lo cotidiano.</p>
+        <a href="{% url 'home:coleccion-view-expo' %}" class="btn btn-dark mb-4">Ver
+          colección</a>
+      </div>
+    </div>
+
+    <div class="col-md-9 d-flex align-items-center">
+      <div class="position-relative slider-containerSW">
+        <div class="slider-content-new swiper slider" id="slider-new">
+          <div class="cardSW-wrapper swiper-wrapper">
+            {% for cuadro in expo %}
+            <div class="cardSW swiper-slide">
+              <div class="image-content pb-2">
+                <span class="overlay"></span>
+                <div class="cardSW-image-obras">
+                  <a href="{% url 'home:cuadro-view' cuadro.id %}">
+                    <img src="{{ cuadro.imagen1.url }}" />
+                    {% if cuadro.vendido %}
+                    <div class="sold-overlay"></div> <!-- Superpone la imagen de vendido si el cuadro está vendido -->
+                    {% endif %}
+                  </a>
+                </div>
+              </div>
+              <div class="cardSW-content py-0"> <!-- Aplicar padding igual arriba y abajo al contenido del botón -->
+                <h3 class="nameSW text-lg pt-0 pb-1">{{ cuadro.nombre }}</h3>
+                <a href="{% url 'home:cuadro-view' cuadro.id %}" class="btn btn-dark">Ver</a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next swiper-navBtn-new"></div>
+          <div class="swiper-button-prev swiper-navBtn-new"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <nav class="navbar navbar-expand-lg bg-body py-0">
+    <div class="container-fluid position-relative p-0">
+      <div class="spacer-new"></div>
+    </div>
+  </nav>
+
+  <!-- EXPO FIN-->
+
+
 </div>
 <br>
 

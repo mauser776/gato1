@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{coleccion}}
+{% endblock title %}
+
+{% block content %}
+
+
+
+<nav class="navbar navbar-expand-lg bg-body pb-0 pt-1">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home:obras-view' %}"><i class="bi bi-chevron-compact-left"></i>
+      Volver</a>
+  </div>
+</nav>
+
+
+
+{% for cuadro in cuadros %}
+<div class="container mb-1 p-4" id="cuadro.id">
+  <div class="row">
+
+    <div class="col-md-8 d-flex flex-column align-items-center">
+      <div class="row w-100">
+        {% if cuadro.imagen1 %}
+        <div class="col-md-12 px-2 position-relative">
+          <a href="{% url 'home:cuadro-view' cuadro.id %}" class="d-block mb-2">
+            <img src="{{ cuadro.imagen1.url }}" class="d-block w-100 clickable-image rounded-image"
+              alt="{{ cuadro.nombre }}" style="cursor: pointer;">
+          </a>
+        </div>
+        {% endif %}
+        <div class="col-md-12 px-2 text-end">
+          <a href="{% url 'home:cuadro-view' cuadro.id %}"
+            class="btn btn-link p-0 text-dark text-decoration-none ver-mas-imagenes">
+            Ver más imágenes <i class="bi bi-chevron-right"></i><i class="bi bi-chevron-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-4 px-2 cuadro-info">
+      <div class="card h-100" style="border-radius: 10px;" id="{{ cuadro.id }}">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-8">
+              <a href="{% url 'home:cuadro-view' cuadro.id %}" class="card-title mb-2 text-decoration-none">
+                <h6 class="card-title mb-2" style="font-size: 24px;">
+                  {{ cuadro.nombre }}
+                </h6>
+              </a>
+            </div>
+            <div class="col-4">
+              {% if cuadro.vendido %}
+              <img src="{% static 'ejemplos/vendido.png' %}" class="img-fluid">
+              {% endif %}
+            </div>
+          </div>
+
+
+          <a class="card-subtitle text-muted" href="{% url 'home:coleccion-view' %}?coleccion={{ cuadro.coleccion }}"
+            style="text-decoration: none;">
+            <h6 class="card-subtitle text-muted mb-3" style="font-size: 14px;">{{ cuadro.coleccion }}
+            </h6>
+          </a>
+
+          {% if cuadro.descuento %}
+          <p class="card-text text-danger mb-0" style="text-decoration: line-through;">$ {{ cuadro.precio_punto_con }}
+            CLP</p>
+          <p class="card-text"><strong>$ {{ cuadro.precio_con_descuento }} CLP</strong> (Marco incluido)</p>
+          {% else %}
+          <p class="card-text"><strong>$ {{ cuadro.precio_punto_con }} CLP</strong> (Marco incluido)</p>
+          {% endif %}
+
+
+          <a href="{% url 'home:contacto-view'%}" class="btn btn-outline-dark mb-3">Contacto</a>
+
+          <p class="card-text">{{ cuadro.descripcion|linebreaksbr }}</p>
+
+          <p class="card-text">Técnica: {{ cuadro.tecnica }}</p>
+
+
+          <div class="col-12">
+            <ul class="list-unstyled">
+              <!-- {% if cuadro.marco_sin %}
+                <li>Dimensiones sin marco: {{ cuadro.marco_sin }}</li>
+                {% endif %} -->
+              {% if cuadro.marco_con %}
+              <li>Dimensiones con marco: {{ cuadro.marco_con }}</li>
+              {% endif %}
+            </ul>
+          </div>
+
+
+          <!-- <div class="col-12">
+            <ul class="list-unstyled">
+              {% if cuadro.precio_sin %}
+                <li>Precio sin marco: $ {{ cuadro.precio_punto_sin}} CLP</li>
+                {% endif %}
+              {% if cuadro.precio_con %}
+              <li>Precio con marco: $ {{ cuadro.precio_punto_con }} CLP</li>
+              {% endif %}
+            </ul>
+          </div> -->
+
+
+          <p class="card-text">Fecha: {{ cuadro.fecha|date:"Y" }}</p>
+
+          {% if cuadro.cantidad_inicial %}
+          <p class="card-text">Disponibilidad: {{ cuadro.cuadros_disponibles }} de {{ cuadro.cantidad_inicial }}</p>
+          {% endif %}
+        </div>
+
+        <a href="{% url 'home:contacto-view' %}" class="btn btn-dark boton-contacto">Contacto</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg bg-body py-0">
+  <div class="container-fluid position-relative p-0">
+    <div class="spacer-new"></div>
+  </div>
+</nav>
+
+{% endfor %}
+
+
+
+
+
+
+{% endblock content %}
+
+
+
+{% block scripts %}
+<script>
+  // Esperar a que la página se cargue completamente
+  window.addEventListener('load', function () {
+    // Obtener el valor del parámetro 'cuadro_id' de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const cuadroId = urlParams.get('c_id');
+
+    if (cuadroId) {
+      // Encontrar el elemento con el mismo 'id' que el valor de 'cuadro_id'
+      const element = document.getElementById(cuadroId);
+
+      if (element) {
+        let offsetValue = -140; // Valor por defecto para pantallas grandes
+
+        // Verificar el tamaño de la pantalla utilizando las clases de Bootstrap
+        if (window.innerWidth < 768) { // Pantallas más pequeñas (por ejemplo, dispositivos móviles)
+          offsetValue = -500; // Cambiar el valor para pantallas más pequeñas
+        }
+
+        // Ajustar el scroll según el tamaño de la pantalla
+        window.scrollTo({
+          top: element.offsetTop + offsetValue,
+          behavior: 'smooth' // Puedes cambiar a 'auto' para desplazamiento instantáneo
+        });
+      }
+    }
+  });
+</script>
+
+{% endblock scripts %}

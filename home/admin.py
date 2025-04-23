@@ -9,7 +9,7 @@ admin.site.register(Tecnica)
 
 @admin.register(Cuadro)
 class ColeccionAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'coleccion', 'orden', 'fecha')
+    list_display = ('nombre', 'coleccion', 'orden', 'fecha', 'id')
     ordering = ('coleccion',)
 
 
