@@ -55,10 +55,7 @@ La Ruta del Arte
       <div class="row w-100">
         {% if cuadro.imagen1 %}
         <div class="col-md-12 px-2 position-relative">
-          <a href="" class="d-block mb-2">
-            <img src="{{ cuadro.imagen1.url }}" class="d-block w-100 clickable-image rounded-image"
-              alt="{{ cuadro.nombre }}" style="cursor: pointer;">
-          </a>
+          <img src="{{ cuadro.imagen1.url }}" class="d-block w-100 rounded-image" alt="{{ cuadro.nombre }}">
         </div>
         {% endif %}
         <div class="col-md-12 px-2 text-end">
@@ -176,7 +173,7 @@ La Ruta del Arte
     var sliderContainer = document.getElementById('coleccion-new');
     var progressBar = document.getElementById('progress-bar');
     var progress = 0;
-    var duration = 3500; // 7 segundos
+    var duration = 3000; // 6 segundos
     var interval = 50; // Intervalo de actualización en milisegundos
 
     disableScroll(); // Deshabilitar el scroll de la página
