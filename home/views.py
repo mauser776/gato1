@@ -21,7 +21,7 @@ def home_view(request):
         lista_cuadros.append(x)
     lista_cuadros.reverse()
     expo = Cuadro.objects.filter(
-        id__in=[49, 48, 46, 27, 30, 28, 49, 51, 31, 47, 43, 44, 50, 45, 53, 41])
+        id__in=[49, 48, 46, 27, 30, 28, 51, 31, 47, 1, 43, 44, 50, 45, 53, 41, 1])
 
     context = {
         'colecciones': colecciones,
@@ -44,7 +44,7 @@ def obras_view(request):
     tecnicas = Tecnica.objects.prefetch_related('tecnicaX').all()
 
     expo = Cuadro.objects.filter(
-        id__in=[49, 48, 46, 27, 30, 28, 49, 51, 31, 47, 43, 44, 50, 45, 53, 41])
+        id__in=[49, 48, 46, 27, 30, 28, 51, 31, 47, 1, 43, 44, 50, 45, 53, 41, 1])
 
     context = {
         'colecciones': colecciones,
@@ -139,7 +139,7 @@ def sobre_mi_view(request):
 def coleccion_view_expo(request):
 
     cuadros = Cuadro.objects.filter(
-        id__in=[49, 48, 46, 27, 30, 28, 49, 51, 31, 47, 43, 44, 50, 45, 53, 41])
+        id__in=[49, 48, 46, 27, 30, 28, 51, 31, 47, 1, 43, 44, 50, 45, 53, 41, 1])
 
     context = {
         'cuadros': cuadros,
