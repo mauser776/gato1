@@ -1,29 +1,25 @@
 <nav class="navbar fixed-top navbar-expand-lg bg-dark" data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" id="brand1" href="{% url 'home:home-view' %}"
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <!-- Ícono Instagram fijo a la izquierda -->
+
+
+    <!-- Marca y datos (centro) -->
+    <a class="navbar-brand mx-auto order-1" id="brand1" href="{% url 'home:home-view' %}"
       data-url-name="{{ request.resolver_match.url_name }}"
       data-coleccion="{% if request.resolver_match.url_name == 'coleccion-view' %}{{ coleccion }}{% endif %}"
       data-cuadro="{% if request.resolver_match.url_name == 'cuadro-view' %}{{ cuadro.nombre }}{% endif %}">
       Andrés Honorato
     </a>
 
-
-    <!-- {% if request.resolver_match.url_name == 'home-view' %}Andrés Honorato {% endif %}
-    {% if request.resolver_match.url_name == 'coleccion-view' %}AH | {{coleccion}} {% endif %}
-    {% if request.resolver_match.url_name == 'obras-view' %}AH | Obras {% endif %}
-    {% if request.resolver_match.url_name == 'contacto-view' %}AH | CONTACTO {% endif %}
-    {% if request.resolver_match.url_name == 'sobre_mi-view' %}AH | SOBRE MÍ {% endif %}
-    {% if request.resolver_match.url_name == 'cuadro-view' %}AH | {{cuadro.nombre}} {% endif %} -->
-
-
-
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+    <!-- Botón colapsable (derecha) -->
+    <button class="navbar-toggler order-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ms-auto">
+
+    <!-- Menú principal -->
+    <div class="collapse navbar-collapse justify-content-end order-3" id="navbarNavDropdown">
+      <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'obras-view' %} active {% endif %}"
             href="{% url 'home:obras-view' %}">OBRAS</a>
@@ -32,14 +28,22 @@
           <a class="nav-link {% if request.resolver_match.url_name == 'sobre_mi-view' %} active {% endif %}"
             href="{% url 'home:sobre_mi-view' %}">SOBRE MÍ</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item pe-2">
           <a class="nav-link {% if request.resolver_match.url_name == 'contacto-view' %} active {% endif %}"
             href="{% url 'home:contacto-view' %}">CONTACTO</a>
         </li>
       </ul>
+
+      <a href="https://www.instagram.com/andreshonoratoarte/" target="_blank" rel="noopener noreferrer"
+        class="d-flex align-items-center order-0 navbar-link-like">
+        <i class="bi bi-instagram" style="font-size: 1.25rem;"></i>
+      </a>
+
     </div>
   </div>
 </nav>
+
+
 <br>
 <br>
 
