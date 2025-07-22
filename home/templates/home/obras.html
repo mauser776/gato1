@@ -55,7 +55,7 @@ Obras
                 <span class="overlay"></span>
                 <div class="cardSW-image-obras">
                   <a href="{% url 'home:cuadro-view' cuadro.id %}">
-                    <img src="{{ cuadro.imagen1.url }}" loading="lazy" />
+                    <img src="{{ cuadro.imagen1.url }}" />
                     {% if cuadro.vendido %}
                     <div class="sold-overlay"></div> <!-- Superpone la imagen de vendido si el cuadro está vendido -->
                     {% endif %}
@@ -117,7 +117,7 @@ Obras
                 <span class="overlay"></span>
                 <div class="cardSW-image-obras">
                   <a href="{% url 'home:cuadro-view' cuadro.id %}">
-                    <img src="{{ cuadro.imagen1.url }}" loading="lazy" />
+                    <img src="{{ cuadro.imagen1.url }}" />
                     {% if cuadro.vendido %}
                     <div class="sold-overlay"></div> <!-- Superpone la imagen de vendido si el cuadro está vendido -->
                     {% endif %}
