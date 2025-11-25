@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from django.urls import reverse
 
 # Create your models here.
 
@@ -119,3 +120,60 @@ class Cuadro(models.Model):
             coma = f"{precio_con_descuento:,}"
             punto = coma.replace(',', '.')
             return punto
+
+
+class BannerDoble(models.Model):
+    nombre = models.CharField(max_length=200, help_text="Nombre de referencia para el administrador")
+    
+    # --- NUEVO CAMPO COLECCIÓN ---
+    coleccion = models.ForeignKey(
+        Coleccion, 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True, 
+        related_name='banners',
+        help_text="Colección a la que pertenece este banner"
+    )
+    # -----------------------------
+
+    imagen = models.ImageField(
+        upload_to='banners', 
+        validators=[FileExtensionValidator(['png', 'jpg', 'jpeg'])]
+    )
+    
+    cuadro_1 = models.ForeignKey(
+        Cuadro, 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True, 
+        related_name='banners_como_1',
+        help_text="Selecciona el primer cuadro a vincular"
+    )
+
+    cuadro_2 = models.ForeignKey(
+        Cuadro, 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True, 
+        related_name='banners_como_2',
+        help_text="Selecciona el segundo cuadro a vincular"
+    )
+
+    creado = models.DateTimeField(auto_now_add=True)
+    actualizado = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.nombre} - {self.coleccion if self.coleccion else 'Sin colección'}"
+    
+    @property
+    def cuadro_1_url(self):
+        if self.cuadro_1:
+            # Genera la URL usando el ID del cuadro y el nombre de la URL ('cuadro-view')
+            return reverse('home:cuadro-view', args=[self.cuadro_1.id])
+        return '#'
+
+    @property
+    def cuadro_2_url(self):
+        if self.cuadro_2:
+            return reverse('home:cuadro-view', args=[self.cuadro_2.id])
+        return '#'

@@ -28,7 +28,7 @@ DEBUG = False
 
 # ALLOWED_HOSTS = ['mauser776.pythonanywhere.com']
 ALLOWED_HOSTS = [
-    'andreshonorato-0d38ef2e3563.herokuapp.com', 'www.andreshonorato.com', '127.0.0.1']
+    'andreshonorato-0d38ef2e3563.herokuapp.com', 'www.andreshonorato.com', '127.0.0.1', '192.168.1.45']
 
 
 # Application definition
