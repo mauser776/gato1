@@ -8,51 +8,73 @@ import re
 # Create your views here.
 
 
-def home_view(request):
 
 
-# --- LÓGICA PARA DETECTAR MÓVIL ---
-    user_agent = request.META.get('HTTP_USER_AGENT', '').lower()
-    mobile_agents = r'mobile|android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini'
+# def home_view(request):
+
+# # --- LÓGICA PARA DETECTAR MÓVIL ---
+#     user_agent = request.META.get('HTTP_USER_AGENT', '').lower()
+#     mobile_agents = r'mobile|android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini'
     
-    if re.search(mobile_agents, user_agent):
-        # 1. Es dispositivo móvil: mostramos el carrusel de banners exclusivo
-        try:
-            # Filtramos los banners que pertenecen a la colección con nombre 'Mobile1'
-            banners = BannerDoble.objects.filter(coleccion__nombre='Mobile1').order_by('creado')
-        except Exception:
-            # En caso de que el modelo BannerDoble o Coleccion no existan
-            banners = [] 
+#     if re.search(mobile_agents, user_agent):
+#         # 1. Es dispositivo móvil: mostramos el carrusel de banners exclusivo
+#         try:
+#             # Filtramos los banners que pertenecen a la colección con nombre 'Mobile1'
+#             banners = BannerDoble.objects.filter(coleccion__nombre='Mobile1').order_by('creado')
+#         except Exception:
+#             # En caso de que el modelo BannerDoble o Coleccion no existan
+#             banners = [] 
             
-        context = {
-            'banners': banners,
-        }
-        # Renderizamos el nuevo template sin nav ni footer
-        return render(request, 'home/home_mobile.html', context) # <-- Nuevo Home Móvil
+#         context = {
+#             'banners': banners,
+#         }
+#         # Renderizamos el nuevo template sin nav ni footer
+#         return render(request, 'home/home_mobile.html', context) # <-- Nuevo Home Móvil
     
-    else:
-        # 2. Es escritorio: (Tu lógica original para el home de escritorio)
-        colecciones = Coleccion.objects.prefetch_related(
-            'coleccionX').order_by('orden').all()
-        tecnicas = Tecnica.objects.prefetch_related('tecnicaX').all()
+#     else:
+#         # 2. Es escritorio: (Tu lógica original para el home de escritorio)
+#         colecciones = Coleccion.objects.prefetch_related(
+#             'coleccionX').order_by('orden').all()
+#         tecnicas = Tecnica.objects.prefetch_related('tecnicaX').all()
         
-        cuadros = Cuadro.objects.all()
-        lista_cuadros = []
-        for x in cuadros:
-            lista_cuadros.append(x)
-        lista_cuadros.reverse()
+#         cuadros = Cuadro.objects.all()
+#         lista_cuadros = []
+#         for x in cuadros:
+#             lista_cuadros.append(x)
+#         lista_cuadros.reverse()
         
-        expo = Cuadro.objects.filter(
-            id__in=[49, 48, 46, 27, 30, 28, 51, 31, 47, 1, 43, 44, 50, 45, 53, 41, 1])
+#         expo = Cuadro.objects.filter(
+#             id__in=[49, 48, 46, 27, 30, 28, 51, 31, 47, 1, 43, 44, 50, 45, 53, 41, 1])
 
-        context = {
-            'colecciones': colecciones,
-            'tecnicas': tecnicas,
-            'lista_cuadros': lista_cuadros,
-            'expo': expo,
-        }
-        # Renderizamos el template de escritorio
-        return render(request, 'home/obras.html', context)
+#         context = {
+#             'colecciones': colecciones,
+#             'tecnicas': tecnicas,
+#             'lista_cuadros': lista_cuadros,
+#             'expo': expo,
+#         }
+#         # Renderizamos el template de escritorio
+#         return render(request, 'home/obras.html', context)
+
+
+def home_view(request):
+    colecciones = Coleccion.objects.prefetch_related('coleccionX').order_by('orden').all()
+    tecnicas = Tecnica.objects.prefetch_related('tecnicaX').all()
+
+    cuadros = Cuadro.objects.all()
+    lista_cuadros = list(cuadros)[::-1]
+
+    expo = Cuadro.objects.filter(
+        id__in=[49, 48, 46, 27, 30, 28, 51, 31, 47, 1, 43, 44, 50, 45, 53, 41, 1]
+    )
+
+    context = {
+        'colecciones': colecciones,
+        'tecnicas': tecnicas,
+        'lista_cuadros': lista_cuadros,
+        'expo': expo,
+    }
+    return render(request, 'home/obras.html', context)
+
 
 
 def obras_view(request):
